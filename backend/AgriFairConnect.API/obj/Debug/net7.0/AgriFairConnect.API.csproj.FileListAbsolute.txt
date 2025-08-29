@@ -1,0 +1,8 @@
+C:\Users\Nikhil\Downloads\project-bolt-sb1-oc2ljubj (1)\cakend\AgriFairConnect.API\obj\Debug\net7.0\AgriFairConnect.API.csproj.AssemblyReference.cache
+C:\Users\Nikhil\Downloads\project-bolt-sb1-oc2ljubj (1)\cakend\AgriFairConnect.API\obj\Debug\net7.0\rpswa.dswa.cache.json
+C:\Users\Nikhil\Downloads\project-bolt-sb1-oc2ljubj (1)\cakend\AgriFairConnect.API\obj\Debug\net7.0\AgriFairConnect.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nikhil\Downloads\project-bolt-sb1-oc2ljubj (1)\cakend\AgriFairConnect.API\obj\Debug\net7.0\AgriFairConnect.API.AssemblyInfoInputs.cache
+C:\Users\Nikhil\Downloads\project-bolt-sb1-oc2ljubj (1)\cakend\AgriFairConnect.API\obj\Debug\net7.0\AgriFairConnect.API.AssemblyInfo.cs
+C:\Users\Nikhil\Downloads\project-bolt-sb1-oc2ljubj (1)\cakend\AgriFairConnect.API\obj\Debug\net7.0\AgriFairConnect.API.csproj.CoreCompileInputs.cache
+C:\Users\Nikhil\Downloads\project-bolt-sb1-oc2ljubj (1)\cakend\AgriFairConnect.API\obj\Debug\net7.0\AgriFairConnect.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Nikhil\Downloads\project-bolt-sb1-oc2ljubj (1)\cakend\AgriFairConnect.API\obj\Debug\net7.0\AgriFairConnect.API.MvcApplicationPartsAssemblyInfo.cache

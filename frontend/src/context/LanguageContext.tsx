@@ -1,0 +1,470 @@
+import React, { createContext, useContext, useState, ReactNode } from 'react';
+
+interface LanguageContextType {
+  language: 'en' | 'ne';
+  toggleLanguage: () => void;
+  t: (key: string) => string;
+}
+
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+
+export const useLanguage = () => {
+  const context = useContext(LanguageContext);
+  if (context === undefined) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
+};
+
+const translations = {
+  en: {
+    // Common
+    'welcome': 'Welcome',
+    'login': 'Login',
+    'logout': 'Logout',
+    'submit': 'Submit',
+    'cancel': 'Cancel',
+    'save': 'Save',
+    'edit': 'Edit',
+    'delete': 'Delete',
+    'view': 'View',
+    'back': 'Back',
+    'next': 'Next',
+    'loading': 'Loading...',
+    'search': 'Search',
+    'filter': 'Filter',
+    'all': 'All',
+    'yes': 'Yes',
+    'no': 'No',
+    'optional': 'Optional',
+    'required': 'Required',
+    
+    // Language
+    'language.change': 'Change Language',
+    
+    // App Title
+    'app.title': 'AgriFairConnect',
+    'app.subtitle': 'AI-Powered Agricultural Grant Platform',
+    
+    // Login
+    'login.title': 'AgriFairConnect',
+    'login.subtitle': 'Agricultural Grant Platform',
+    'login.userType': 'User Type',
+    'login.farmer': 'Farmer',
+    'login.admin': 'Administrator',
+    'login.username': 'Username',
+    'login.password': 'Password',
+    'login.enterCredentials': 'Enter your credentials',
+    'login.loginButton': 'Login',
+    'login.signupButton': 'Sign Up',
+    'login.newFarmer': 'New farmer? Sign up to create your profile.',
+    'login.adminAccount': 'Use administrator account',
+    'login.usernameRequired': 'Username is required',
+    'login.passwordRequired': 'Password is required',
+    'login.loginFailed': 'Login failed. Please try again.',
+    'login.signupSuccess': 'Account created successfully! You can now login.',
+    'login.usernameExists': 'Username already exists. Please choose a different one.',
+    'login.onlyFarmersSignup': 'Only farmers can sign up',
+    'login.passwordTooShort': 'Password must be at least 6 characters long',
+    
+    // Farmer Registration
+    'registration.title': 'Create Farmer Profile',
+    'registration.subtitle': 'Fill in your details',
+    'registration.personalInfo': 'Personal Information',
+    'registration.fullName': 'Full Name',
+    'registration.address': 'Address',
+    'registration.email': 'Email',
+    'registration.wardNo': 'Ward No',
+    'registration.municipality': 'Municipality/Rural Municipality',
+    'registration.selectMunicipality': 'Select',
+    'registration.agriculturalInfo': 'Agricultural Information',
+    'registration.monthlyIncome': 'Monthly Income (NPR)',
+    'registration.landSize': 'Land Size (Bigha)',
+    'registration.currentCrops': 'Currently Growing Crops',
+    'registration.previousGrant': 'Have you received any grant before?',
+    'registration.requiredDocuments': 'Required Documents',
+    'registration.citizenPhoto': 'Citizenship Photo',
+    'registration.landOwnership': 'Land Ownership Certificate',
+    'registration.landTax': 'Land Tax Receipt',
+    'registration.uploadCitizen': 'Upload citizenship photo',
+    'registration.uploadLandOwnership': 'Upload land ownership certificate',
+    'registration.uploadLandTax': 'Upload land tax receipt',
+    'registration.createProfile': 'Create Profile',
+    'registration.fillAllFields': 'Please fill all required fields',
+    'registration.selectCrop': 'Select at least one crop',
+    'registration.uploadAllDocs': 'Please upload all documents',
+    'registration.profileCreated': 'Profile created successfully!',
+    'registration.profileFailed': 'Failed to create profile',
+    'registration.fileSizeError': 'File size should not exceed 5MB',
+    
+    // Dashboard
+    'dashboard.welcome': 'Welcome',
+    'dashboard.farmer': 'Farmer Dashboard',
+    'dashboard.admin': 'Administrator Dashboard',
+    'dashboard.availableGrants': 'Available Grants',
+    'dashboard.myApplications': 'My Applications',
+    'dashboard.monthlyIncome': 'Monthly Income',
+    'dashboard.landArea': 'Land Area',
+    'dashboard.totalApplications': 'Total Applications',
+    'dashboard.activeGrants': 'Active Grants',
+    'dashboard.distributedAmount': 'Distributed Amount',
+    'dashboard.marketPrices': 'Market Prices',
+    'dashboard.applyForGrant': 'Apply for Grant',
+    'dashboard.viewMarketPrices': 'View Market Prices',
+    'dashboard.recentGrants': 'Recently Added Grants',
+    'dashboard.recentApplications': 'Recent Applications',
+    'dashboard.viewAll': 'View All',
+    'dashboard.viewDetails': 'View Details',
+    'dashboard.bigha': 'Bigha',
+    'dashboard.updated': 'Updated',
+    
+    // Navigation
+    'nav.dashboard': 'Dashboard',
+    'nav.grants': 'Available Grants',
+    'nav.applications': 'Applications',
+    'nav.market': 'Market Prices',
+    'nav.profile': 'Profile',
+    'nav.createGrant': 'Create Grant',
+    'nav.manageGrants': 'Manage Grants',
+    'nav.aiSelection': 'AI Selection',
+    'nav.setMarketPrices': 'Set Market Prices',
+    'nav.analytics': 'Analytics',
+    'nav.underDevelopment': 'Under Development...',
+    
+    // Grants
+    'grants.title': 'Available Grants',
+    'grants.availableFor': 'grants available for your area',
+    'grants.searchPlaceholder': 'Search grants...',
+    'grants.allTypes': 'All Types',
+    'grants.money': 'Cash Amount',
+    'grants.object': 'Object',
+    'grants.applyNow': 'Apply Now',
+    'grants.noGrants': 'No Grants Found',
+    'grants.noGrantsMessage': 'No grants found matching your search criteria. Try removing filters.',
+    'grants.noGrantsArea': 'No grants are currently available for your area.',
+    'grants.information': 'Information',
+    'grants.infoText1': '• Grants are shown only for your ward and municipality',
+    'grants.infoText2': '• Prepare all required documents before applying',
+    'grants.infoText3': '• Applications can be edited until they are processed',
+    
+    // Market
+    'market.title': 'Market Prices',
+    'market.subtitle': 'View current crop prices and trends',
+    'market.selectLocation': 'Select Location',
+    'market.selectCrop': 'Select Crop',
+    'market.allLocations': 'All Locations',
+    'market.allCrops': 'All Crops',
+    'market.todayPrices': 'Today\'s Price List',
+    'market.crop': 'Crop',
+    'market.price': 'Price',
+    'market.unit': 'Unit',
+    'market.location': 'Location',
+    'market.updateDate': 'Update Date',
+    'market.trend': 'Trend',
+    'market.noData': 'No Data Found',
+    'market.noDataMessage': 'No price data available for selected filters.',
+    'market.priceChart': 'Price Trend (Last 7 Days)',
+    'market.priceComparison': 'Crop Price Comparison',
+    'market.marketTips': 'Market Tips',
+    'market.bestSellTime': 'Best Time to Sell:',
+    'market.bestBuyTime': 'Best Time to Buy:',
+    'market.sellTip1': '• Sell when prices are in upward trend',
+    'market.sellTip2': '• Prices are higher during festivals',
+    'market.sellTip3': '• More buyers available on market days',
+    'market.buyTip1': '• Buy when prices are in downward trend',
+    'market.buyTip2': '• Prices are lower at end of season',
+    'market.buyTip3': '• Better prices available in wholesale markets',
+    
+    // Admin
+    'admin.createGrant': 'Create New Grant',
+    'admin.createGrantSubtitle': 'Fill in the details for new grant program',
+    'admin.basicInfo': 'Basic Information',
+    'admin.grantTitle': 'Grant Title',
+    'admin.grantTitlePlaceholder': 'Example: Digital Agriculture Support Program',
+    'admin.detailedDescription': 'Detailed Description',
+    'admin.descriptionPlaceholder': 'Write the purpose, conditions and other details of the grant...',
+    'admin.grantType': 'Grant Type',
+    'admin.cashAmount': 'Cash Amount',
+    'admin.objectMaterial': 'Object/Material',
+    'admin.amount': 'Amount (NPR)',
+    'admin.objectName': 'Object Name',
+    'admin.objectPlaceholder': 'Example: Advanced Seed Package, Irrigation Pump',
+    'admin.targetAreas': 'Target Areas',
+    'admin.wardNumbers': 'Ward Numbers',
+    'admin.selectWards': '(Select at least one)',
+    'admin.municipalities': 'Municipality/Rural Municipality',
+    'admin.selectMunicipalities': '(Select at least one)',
+    'admin.grantImage': 'Grant Image',
+    'admin.uploadImage': 'Click to upload',
+    'admin.imageFormats': 'PNG, JPG or JPEG (Maximum 5MB)',
+    'admin.createGrantButton': 'Create Grant',
+    'admin.grantTitleRequired': 'Grant title is required',
+    'admin.descriptionRequired': 'Description is required',
+    'admin.validAmount': 'Enter valid amount',
+    'admin.objectNameRequired': 'Object name is required',
+    'admin.selectWard': 'Select at least one ward',
+    'admin.selectMunicipality': 'Select at least one municipality',
+    'admin.grantCreated': 'Grant created successfully!',
+    'admin.grantFailed': 'Failed to create grant',
+    
+    // Status
+    'status.pending': 'Pending',
+    'status.processing': 'Processing',
+    'status.approved': 'Approved',
+    'status.rejected': 'Rejected',
+    
+    // Crops
+    'crops.rice': 'Rice',
+    'crops.corn': 'Corn',
+    'crops.wheat': 'Wheat',
+    'crops.barley': 'Barley',
+    'crops.potato': 'Potato',
+    'crops.onion': 'Onion',
+    'crops.garlic': 'Garlic',
+    'crops.cabbage': 'Cabbage',
+    'crops.cauliflower': 'Cauliflower',
+    'crops.tomato': 'Tomato',
+    'crops.chili': 'Chili',
+    'crops.eggplant': 'Eggplant',
+    'crops.bitterGourd': 'Bitter Gourd',
+    'crops.bottleGourd': 'Bottle Gourd',
+    'crops.okra': 'Okra',
+  },
+  ne: {
+    // Common
+    'welcome': 'स्वागत छ',
+    'login': 'लगइन',
+    'logout': 'बाहिर निकालुन',
+    'submit': 'पेश गर्नुहोस्',
+    'cancel': 'रद्द गर्नुहोस्',
+    'save': 'सेभ गर्नुहोस्',
+    'edit': 'सम्पादन',
+    'delete': 'मेटाउनुहोस्',
+    'view': 'हेर्नुहोस्',
+    'back': 'फिर्ता',
+    'next': 'अगाडि',
+    'loading': 'लोड हुँदै...',
+    'search': 'खोज्नुहोस्',
+    'filter': 'फिल्टर',
+    'all': 'सबै',
+    'yes': 'हो',
+    'no': 'होइन',
+    'optional': 'वैकल्पिक',
+    'required': 'आवश्यक',
+    
+    // Language
+    'language.change': 'भाषा परिवर्तन गर्नुहोस्',
+    
+    // App Title
+    'app.title': 'AgriFairConnect',
+    'app.subtitle': 'कृषि अनुदान प्लेटफर्म',
+    
+    // Login
+    'login.title': 'AgriFairConnect',
+    'login.subtitle': 'कृषि अनुदान प्लेटफर्म',
+    'login.userType': 'प्रयोगकर्ता प्रकार',
+    'login.farmer': 'किसान',
+    'login.admin': 'प्रशासक',
+    'login.username': 'प्रयोगकर्ता नाम',
+    'login.password': 'पासवर्ड',
+    'login.enterCredentials': 'आफ्नो विवरणहरू प्रविष्ट गर्नुहोस्',
+    'login.loginButton': 'प्रवेश गर्नुहोस्',
+    'login.signupButton': 'साइन अप',
+    'login.newFarmer': 'नयाँ किसान? आफ्नो प्रोफाइल सिर्जना गर्न साइन अप गर्नुहोस्।',
+    'login.adminAccount': 'प्रशासक खाता प्रयोग गर्नुहोस्',
+    'login.usernameRequired': 'प्रयोगकर्ता नाम आवश्यक छ',
+    'login.passwordRequired': 'पासवर्ड आवश्यक छ',
+    'login.loginFailed': 'लगइन गर्न सकिएन। फेरि प्रयास गर्नुहोस्।',
+    'login.signupSuccess': 'खाता सफलतापूर्वक सिर्जना भयो! अब तपाईं लगइन गर्न सक्नुहुन्छ।',
+    'login.usernameExists': 'प्रयोगकर्ता नाम पहिले नै अवस्थित छ। कृपया अर्को छन्नुहोस्।',
+    'login.onlyFarmersSignup': 'केवल किसानहरूले साइन अप गर्न सक्छन्',
+    'login.passwordTooShort': 'पासवर्ड कम्तीमा 6 अक्षरको हुनुपर्छ',
+    
+    // Farmer Registration
+    'registration.title': 'किसान प्रोफाइल सिर्जना',
+    'registration.subtitle': 'तपाईंको विवरणहरू भर्नुहोस्',
+    'registration.personalInfo': 'व्यक्तिगत विवरण',
+    'registration.fullName': 'पूरा नाम',
+    'registration.address': 'ठेगाना',
+    'registration.email': 'इमेल',
+    'registration.wardNo': 'वार्ड नं',
+    'registration.municipality': 'नगरपालिका/गाउँपालिका',
+    'registration.selectMunicipality': 'छन्नुहोस्',
+    'registration.agriculturalInfo': 'कृषि सम्बन्धी विवरण',
+    'registration.monthlyIncome': 'मासिक आय (NPR)',
+    'registration.landSize': 'जमिनको क्षेत्रफल (बिघा)',
+    'registration.currentCrops': 'हाल खेती गरिरहेको बालीहरू',
+    'registration.previousGrant': 'के तपाईंले पहिले कुनै अनुदान पाउनुभएको छ?',
+    'registration.requiredDocuments': 'आवश्यक कागजातहरू',
+    'registration.citizenPhoto': 'नागरिकताको फोटो',
+    'registration.landOwnership': 'जग्गा धनी पुर्जा',
+    'registration.landTax': 'जग्गा मालपोत',
+    'registration.uploadCitizen': 'नागरिकताको फोटो अपलोड गर्नुहोस्',
+    'registration.uploadLandOwnership': 'जग्गा धनी पुर्जा अपलोड गर्नुहोस्',
+    'registration.uploadLandTax': 'जग्गा मालपोत अपलोड गर्नुहोस्',
+    'registration.createProfile': 'प्रोफाइल सिर्जना गर्नुहोस्',
+    'registration.fillAllFields': 'सबै आवश्यक फिल्डहरू भर्नुहोस्',
+    'registration.selectCrop': 'कम्तीमा एक बाली छन्नुहोस्',
+    'registration.uploadAllDocs': 'सबै कागजातहरू अपलोड गर्नुहोस्',
+    'registration.profileCreated': 'प्रोफाइल सफलतापूर्वक सिर्जना भयो!',
+    'registration.profileFailed': 'प्रोफाइल सिर्जना गर्न सकिएन',
+    'registration.fileSizeError': 'फाईल साईज 5MB भन्दा बढी हुनु हुँदैन',
+    
+    // Dashboard
+    'dashboard.welcome': 'स्वागत छ',
+    'dashboard.farmer': 'किसान ड्यासबोर्ड',
+    'dashboard.admin': 'प्रशासक ड्यासबोर्ड',
+    'dashboard.availableGrants': 'उपलब्ध अनुदान',
+    'dashboard.myApplications': 'मेरा आवेदनहरू',
+    'dashboard.monthlyIncome': 'मासिक आय',
+    'dashboard.landArea': 'जमिनको क्षेत्रफल',
+    'dashboard.totalApplications': 'कुल आवेदनहरू',
+    'dashboard.activeGrants': 'सक्रिय अनुदानहरू',
+    'dashboard.distributedAmount': 'वितरित राशि',
+    'dashboard.marketPrices': 'बजार मूल्यहरू',
+    'dashboard.applyForGrant': 'अनुदानका लागि आवेदन दिनुहोस्',
+    'dashboard.viewMarketPrices': 'बजार मूल्य हेर्नुहोस्',
+    'dashboard.recentGrants': 'हालै थपिएका अनुदानहरू',
+    'dashboard.recentApplications': 'हालका आवेदनहरू',
+    'dashboard.viewAll': 'सबै हेर्नुहोस्',
+    'dashboard.viewDetails': 'विस्तार हेर्नुहोस्',
+    'dashboard.bigha': 'बिघा',
+    'dashboard.updated': 'अपडेट',
+    
+    // Navigation
+    'nav.dashboard': 'मुख्य पृष्ठ',
+    'nav.grants': 'उपलब्ध अनुदान',
+    'nav.applications': 'मेरा आवेदन',
+    'nav.market': 'बजार मूल्य',
+    'nav.profile': 'प्रोफाइल',
+    'nav.createGrant': 'अनुदान सिर्जना',
+    'nav.manageGrants': 'अनुदान व्यवस्थापन',
+    'nav.aiSelection': 'AI छनौट',
+    'nav.setMarketPrices': 'बजार मूल्य सेट',
+    'nav.analytics': 'विश्लेषण',
+    'nav.underDevelopment': 'अझै विकास हुँदैछ...',
+    
+    // Grants
+    'grants.title': 'उपलब्ध अनुदानहरू',
+    'grants.availableFor': 'वटा अनुदान उपलब्ध छ',
+    'grants.searchPlaceholder': 'अनुदान खोज्नुहोस्...',
+    'grants.allTypes': 'सबै प्रकार',
+    'grants.money': 'नगद राशि',
+    'grants.object': 'वस्तु',
+    'grants.applyNow': 'आवेदन दिनुहोस्',
+    'grants.noGrants': 'कुनै अनुदान भेटिएन',
+    'grants.noGrantsMessage': 'खोज शर्त अनुसार कुनै अनुदान भेटिएन। फिल्टर हटाउनुहोस्।',
+    'grants.noGrantsArea': 'तपाईंको क्षेत्रका लागि हाल कुनै अनुदान उपलब्ध छैन।',
+    'grants.information': 'सूचना',
+    'grants.infoText1': '• अनुदान केवल तपाईंको वार्ड र नगरपालिकाका लागि मात्र देखाइएको छ',
+    'grants.infoText2': '• आवेदन दिनु अघि सबै आवश्यक कागजातहरू तयार राख्नुहोस्',
+    'grants.infoText3': '• एक पटक आवेदन दिएपछि यसलाई सम्पादन गर्न सकिन्छ (प्रक्रियामा नजाउन्जेल)',
+    
+    // Market
+    'market.title': 'बजार मूल्य',
+    'market.subtitle': 'बालीहरूको हालको मूल्य र ट्रेन्ड हेर्नुहोस्',
+    'market.selectLocation': 'स्थान छन्नुहोस्',
+    'market.selectCrop': 'बाली छन्नुहोस्',
+    'market.allLocations': 'सबै स्थान',
+    'market.allCrops': 'सबै बाली',
+    'market.todayPrices': 'आजको मूल्य सूची',
+    'market.crop': 'बाली',
+    'market.price': 'मूल्य',
+    'market.unit': 'एकाइ',
+    'market.location': 'स्थान',
+    'market.updateDate': 'अपडेट मिति',
+    'market.trend': 'ट्रेन्ड',
+    'market.noData': 'कुनै डाटा भेटिएन',
+    'market.noDataMessage': 'छानिएको फिल्टरका लागि कुनै मूल्य डाटा उपलब्ध छैन।',
+    'market.priceChart': 'बालीको मूल्य ट्रेन्ड (पछिल्ला 7 दिन)',
+    'market.priceComparison': 'बालीहरूको मूल्य तुलना',
+    'market.marketTips': 'बजार सम्बन्धी सुझावहरू',
+    'market.bestSellTime': 'बिक्रीको लागि उत्तम समय:',
+    'market.bestBuyTime': 'खरिदको लागि उत्तम समय:',
+    'market.sellTip1': '• मूल्य बढ्दो ट्रेन्डमा हुँदा बिक्री गर्नुहोस्',
+    'market.sellTip2': '• त्योहारको समयमा मूल्य बढी हुन्छ',
+    'market.sellTip3': '• बजार दिनहरूमा धेरै खरिदारहरू हुन्छन्',
+    'market.buyTip1': '• मूल्य घट्दो ट्रेन्डमा हुँदा खरिद गर्नुहोस्',
+    'market.buyTip2': '• सिजनको अन्त्यमा मूल्य कम हुन्छ',
+    'market.buyTip3': '• थोक बजारमा राम्रो मूल्य पाइन्छ',
+    
+    // Admin
+    'admin.createGrant': 'नयाँ अनुदान सिर्जना',
+    'admin.createGrantSubtitle': 'नयाँ अनुदान कार्यक्रमका विवरणहरू भर्नुहोस्',
+    'admin.basicInfo': 'आधारभूत विवरण',
+    'admin.grantTitle': 'अनुदानको शीर्षक',
+    'admin.grantTitlePlaceholder': 'उदाहरण: डिजिटल कृषि सहायता कार्यक्रम',
+    'admin.detailedDescription': 'विस्तृत विवरण',
+    'admin.descriptionPlaceholder': 'अनुदानको उद्देश्य, सर्तहरू र अन्य विवरणहरू लेख्नुहोस्...',
+    'admin.grantType': 'अनुदानको प्रकार',
+    'admin.cashAmount': 'नगद राशि',
+    'admin.objectMaterial': 'वस्तु/सामग्री',
+    'admin.amount': 'राशि (NPR)',
+    'admin.objectName': 'वस्तुको नाम',
+    'admin.objectPlaceholder': 'उदाहरण: उन्नत बीउ प्याकेज, सिंचाई पम्प',
+    'admin.targetAreas': 'लक्षित क्षेत्रहरू',
+    'admin.wardNumbers': 'वार्ड नम्बरहरू',
+    'admin.selectWards': '(कम्तीमा एक छन्नुहोस्)',
+    'admin.municipalities': 'नगरपालिका/गाउँपालिका',
+    'admin.selectMunicipalities': '(कम्तीमा एक छन्नुहोस्)',
+    'admin.grantImage': 'अनुदानको तस्वीर',
+    'admin.uploadImage': 'क्लिक गरेर अपलोड गर्नुहोस्',
+    'admin.imageFormats': 'PNG, JPG या JPEG (अधिकतम 5MB)',
+    'admin.createGrantButton': 'अनुदान सिर्जना गर्नुहोस्',
+    'admin.grantTitleRequired': 'अनुदानको शीर्षक आवश्यक छ',
+    'admin.descriptionRequired': 'विवरण आवश्यक छ',
+    'admin.validAmount': 'मान्य राशि प्रविष्ट गर्नुहोस्',
+    'admin.objectNameRequired': 'वस्तुको नाम आवश्यक छ',
+    'admin.selectWard': 'कम्तीमा एक वार्ड छन्नुहोस्',
+    'admin.selectMunicipality': 'कम्तीमा एक नगरपालिका छन्नुहोस्',
+    'admin.grantCreated': 'अनुदान सफलतापूर्वक सिर्जना भयो!',
+    'admin.grantFailed': 'अनुदान सिर्जना गर्न सकिएन',
+    
+    // Status
+    'status.pending': 'पेंडिंग',
+    'status.processing': 'प्रक्रियामा',
+    'status.approved': 'स्वीकृत',
+    'status.rejected': 'अस्वीकृत',
+    
+    // Crops
+    'crops.rice': 'धान',
+    'crops.corn': 'मकै',
+    'crops.wheat': 'गहुँ',
+    'crops.barley': 'जौ',
+    'crops.potato': 'आलु',
+    'crops.onion': 'प्याज',
+    'crops.garlic': 'लसुन',
+    'crops.cabbage': 'बन्दाकोबी',
+    'crops.cauliflower': 'काउली',
+    'crops.tomato': 'टमाटर',
+    'crops.chili': 'खुर्सानी',
+    'crops.eggplant': 'भन्टा',
+    'crops.bitterGourd': 'करेला',
+    'crops.bottleGourd': 'लौका',
+    'crops.okra': 'फर्सी',
+  }
+};
+
+interface LanguageProviderProps {
+  children: ReactNode;
+}
+
+export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
+  const [language, setLanguage] = useState<'en' | 'ne'>('ne');
+
+  const toggleLanguage = () => {
+    setLanguage(prev => prev === 'en' ? 'ne' : 'en');
+  };
+
+  const t = (key: string): string => {
+    // Use type assertion to allow string indexing, but add runtime check for safety
+    const dict = translations[language] as Record<string, string>;
+    return dict[key] ?? key;
+  };
+
+  return (
+    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+};

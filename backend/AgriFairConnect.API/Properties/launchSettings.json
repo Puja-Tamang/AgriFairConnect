@@ -1,0 +1,24 @@
+{
+  "profiles": {
+    "AgriFairConnect.API": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:7001;http://localhost:5000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings__DefaultConnection": "Host=localhost; Port=5432; Database=AgriFairConnect; Username=postgres; Password=12345"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings__DefaultConnection": "Host=localhost; Port=5432; Database=AgriFairConnect; Username=postgres; Password=12345"
+      }
+    }
+  }
+}

@@ -1,0 +1,153 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import { LanguageProvider } from './context/LanguageContext';
+import { DataProvider } from './context/DataContext';
+import Layout from './components/Layout/Layout';
+import Login from './components/Auth/Login';
+import FarmerRegistration from './components/Auth/FarmerRegistration';
+import FarmerDashboard from './components/Farmer/FarmerDashboard';
+import AvailableGrants from './components/Farmer/AvailableGrants';
+import MarketDashboard from './components/Farmer/MarketDashboard';
+import AdminDashboard from './components/Admin/AdminDashboard';
+import CreateGrant from './components/Admin/CreateGrant';
+import BackendTest from './components/Test/BackendTest';
+import DashboardTest from './components/Test/DashboardTest';
+import UserDebug from './components/Test/UserDebug';
+import ClearAuth from './components/Test/ClearAuth';
+
+const ProtectedRoute: React.FC<{ children: React.ReactNode, userType?: 'farmer' | 'admin' }> = ({ 
+  children, 
+  userType 
+}) => {
+  const { user, isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (userType && user?.type !== userType) {
+    return <Navigate to={user?.type === 'farmer' ? '/farmer/dashboard' : '/admin/dashboard'} replace />;
+  }
+
+  return <>{children}</>;
+};
+
+const AppRoutes: React.FC = () => {
+  const { isAuthenticated, user } = useAuth();
+
+  return (
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/login" element={isAuthenticated ? 
+        <Navigate to={user?.type === 'farmer' ? '/farmer/dashboard' : '/admin/dashboard'} replace /> : 
+        <Login />
+      } />
+      
+      <Route path="/farmer/register" element={<FarmerRegistration />} />
+      <Route path="/test/backend" element={<BackendTest />} />
+      <Route path="/test/dashboard" element={<DashboardTest />} />
+      <Route path="/test/user" element={<UserDebug />} />
+      <Route path="/test/clear-auth" element={<ClearAuth />} />
+
+      {/* Protected Farmer Routes */}
+      <Route path="/farmer/dashboard" element={
+        <ProtectedRoute userType="farmer">
+          <Layout><FarmerDashboard /></Layout>
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/farmer/grants" element={
+        <ProtectedRoute userType="farmer">
+          <Layout><AvailableGrants /></Layout>
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/farmer/market" element={
+        <ProtectedRoute userType="farmer">
+          <Layout><MarketDashboard /></Layout>
+        </ProtectedRoute>
+      } />
+
+      <Route path="/farmer/applications" element={
+        <ProtectedRoute userType="farmer">
+          <Layout><div className="text-center py-12">Under Development...</div></Layout>
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/farmer/profile" element={
+        <ProtectedRoute userType="farmer">
+          <Layout><div className="text-center py-12">Under Development...</div></Layout>
+        </ProtectedRoute>
+      } />
+
+      {/* Protected Admin Routes */}
+      <Route path="/admin/dashboard" element={
+        <ProtectedRoute userType="admin">
+          <Layout><AdminDashboard /></Layout>
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/admin/applications" element={
+        <ProtectedRoute userType="admin">
+          <Layout><div className="text-center py-12">Under Development...</div></Layout>
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/admin/grants/create" element={
+        <ProtectedRoute userType="admin">
+          <Layout><CreateGrant /></Layout>
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/admin/grants/manage" element={
+        <ProtectedRoute userType="admin">
+          <Layout><div className="text-center py-12">Under Development...</div></Layout>
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/admin/ai-selection" element={
+        <ProtectedRoute userType="admin">
+          <Layout><div className="text-center py-12">Under Development...</div></Layout>
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/admin/market-prices" element={
+        <ProtectedRoute userType="admin">
+          <Layout><div className="text-center py-12">Under Development...</div></Layout>
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/admin/analytics" element={
+        <ProtectedRoute userType="admin">
+          <Layout><div className="text-center py-12">Under Development...</div></Layout>
+        </ProtectedRoute>
+      } />
+
+      {/* Default Routes */}
+      <Route path="/" element={
+        isAuthenticated ? 
+          <Navigate to={user?.type === 'farmer' ? '/farmer/dashboard' : '/admin/dashboard'} replace /> : 
+          <Navigate to="/login" replace />
+      } />
+      
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <LanguageProvider>
+      <AuthProvider>
+        <DataProvider>
+          <Router>
+            <AppRoutes />
+          </Router>
+        </DataProvider>
+      </AuthProvider>
+    </LanguageProvider>
+  );
+};
+
+export default App;
