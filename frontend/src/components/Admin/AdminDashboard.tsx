@@ -4,6 +4,7 @@ import { Users, FileText, DollarSign, TrendingUp, Eye, CheckCircle, XCircle, Clo
 import { useData } from '../../context/DataContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { ApplicationStatus } from '../../types/api';
+import AIInsightsWidget from './AIInsightsWidget';
 
 const AdminDashboard: React.FC = () => {
   const { grants, applications, marketPrices } = useData();
@@ -59,6 +60,14 @@ const AdminDashboard: React.FC = () => {
       color: 'text-orange-600 bg-orange-100',
       change: t('dashboard.updated'),
       link: '/admin/market-prices'
+    },
+    {
+      icon: Eye,
+      label: 'AI Selection',
+      value: '🤖',
+      color: 'text-indigo-600 bg-indigo-100',
+      change: 'ML Powered',
+      link: '/admin/ai-selection'
     },
   ];
 
@@ -213,9 +222,12 @@ const AdminDashboard: React.FC = () => {
         </Link>
       </div>
 
-      {/* Recent Applications */}
-      {recentApplications.length > 0 && (
-        <div className="card p-6">
+      {/* AI Insights Widget */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <div className="lg:col-span-2">
+          {/* Recent Applications */}
+          {recentApplications.length > 0 && (
+            <div className="card p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-semibold text-gray-900">{t('dashboard.recentApplications')}</h2>
             <Link
@@ -282,6 +294,13 @@ const AdminDashboard: React.FC = () => {
           </div>
         </div>
       )}
+        </div>
+        
+        {/* AI Insights Widget */}
+        <div className="lg:col-span-1">
+          <AIInsightsWidget />
+        </div>
+      </div>
     </div>
   );
 };

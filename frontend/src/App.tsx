@@ -17,6 +17,7 @@ import MarketPrices from './components/Farmer/MarketPrices';
 import GrantApplication from './components/Farmer/GrantApplication';
 import FarmerApplications from './components/Farmer/FarmerApplications';
 import AdminApplications from './components/Admin/AdminApplications';
+import AISelection from './components/Admin/AISelection';
 import BackendTest from './components/Test/BackendTest';
 import DashboardTest from './components/Test/DashboardTest';
 import UserDebug from './components/Test/UserDebug';
@@ -120,7 +121,7 @@ const AppRoutes: React.FC = () => {
       
       <Route path="/admin/ai-selection" element={
         <ProtectedRoute userType="admin">
-          <Layout><div className="text-center py-12">Under Development...</div></Layout>
+          <Layout><AISelection /></Layout>
         </ProtectedRoute>
       } />
       
