@@ -33,7 +33,7 @@ const UserDebug: React.FC = () => {
           <p>User Data: {localStorage.getItem('user') ? '✅ Present' : '❌ Missing'}</p>
         </div>
 
-        <div className="p-4 bg-purple-50 rounded">
+        <div className="p-4 bg-orange-50 rounded">
           <h2 className="font-semibold">Manual Navigation:</h2>
           <div className="flex gap-2">
             <button 

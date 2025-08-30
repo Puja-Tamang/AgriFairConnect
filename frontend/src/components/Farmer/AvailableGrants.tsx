@@ -1,25 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, Filter, DollarSign, Package, MapPin, Calendar } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
-import { useData } from '../../context/DataContext';
 import { useLanguage } from '../../context/LanguageContext';
-import { Farmer } from '../../types';
+import { useData } from '../../context/DataContext';
+import { Grant, GrantType } from '../../types/api';
+import toast from 'react-hot-toast';
 
 const AvailableGrants: React.FC = () => {
   const { user } = useAuth();
-  const { grants } = useData();
   const { t } = useLanguage();
-  const farmer = user as Farmer;
+  const { grants, isLoading: loading, fetchGrants } = useData();
 
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterType, setFilterType] = useState<'all' | 'money' | 'object'>('all');
+  const [filterType, setFilterType] = useState<'all' | GrantType.Money | GrantType.Object>('all');
+
+  useEffect(() => {
+    fetchGrants();
+  }, []); // Remove fetchGrants from dependency array
+
+  // Debug logging (commented out to reduce noise)
+  // console.log('AvailableGrants - All grants:', grants);
+  // console.log('AvailableGrants - User:', user);
+  // console.log('AvailableGrants - User ward:', user?.ward);
+  // console.log('AvailableGrants - User municipality:', user?.municipality);
+  // console.log('AvailableGrants - User type:', user?.type);
+  // console.log('AvailableGrants - User id:', user?.id);
 
   // Filter grants for the farmer's location
-  const eligibleGrants = grants.filter(grant => 
-    grant.targetWard.includes(farmer.ward || 0) && 
-    grant.targetMunicipality.includes(farmer.municipality || '')
-  );
+  const eligibleGrants = grants.filter(grant => {
+    // Check if grant is active
+    if (!grant.isActive) return false;
+    
+    // Check if farmer's ward and municipality match grant target areas
+    const isEligible = grant.targetAreas.some(area => 
+      area.wardNumber === user?.ward && 
+      area.municipality === user?.municipality
+    );
+    
+    // console.log(`Grant ${grant.id} (${grant.title}): isActive=${grant.isActive}, isEligible=${isEligible}`);
+    return isEligible;
+  });
+
+  // console.log('AvailableGrants - Eligible grants:', eligibleGrants);
 
   // Apply search and filter
   const filteredGrants = eligibleGrants.filter(grant => {
@@ -28,6 +51,20 @@ const AvailableGrants: React.FC = () => {
     const matchesFilter = filterType === 'all' || grant.type === filterType;
     return matchesSearch && matchesFilter;
   });
+
+  if (loading) {
+    return (
+      <div className="space-y-6">
+        <div className="card p-6">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">{t('grants.title')}</h1>
+          <div className="animate-pulse">
+            <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"></div>
+            <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -54,15 +91,15 @@ const AvailableGrants: React.FC = () => {
           
           <div className="flex items-center space-x-2">
             <Filter className="h-5 w-5 text-gray-400" />
-            <select
-              value={filterType}
-              onChange={(e) => setFilterType(e.target.value as any)}
-              className="input-field w-auto"
-            >
-              <option value="all">{t('grants.allTypes')}</option>
-              <option value="money">{t('grants.money')}</option>
-              <option value="object">{t('grants.object')}</option>
-            </select>
+                          <select
+                value={filterType}
+                onChange={(e) => setFilterType(e.target.value as any)}
+                className="input-field w-auto"
+              >
+                <option value="all">{t('grants.allTypes')}</option>
+                <option value={GrantType.Money}>{t('grants.money')}</option>
+                <option value={GrantType.Object}>{t('grants.object')}</option>
+              </select>
           </div>
         </div>
       </div>
@@ -74,21 +111,21 @@ const AvailableGrants: React.FC = () => {
             <div key={grant.id} className="card p-6 hover:shadow-lg transition-shadow">
               <div className="flex items-center justify-between mb-4">
                 <div className={`p-2 rounded-full ${
-                  grant.type === 'money' ? 'bg-green-100' : 'bg-blue-100'
+                  grant.type === GrantType.Money ? 'bg-green-100' : 'bg-blue-100'
                 }`}>
-                  {grant.type === 'money' ? 
+                  {grant.type === GrantType.Money ? 
                     <DollarSign className={`h-5 w-5 ${
-                      grant.type === 'money' ? 'text-green-600' : 'text-blue-600'
+                      grant.type === GrantType.Money ? 'text-green-600' : 'text-blue-600'
                     }`} /> :
                     <Package className={`h-5 w-5 ${
-                      grant.type === 'money' ? 'text-green-600' : 'text-blue-600'
+                      grant.type === GrantType.Money ? 'text-green-600' : 'text-blue-600'
                     }`} />
                   }
                 </div>
                 <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                  grant.type === 'money' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'
+                  grant.type === GrantType.Money ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'
                 }`}>
-                  {grant.type === 'money' ? t('grants.money') : t('grants.object')}
+                  {grant.type === GrantType.Money ? t('grants.money') : t('grants.object')}
                 </span>
               </div>
 
@@ -99,7 +136,7 @@ const AvailableGrants: React.FC = () => {
                 <div className="flex items-center text-sm text-gray-600">
                   <DollarSign className="h-4 w-4 mr-2 text-green-500" />
                   <span className="font-semibold text-green-600">
-                    {grant.type === 'money' 
+                    {grant.type === GrantType.Money 
                       ? `रु ${grant.amount?.toLocaleString()}` 
                       : grant.objectName
                     }
@@ -109,18 +146,18 @@ const AvailableGrants: React.FC = () => {
                 <div className="flex items-center text-sm text-gray-600">
                   <MapPin className="h-4 w-4 mr-2" />
                   <span>
-                    वार्ड {grant.targetWard.join(', ')} - {grant.targetMunicipality[0]}
+                    वार्ड {grant.targetAreas.map(area => area.wardNumber).join(', ')} - {grant.targetAreas[0]?.municipality}
                   </span>
                 </div>
                 
                 <div className="flex items-center text-sm text-gray-600">
                   <Calendar className="h-4 w-4 mr-2" />
-                  <span>{grant.createdAt.toLocaleDateString('ne-NP')}</span>
+                  <span>{new Date(grant.createdAt).toLocaleDateString('ne-NP')}</span>
                 </div>
               </div>
 
               <Link
-                to={`/farmer/grants/${grant.id}`}
+                to={`/farmer/grants/apply/${grant.id}`}
                 className="w-full btn-primary text-center block"
               >
                 {t('grants.applyNow')}

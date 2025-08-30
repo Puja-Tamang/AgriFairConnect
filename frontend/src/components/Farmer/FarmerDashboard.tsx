@@ -5,6 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useData } from '../../context/DataContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { Farmer } from '../../types';
+import { ApplicationStatus } from '../../types/api';
 
 const FarmerDashboard: React.FC = () => {
   const { user } = useAuth();
@@ -12,13 +13,35 @@ const FarmerDashboard: React.FC = () => {
   const { t } = useLanguage();
   const farmer = user as Farmer;
 
-  // Filter eligible grants for the farmer
-  const eligibleGrants = grants.filter(grant => 
-    grant.targetWard.includes(farmer.ward || 0) && 
-    grant.targetMunicipality.includes(farmer.municipality || '')
-  );
+  // Helper function to get status string from enum
+  const getStatusString = (status: ApplicationStatus): string => {
+    switch (status) {
+      case ApplicationStatus.Pending:
+        return 'pending';
+      case ApplicationStatus.Processing:
+        return 'processing';
+      case ApplicationStatus.Approved:
+        return 'approved';
+      case ApplicationStatus.Rejected:
+        return 'rejected';
+      default:
+        return 'pending';
+    }
+  };
 
-  const farmerApplications = applications.filter(app => app.farmerId === farmer.id);
+  // Filter eligible grants for the farmer
+  const eligibleGrants = grants.filter(grant => {
+    // Check if grant is active
+    if (!grant.isActive) return false;
+    
+    // Check if farmer's ward and municipality match grant target areas
+    return grant.targetAreas.some(area => 
+      area.wardNumber === farmer.ward && 
+      area.municipality === farmer.municipality
+    );
+  });
+
+  const farmerApplications = applications.filter(app => app.farmerName === farmer.name);
 
   const stats = [
     {
@@ -163,14 +186,14 @@ const FarmerDashboard: React.FC = () => {
                   <p className="text-sm text-gray-600 mt-1">{grant.description}</p>
                   <div className="flex items-center mt-2 space-x-4">
                     <span className="text-sm text-green-600 font-medium">
-                      {grant.type === 'money' 
+                      {grant.type === 0 // GrantType.Money
                         ? `रु ${grant.amount?.toLocaleString()}` 
                         : grant.objectName
                       }
                     </span>
                     <span className="text-xs text-gray-500 flex items-center">
                       <Calendar className="h-3 w-3 mr-1" />
-                      {grant.createdAt.toLocaleDateString('ne-NP')}
+                      {new Date(grant.createdAt).toLocaleDateString('ne-NP')}
                     </span>
                   </div>
                 </div>
@@ -196,13 +219,13 @@ const FarmerDashboard: React.FC = () => {
               return (
                 <div key={application.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900">{grant?.title}</h3>
+                    <h3 className="font-semibold text-gray-900">{application.grantTitle || grant?.title}</h3>
                     <p className="text-sm text-gray-600">
-                      {application.appliedAt.toLocaleDateString('ne-NP')}
+                      {new Date(application.appliedAt).toLocaleDateString('ne-NP')}
                     </p>
                   </div>
-                  <span className={`status-${application.status}`}>
-                    {t(`status.${application.status}`)}
+                  <span className={`status-${getStatusString(application.status)}`}>
+                    {t(`status.${getStatusString(application.status)}`)}
                   </span>
                 </div>
               );

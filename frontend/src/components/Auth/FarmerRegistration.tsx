@@ -65,11 +65,21 @@ const FarmerRegistration: React.FC = () => {
   ];
 
   const municipalities = [
-    'काठमाडौं महानगरपालिका',
-    'ललितपुर महानगरपालिका',
-    'भक्तपुर नगरपालिका',
-    'कीर्तिपुर नगरपालिका',
-    'थिमी नगरपालिका'
+    'भद्रपुर नगरपालिका',
+    'मेचीनगर नगरपालिका',
+    'दमक नगरपालिका',
+    'कन्काई नगरपालिका',
+    'अर्जुनधारा नगरपालिका',
+    'शिवसताक्षी नगरपालिका',
+    'गौरादह नगरपालिका',
+    'बिर्तामोड नगरपालिका',
+    'कमल गाउँपालिका',
+    'गौरिगन्ज गाउँपालिका',
+    'बरहादशी गाउँपालिका',
+    'झापा गाउँपालिका',
+    'बुद्धशान्ति गाउँपालिका',
+    'हल्दिबारी गाउँपालिका',
+    'कचनकवल गाउँपालिका'
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -133,6 +143,17 @@ const FarmerRegistration: React.FC = () => {
       return;
     }
 
+    // Validate numeric fields
+    if (isNaN(parseFloat(formData.monthlyIncome)) || parseFloat(formData.monthlyIncome) <= 0) {
+      toast.error('Please enter a valid monthly income');
+      return;
+    }
+
+    if (isNaN(parseFloat(formData.landSize)) || parseFloat(formData.landSize) <= 0) {
+      toast.error('Please enter a valid land size');
+      return;
+    }
+
     // Check if username is available (only for new signups)
     if (isNewSignup) {
       try {
@@ -146,12 +167,16 @@ const FarmerRegistration: React.FC = () => {
       }
     }
 
-    if (!documents.citizenImage || !documents.landOwnership || !documents.landTax) {
-      toast.error(t('registration.uploadAllDocs'));
-      return;
-    }
+    // Document validation is optional for now - can be uploaded later
+    // if (!documents.citizenImage || !documents.landOwnership || !documents.landTax) {
+    //   toast.error(t('registration.uploadAllDocs'));
+    //   return;
+    // }
 
     try {
+      console.log('Form data:', formData);
+      console.log('Documents:', documents);
+      
       const farmer: Farmer = {
         id: `farmer-${formData.username}`,
         name: formData.name,
@@ -185,13 +210,23 @@ const FarmerRegistration: React.FC = () => {
         Municipality: formData.municipality,
         MonthlyIncome: parseFloat(formData.monthlyIncome) || 0,
         LandSize: parseFloat(formData.landSize) || 0,
-        CropIds: formData.crops.map(crop => cropOptions.findIndex(opt => opt.key === crop) + 1).filter(id => id > 0),
+        CropIds: formData.crops.map(crop => {
+          const cropIndex = cropOptions.findIndex(opt => opt.key === crop);
+          return cropIndex >= 0 ? cropIndex + 1 : 0; // Map to database IDs (1-15)
+        }).filter(id => id > 0),
         HasReceivedGrantBefore: formData.previousGrant
       };
 
       console.log('Sending signup data:', JSON.stringify(signupData, null, 2));
+      
+      // Show loading toast
+      const loadingToast = toast.loading('Creating account...');
+      
       const response = await apiClient.signup(signupData);
       console.log('Signup response:', response);
+      
+      // Dismiss loading toast
+      toast.dismiss(loadingToast);
       
       if (!response.success) {
         throw new Error(response.message || 'Failed to create account');
@@ -207,8 +242,10 @@ const FarmerRegistration: React.FC = () => {
         toast.success(t('registration.profileCreated'));
         navigate('/farmer/dashboard');
       }
-    } catch (error) {
-      toast.error(t('registration.profileFailed'));
+    } catch (error: any) {
+      console.error('Registration error:', error);
+      const errorMessage = error.message || t('registration.profileFailed');
+      toast.error(errorMessage);
     }
   };
 

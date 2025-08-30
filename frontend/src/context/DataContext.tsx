@@ -1,22 +1,24 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Grant, Application, MarketPrice } from '../types';
+import React, { createContext, useContext, useState, useEffect, useCallback, useRef, ReactNode } from 'react';
+import { MarketPrice } from '../types';
+import { Grant, Crop, FarmerApplicationResponse } from '../types/api';
 import { apiClient } from '../services/apiClient';
-import { Crop } from '../types/api';
 
 interface DataContextType {
   grants: Grant[];
-  applications: Application[];
+  applications: FarmerApplicationResponse[];
   marketPrices: MarketPrice[];
   crops: Crop[];
   isLoading: boolean;
   error: string | null;
   addGrant: (grant: Grant) => void;
-  updateGrant: (id: string, grant: Partial<Grant>) => void;
-  deleteGrant: (id: string) => void;
-  addApplication: (application: Application) => void;
-  updateApplication: (id: string, updates: Partial<Application>) => void;
+  updateGrant: (id: number, grant: Partial<Grant>) => void;
+  deleteGrant: (id: number) => void;
+  addApplication: (application: FarmerApplicationResponse) => void;
+  updateApplication: (id: number, updates: Partial<FarmerApplicationResponse>) => void;
   updateMarketPrice: (price: MarketPrice) => void;
   fetchCrops: () => Promise<void>;
+  fetchGrants: () => Promise<void>;
+  fetchApplications: () => Promise<void>;
   refreshData: () => Promise<void>;
 }
 
@@ -33,26 +35,40 @@ export const useData = () => {
 // Mock data for demonstration
 const mockGrants: Grant[] = [
   {
-    id: '1',
+    id: 1,
     title: 'डिजिटल कृषि सहायता कार्यक्रम',
     description: 'डिजिटल कृषि उपकरण र प्रविधि सहायता',
-    type: 'money',
+    type: 0, // GrantType.Money
     amount: 25000,
-    targetWard: [1, 2, 3],
-    targetMunicipality: ['काठमाडौं महानगरपालिका'],
+    objectName: undefined,
     createdBy: 'admin1',
-    createdAt: new Date(),
+    createdAt: new Date().toISOString(),
+    updatedAt: undefined,
+    isActive: true,
+    targetAreas: [
+      { id: 1, wardNumber: 1, municipality: 'भद्रपुर नगरपालिका' },
+      { id: 2, wardNumber: 2, municipality: 'भद्रपुर नगरपालिका' },
+      { id: 3, wardNumber: 3, municipality: 'भद्रपुर नगरपालिका' }
+    ],
+    applicationCount: 0
   },
   {
-    id: '2',
+    id: 2,
     title: 'बीउ वितरण कार्यक्रम',
     description: 'उच्च गुणस्तरीय बीउ वितरण',
-    type: 'object',
+    type: 1, // GrantType.Object
+    amount: undefined,
     objectName: 'बीउ प्याकेज',
-    targetWard: [4, 5, 6],
-    targetMunicipality: ['ललितपुर महानगरपालिका'],
     createdBy: 'admin1',
-    createdAt: new Date(),
+    createdAt: new Date().toISOString(),
+    updatedAt: undefined,
+    isActive: true,
+    targetAreas: [
+      { id: 4, wardNumber: 4, municipality: 'मेचीनगर नगरपालिका' },
+      { id: 5, wardNumber: 5, municipality: 'मेचीनगर नगरपालिका' },
+      { id: 6, wardNumber: 6, municipality: 'मेचीनगर नगरपालिका' }
+    ],
+    applicationCount: 0
   },
 ];
 
@@ -83,31 +99,32 @@ interface DataProviderProps {
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [grants, setGrants] = useState<Grant[]>(mockGrants);
-  const [applications, setApplications] = useState<Application[]>([]);
+  const [applications, setApplications] = useState<FarmerApplicationResponse[]>([]);
   const [marketPrices, setMarketPrices] = useState<MarketPrice[]>(mockMarketPrices);
   const [crops, setCrops] = useState<Crop[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const hasLoadedDataRef = useRef(false);
 
   const addGrant = (grant: Grant) => {
     setGrants(prev => [...prev, grant]);
   };
 
-  const updateGrant = (id: string, updates: Partial<Grant>) => {
+  const updateGrant = (id: number, updates: Partial<Grant>) => {
     setGrants(prev => prev.map(grant => 
       grant.id === id ? { ...grant, ...updates } : grant
     ));
   };
 
-  const deleteGrant = (id: string) => {
+  const deleteGrant = (id: number) => {
     setGrants(prev => prev.filter(grant => grant.id !== id));
   };
 
-  const addApplication = (application: Application) => {
+  const addApplication = (application: FarmerApplicationResponse) => {
     setApplications(prev => [...prev, application]);
   };
 
-  const updateApplication = (id: string, updates: Partial<Application>) => {
+  const updateApplication = (id: number, updates: Partial<FarmerApplicationResponse>) => {
     setApplications(prev => prev.map(app => 
       app.id === id ? { ...app, ...updates } : app
     ));
@@ -123,7 +140,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     });
   };
 
-  const fetchCrops = async () => {
+  const fetchCrops = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     try {
@@ -135,16 +152,71 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const refreshData = async () => {
-    await fetchCrops();
-  };
-
-  // Load crops on component mount
-  useEffect(() => {
-    fetchCrops();
   }, []);
+
+  const fetchGrants = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      // Use getActiveGrants instead of getAllGrants for farmers
+      const grantsData = await apiClient.getActiveGrants();
+      setGrants(grantsData);
+    } catch (error: any) {
+      setError(error.message || 'Failed to fetch grants');
+      console.error('Error fetching grants:', error);
+      // Keep mock data as fallback
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  const fetchApplications = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const applicationsData = await apiClient.getAllApplications();
+      setApplications(applicationsData);
+    } catch (error: any) {
+      setError(error.message || 'Failed to fetch applications');
+      console.error('Error fetching applications:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  const refreshData = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      await Promise.all([
+        apiClient.getAllCrops().then(setCrops).catch(error => {
+          setError(error.message || 'Failed to fetch crops');
+          console.error('Error fetching crops:', error);
+        }),
+        apiClient.getActiveGrants().then(setGrants).catch(error => {
+          setError(error.message || 'Failed to fetch grants');
+          console.error('Error fetching grants:', error);
+        }),
+        apiClient.getAllApplications().then(setApplications).catch(error => {
+          setError(error.message || 'Failed to fetch applications');
+          console.error('Error fetching applications:', error);
+        })
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  // Load data on component mount - only run once
+  useEffect(() => {
+    if (!hasLoadedDataRef.current) {
+      const loadInitialData = async () => {
+        hasLoadedDataRef.current = true;
+        await Promise.all([fetchCrops(), fetchGrants(), fetchApplications()]);
+      };
+      loadInitialData();
+    }
+  }, []); // Empty dependency array to run only once
 
   return (
     <DataContext.Provider 
@@ -162,6 +234,8 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         updateApplication,
         updateMarketPrice,
         fetchCrops,
+        fetchGrants,
+        fetchApplications,
         refreshData,
       }}
     >

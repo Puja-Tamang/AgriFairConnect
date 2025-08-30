@@ -1,76 +1,64 @@
 import React from 'react';
-import { useAuth } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
 
 const ClearAuth: React.FC = () => {
-  const { user, isAuthenticated, logout } = useAuth();
-  const navigate = useNavigate();
-
-  const handleClearAuth = () => {
-    // Clear all localStorage data
+  const clearAllAuthData = () => {
+    // Clear all authentication data
     localStorage.clear();
+    sessionStorage.clear();
+    
     // Force reload the page
-    window.location.reload();
+    window.location.href = '/login';
   };
 
-  const handleLogout = async () => {
-    await logout();
-    navigate('/login');
+  const clearAuthDataOnly = () => {
+    // Clear only authentication-related data
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
+    localStorage.removeItem('agrifair-user');
+    
+    // Force reload the page
+    window.location.href = '/login';
   };
 
   return (
-    <div className="p-8 bg-white rounded-lg shadow-lg max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Clear Authentication Data</h1>
-      
-      <div className="space-y-4">
-        <div className="p-4 bg-blue-50 rounded">
-          <h2 className="font-semibold">Current Status:</h2>
-          <p>Is Authenticated: {isAuthenticated ? '✅ Yes' : '❌ No'}</p>
-          <p>User: {user ? user.name : 'No user'}</p>
-          <p>User Type: {user ? user.type : 'None'}</p>
-        </div>
-
-        <div className="p-4 bg-yellow-50 rounded">
-          <h2 className="font-semibold">Local Storage Contents:</h2>
-          <div className="text-sm">
-            <p>Auth Token: {localStorage.getItem('authToken') ? '✅ Present' : '❌ Missing'}</p>
-            <p>User Data: {localStorage.getItem('user') ? '✅ Present' : '❌ Missing'}</p>
-            <p>AgriFair User: {localStorage.getItem('agrifair-user') ? '✅ Present' : '❌ Missing'}</p>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="max-w-md w-full bg-white rounded-lg shadow-md p-6">
+        <h1 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+          Clear Authentication Data
+        </h1>
+        
+        <div className="space-y-4">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4">
+            <p className="text-sm text-yellow-800">
+              <strong>Current Issue:</strong> Login page is loading in a repetitive loop.
+            </p>
           </div>
-        </div>
-
-        <div className="p-4 bg-red-50 rounded">
-          <h2 className="font-semibold">Actions:</h2>
-          <div className="flex gap-2">
-            <button 
-              onClick={handleLogout}
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          
+          <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
+            <p className="text-sm text-blue-800">
+              <strong>Solution:</strong> Clear authentication data to stop the loop and start fresh.
+            </p>
+          </div>
+          
+          <div className="flex flex-col space-y-3">
+            <button
+              onClick={clearAuthDataOnly}
+              className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
             >
-              Proper Logout
+              Clear Auth Data Only
             </button>
-            <button 
-              onClick={handleClearAuth}
-              className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+            
+            <button
+              onClick={clearAllAuthData}
+              className="w-full bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors"
             >
-              Clear All Data & Reload
-            </button>
-            <button 
-              onClick={() => navigate('/login')}
-              className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-            >
-              Go to Login
+              Clear All Data (Nuclear Option)
             </button>
           </div>
-        </div>
-
-        <div className="p-4 bg-green-50 rounded">
-          <h2 className="font-semibold">Instructions:</h2>
-          <ol className="list-decimal list-inside space-y-1 text-sm">
-            <li>Click "Clear All Data & Reload" to remove all authentication data</li>
-            <li>This will force you to login again</li>
-            <li>Use "Proper Logout" for normal logout</li>
-            <li>Use "Go to Login" to navigate to login page</li>
-          </ol>
+          
+          <div className="text-xs text-gray-500 text-center">
+            After clearing, you'll be redirected to the login page.
+          </div>
         </div>
       </div>
     </div>

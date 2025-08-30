@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kMI/RKbLfUE=",
+  "dgSpecHash": "F6CaAe/dO/U=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nikhil\\Downloads\\project-bolt-sb1-oc2ljubj (1)\\cakend\\AgriFairConnect.API\\AgriFairConnect.API.csproj",
+  "projectFilePath": "D:\\AGRICONNECT\\AgriFairConnect\\backend\\AgriFairConnect.API\\AgriFairConnect.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nikhil\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Nikhil\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

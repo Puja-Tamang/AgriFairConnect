@@ -11,6 +11,12 @@ import AvailableGrants from './components/Farmer/AvailableGrants';
 import MarketDashboard from './components/Farmer/MarketDashboard';
 import AdminDashboard from './components/Admin/AdminDashboard';
 import CreateGrant from './components/Admin/CreateGrant';
+import GrantManagement from './components/Admin/GrantManagement';
+import MarketPriceManagement from './components/Admin/MarketPriceManagement';
+import MarketPrices from './components/Farmer/MarketPrices';
+import GrantApplication from './components/Farmer/GrantApplication';
+import FarmerApplications from './components/Farmer/FarmerApplications';
+import AdminApplications from './components/Admin/AdminApplications';
 import BackendTest from './components/Test/BackendTest';
 import DashboardTest from './components/Test/DashboardTest';
 import UserDebug from './components/Test/UserDebug';
@@ -65,13 +71,19 @@ const AppRoutes: React.FC = () => {
       
       <Route path="/farmer/market" element={
         <ProtectedRoute userType="farmer">
-          <Layout><MarketDashboard /></Layout>
+          <Layout><MarketPrices /></Layout>
         </ProtectedRoute>
       } />
 
       <Route path="/farmer/applications" element={
         <ProtectedRoute userType="farmer">
-          <Layout><div className="text-center py-12">Under Development...</div></Layout>
+          <Layout><FarmerApplications /></Layout>
+        </ProtectedRoute>
+      } />
+      
+      <Route path="/farmer/grants/apply/:grantId" element={
+        <ProtectedRoute userType="farmer">
+          <GrantApplication />
         </ProtectedRoute>
       } />
       
@@ -90,7 +102,7 @@ const AppRoutes: React.FC = () => {
       
       <Route path="/admin/applications" element={
         <ProtectedRoute userType="admin">
-          <Layout><div className="text-center py-12">Under Development...</div></Layout>
+          <Layout><AdminApplications /></Layout>
         </ProtectedRoute>
       } />
       
@@ -102,7 +114,7 @@ const AppRoutes: React.FC = () => {
       
       <Route path="/admin/grants/manage" element={
         <ProtectedRoute userType="admin">
-          <Layout><div className="text-center py-12">Under Development...</div></Layout>
+          <Layout><GrantManagement /></Layout>
         </ProtectedRoute>
       } />
       
@@ -114,7 +126,7 @@ const AppRoutes: React.FC = () => {
       
       <Route path="/admin/market-prices" element={
         <ProtectedRoute userType="admin">
-          <Layout><div className="text-center py-12">Under Development...</div></Layout>
+          <Layout><MarketPriceManagement /></Layout>
         </ProtectedRoute>
       } />
       

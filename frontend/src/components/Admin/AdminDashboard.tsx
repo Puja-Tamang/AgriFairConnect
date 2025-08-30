@@ -3,10 +3,27 @@ import { Link } from 'react-router-dom';
 import { Users, FileText, DollarSign, TrendingUp, Eye, CheckCircle, XCircle, Clock } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { useLanguage } from '../../context/LanguageContext';
+import { ApplicationStatus } from '../../types/api';
 
 const AdminDashboard: React.FC = () => {
   const { grants, applications, marketPrices } = useData();
   const { t } = useLanguage();
+
+  // Helper function to get status string from enum
+  const getStatusString = (status: ApplicationStatus): string => {
+    switch (status) {
+      case ApplicationStatus.Pending:
+        return 'pending';
+      case ApplicationStatus.Processing:
+        return 'processing';
+      case ApplicationStatus.Approved:
+        return 'approved';
+      case ApplicationStatus.Rejected:
+        return 'rejected';
+      default:
+        return 'pending';
+    }
+  };
 
   // Test message to ensure component is rendering
   console.log('AdminDashboard rendering with:', { grants: grants.length, applications: applications.length, marketPrices: marketPrices.length });
@@ -46,10 +63,10 @@ const AdminDashboard: React.FC = () => {
   ];
 
   const applicationStats = {
-    pending: applications.filter(app => app.status === 'pending').length,
-    processing: applications.filter(app => app.status === 'processing').length,
-    approved: applications.filter(app => app.status === 'approved').length,
-    rejected: applications.filter(app => app.status === 'rejected').length,
+    pending: applications.filter(app => app.status === ApplicationStatus.Pending).length,
+    processing: applications.filter(app => app.status === ApplicationStatus.Processing).length,
+    approved: applications.filter(app => app.status === ApplicationStatus.Approved).length,
+    rejected: applications.filter(app => app.status === ApplicationStatus.Rejected).length,
   };
 
   const recentApplications = applications.slice(0, 5);
@@ -142,7 +159,7 @@ const AdminDashboard: React.FC = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <Link to="/admin/grants/create" className="card p-6 hover:bg-green-50 transition-colors">
           <div className="flex items-center">
             <div className="p-3 bg-green-100 rounded-full">
@@ -155,15 +172,15 @@ const AdminDashboard: React.FC = () => {
           </div>
         </Link>
 
-        <Link to="/admin/applications" className="card p-6 hover:bg-green-50 transition-colors">
+        <Link to="/admin/grants/manage" className="card p-6 hover:bg-green-50 transition-colors">
           <div className="flex items-center">
             <div className="p-3 bg-green-100 rounded-full">
               <Users className="h-6 w-6 text-green-600" />
             </div>
             <div className="ml-4">
-              <h3 className="text-lg font-semibold text-gray-900">{t('nav.applications')}</h3>
+              <h3 className="text-lg font-semibold text-gray-900">Manage Grants</h3>
               <p className="text-gray-600 text-sm mt-1">
-                {applicationStats.pending} {t('status.pending')}
+                Review applications and manage grant status
               </p>
             </div>
           </div>
@@ -177,6 +194,20 @@ const AdminDashboard: React.FC = () => {
             <div className="ml-4">
               <h3 className="text-lg font-semibold text-gray-900">{t('nav.aiSelection')}</h3>
               <p className="text-gray-600 text-sm mt-1">AI Selection System</p>
+            </div>
+          </div>
+        </Link>
+
+        <Link to="/admin/market-prices" className="card p-6 hover:bg-green-50 transition-colors">
+          <div className="flex items-center">
+            <div className="p-3 bg-green-100 rounded-full">
+              <DollarSign className="h-6 w-6 text-green-600" />
+            </div>
+            <div className="ml-4">
+              <h3 className="text-lg font-semibold text-gray-900">Market Prices</h3>
+              <p className="text-gray-600 text-sm mt-1">
+                Manage crop prices for farmers
+              </p>
             </div>
           </div>
         </Link>
@@ -222,17 +253,17 @@ const AdminDashboard: React.FC = () => {
                   return (
                     <tr key={application.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        Farmer ID: {application.farmerId.slice(-6)}
+                        {application.farmerName}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                        {grant?.title || 'N/A'}
+                        {application.grantTitle || grant?.title || 'N/A'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                        {application.appliedAt.toLocaleDateString('ne-NP')}
+                        {new Date(application.appliedAt).toLocaleDateString('ne-NP')}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`status-${application.status}`}>
-                          {t(`status.${application.status}`)}
+                        <span className={`status-${getStatusString(application.status)}`}>
+                          {t(`status.${getStatusString(application.status)}`)}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm">

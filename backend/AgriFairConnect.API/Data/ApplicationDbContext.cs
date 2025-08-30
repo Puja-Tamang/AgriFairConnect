@@ -69,11 +69,7 @@ namespace AgriFairConnect.API.Data
                 .HasForeignKey(a => a.GrantId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Entity<ApplicationDocument>()
-                .HasOne(ad => ad.Application)
-                .WithMany(a => a.ApplicationDocuments)
-                .HasForeignKey(ad => ad.ApplicationId)
-                .OnDelete(DeleteBehavior.Cascade);
+
 
             builder.Entity<Notification>()
                 .HasOne(n => n.User)

@@ -1,6 +1,9 @@
 using AgriFairConnect.API.Services.Interfaces;
 using AgriFairConnect.API.ViewModels.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using AgriFairConnect.API.Models;
 
 namespace AgriFairConnect.API.Controllers
 {
@@ -108,5 +111,67 @@ namespace AgriFairConnect.API.Controllers
             var isValid = await _authService.ValidateTokenAsync(token);
             return Ok(isValid);
         }
+
+        /// <summary>
+        /// Debug endpoint to check admin user roles (temporary)
+        /// </summary>
+        [HttpGet("debug-admin")]
+        public async Task<ActionResult> DebugAdmin()
+        {
+            var userManager = HttpContext.RequestServices.GetRequiredService<UserManager<AppUser>>();
+            var adminUser = await userManager.FindByNameAsync("admin");
+            
+            if (adminUser == null)
+            {
+                return Ok(new { message = "Admin user not found" });
+            }
+
+            var roles = await userManager.GetRolesAsync(adminUser);
+            return Ok(new { 
+                userId = adminUser.Id,
+                username = adminUser.UserName,
+                userType = adminUser.UserType.ToString(),
+                roles = roles,
+                hasAdminRole = roles.Contains("Admin")
+            });
+        }
+
+        /// <summary>
+        /// Debug endpoint to check JWT token (temporary)
+        /// </summary>
+        [HttpGet("debug-token")]
+        public async Task<ActionResult> DebugToken()
+        {
+            var authHeader = Request.Headers["Authorization"].FirstOrDefault();
+            var token = authHeader?.Replace("Bearer ", "");
+            
+            if (string.IsNullOrEmpty(token))
+            {
+                return Ok(new { message = "No token provided" });
+            }
+
+            try
+            {
+                var tokenHandler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
+                var jwtToken = tokenHandler.ReadJwtToken(token);
+                
+                return Ok(new { 
+                    tokenExists = !string.IsNullOrEmpty(token),
+                    tokenLength = token.Length,
+                    claims = jwtToken.Claims.Select(c => new { type = c.Type, value = c.Value }).ToList(),
+                    roles = jwtToken.Claims.Where(c => c.Type == "role").Select(c => c.Value).ToList(),
+                    expires = jwtToken.ValidTo
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { 
+                    message = "Token parsing failed",
+                    error = ex.Message
+                });
+            }
+        }
+
+
     }
 }

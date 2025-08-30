@@ -219,7 +219,7 @@ POST /api/auth/signup
   "email": "john@example.com",
   "phoneNumber": "9800000000",
   "wardNumber": 1,
-  "municipality": "काठमाडौं महानगरपालिका",
+        "municipality": "भद्रपुर नगरपालिका",
   "monthlyIncome": 50000,
   "landSize": 5,
   "cropIds": [1, 2, 3],

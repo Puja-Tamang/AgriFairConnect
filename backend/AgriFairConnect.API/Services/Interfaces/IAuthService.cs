@@ -9,5 +9,6 @@ namespace AgriFairConnect.API.Services.Interfaces
         Task<bool> CheckUsernameExistsAsync(string username);
         Task<bool> ValidateTokenAsync(string token);
         Task<bool> LogoutAsync(string userId);
+
     }
 }

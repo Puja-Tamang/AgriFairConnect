@@ -29,12 +29,19 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(false);
+  const [hasCheckedAuth, setHasCheckedAuth] = useState(false);
 
   useEffect(() => {
-    checkAuthStatus();
-  }, []);
+    if (!isCheckingAuth && !hasCheckedAuth) {
+      checkAuthStatus();
+    }
+  }, []); // Only run once on mount
 
   const checkAuthStatus = async () => {
+    if (isCheckingAuth) return; // Prevent multiple simultaneous checks
+    
+    setIsCheckingAuth(true);
     const token = localStorage.getItem('authToken');
     const savedUser = localStorage.getItem('user');
     
@@ -53,8 +60,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
               clearAuthData();
             }
           } catch (error) {
-            console.log('Token validation failed, clearing authentication');
-            clearAuthData();
+            console.log('Token validation failed, but not clearing auth data to prevent loop');
+            // Don't clear auth data on network errors to prevent infinite loop
+            // Only clear if it's a specific authentication error
+            if (error instanceof Error && error.message.includes('401')) {
+              clearAuthData();
+            }
           }
         } else {
           console.log('Invalid user data found, clearing authentication');
@@ -68,6 +79,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       // Clear any invalid data
       clearAuthData();
     }
+    
+    setIsCheckingAuth(false);
+    setHasCheckedAuth(true);
   };
 
   const clearAuthData = () => {
@@ -108,7 +122,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           phone: response.user.phoneNumber,
           type: response.user.userType.toLowerCase() as 'farmer' | 'admin',
           ward: response.user.wardNumber || 1,
-          municipality: response.user.municipality || 'काठमाडौं महानगरपालिका'
+          municipality: response.user.municipality || 'भद्रपुर नगरपालिका'
         };
         setUser(userData);
         

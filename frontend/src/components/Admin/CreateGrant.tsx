@@ -4,7 +4,8 @@ import { Upload, X, DollarSign, Package } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useData } from '../../context/DataContext';
 import { useLanguage } from '../../context/LanguageContext';
-import { Grant } from '../../types';
+import { Grant, GrantType } from '../../types/api';
+import { apiClient } from '../../services/apiClient';
 import toast from 'react-hot-toast';
 
 const CreateGrant: React.FC = () => {
@@ -16,7 +17,7 @@ const CreateGrant: React.FC = () => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    type: 'money' as 'money' | 'object',
+    type: GrantType.Money,
     amount: '',
     objectName: '',
     targetWards: [] as number[],
@@ -27,11 +28,21 @@ const CreateGrant: React.FC = () => {
   const [imagePreview, setImagePreview] = useState('');
 
   const municipalities = [
-    'काठमाडौं महानगरपालिका',
-    'ललितपुर महानगरपालिका',
-    'भक्तपुर नगरपालिका',
-    'कीर्तिपुर नगरपालिका',
-    'थिमी नगरपालिका'
+    'भद्रपुर नगरपालिका',
+    'मेचीनगर नगरपालिका',
+    'दमक नगरपालिका',
+    'कन्काई नगरपालिका',
+    'अर्जुनधारा नगरपालिका',
+    'शिवसताक्षी नगरपालिका',
+    'गौरादह नगरपालिका',
+    'बिर्तामोड नगरपालिका',
+    'कमल गाउँपालिका',
+    'गौरिगन्ज गाउँपालिका',
+    'बरहादशी गाउँपालिका',
+    'झापा गाउँपालिका',
+    'बुद्धशान्ति गाउँपालिका',
+    'हल्दिबारी गाउँपालिका',
+    'कचनकवल गाउँपालिका'
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -93,12 +104,12 @@ const CreateGrant: React.FC = () => {
       return;
     }
 
-    if (formData.type === 'money' && (!formData.amount || parseFloat(formData.amount) <= 0)) {
+    if (formData.type === GrantType.Money && (!formData.amount || parseFloat(formData.amount) <= 0)) {
       toast.error(t('admin.validAmount'));
       return;
     }
 
-    if (formData.type === 'object' && !formData.objectName.trim()) {
+    if (formData.type === GrantType.Object && !formData.objectName.trim()) {
       toast.error(t('admin.objectNameRequired'));
       return;
     }
@@ -114,25 +125,21 @@ const CreateGrant: React.FC = () => {
     }
 
     try {
-      const newGrant: Grant = {
-        id: `grant-${Date.now()}`,
+      const grantData = {
         title: formData.title,
         description: formData.description,
         type: formData.type,
-        amount: formData.type === 'money' ? parseFloat(formData.amount) : undefined,
-        objectName: formData.type === 'object' ? formData.objectName : undefined,
-        targetWard: formData.targetWards,
-        targetMunicipality: formData.targetMunicipalities,
-        image: imagePreview || undefined,
-        createdBy: user?.id || 'admin',
-        createdAt: new Date(),
+        amount: formData.type === GrantType.Money ? parseFloat(formData.amount) : undefined,
+        objectName: formData.type === GrantType.Object ? formData.objectName : undefined,
+        targetWards: formData.targetWards,
+        targetMunicipalities: formData.targetMunicipalities,
       };
 
-      addGrant(newGrant);
+      await apiClient.createGrant(grantData);
       toast.success(t('admin.grantCreated'));
       navigate('/admin/grants/manage');
-    } catch (error) {
-      toast.error(t('admin.grantFailed'));
+    } catch (error: any) {
+      toast.error(error.message || t('admin.grantFailed'));
     }
   };
 
@@ -186,9 +193,9 @@ const CreateGrant: React.FC = () => {
               <div className="grid grid-cols-2 gap-4">
                 <button
                   type="button"
-                  onClick={() => setFormData(prev => ({ ...prev, type: 'money' }))}
+                  onClick={() => setFormData(prev => ({ ...prev, type: GrantType.Money }))}
                   className={`p-4 rounded-lg border-2 transition-all ${
-                    formData.type === 'money'
+                    formData.type === GrantType.Money
                       ? 'border-green-500 bg-green-50'
                       : 'border-gray-200 hover:border-green-300'
                   }`}
@@ -198,9 +205,9 @@ const CreateGrant: React.FC = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setFormData(prev => ({ ...prev, type: 'object' }))}
+                  onClick={() => setFormData(prev => ({ ...prev, type: GrantType.Object }))}
                   className={`p-4 rounded-lg border-2 transition-all ${
-                    formData.type === 'object'
+                    formData.type === GrantType.Object
                       ? 'border-green-500 bg-green-50'
                       : 'border-gray-200 hover:border-green-300'
                   }`}
@@ -211,7 +218,7 @@ const CreateGrant: React.FC = () => {
               </div>
             </div>
 
-            {formData.type === 'money' && (
+            {formData.type === GrantType.Money && (
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   {t('admin.amount')} *
@@ -229,7 +236,7 @@ const CreateGrant: React.FC = () => {
               </div>
             )}
 
-            {formData.type === 'object' && (
+            {formData.type === GrantType.Object && (
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   {t('admin.objectName')} *

@@ -3445,11 +3445,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nikhil\\Downloads\\project-bolt-sb1-oc2ljubj (1)\\cakend\\AgriFairConnect.API\\AgriFairConnect.API.csproj",
+      "projectUniqueName": "D:\\AGRICONNECT\\AgriFairConnect\\backend\\AgriFairConnect.API\\AgriFairConnect.API.csproj",
       "projectName": "AgriFairConnect.API",
-      "projectPath": "C:\\Users\\Nikhil\\Downloads\\project-bolt-sb1-oc2ljubj (1)\\cakend\\AgriFairConnect.API\\AgriFairConnect.API.csproj",
+      "projectPath": "D:\\AGRICONNECT\\AgriFairConnect\\backend\\AgriFairConnect.API\\AgriFairConnect.API.csproj",
       "packagesPath": "C:\\Users\\Nikhil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nikhil\\Downloads\\project-bolt-sb1-oc2ljubj (1)\\cakend\\AgriFairConnect.API\\obj\\",
+      "outputPath": "D:\\AGRICONNECT\\AgriFairConnect\\backend\\AgriFairConnect.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

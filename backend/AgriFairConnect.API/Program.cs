@@ -2,6 +2,7 @@ using AgriFairConnect.API.Data;
 using AgriFairConnect.API.Models;
 using AgriFairConnect.API.Services;
 using AgriFairConnect.API.Services.Interfaces;
+using AgriFairConnect.API.ViewModels.Grant;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -56,7 +57,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.WithOrigins("http://localhost:3000", "https://localhost:3000") // React dev server
+        policy.WithOrigins("http://localhost:3000", "https://localhost:3000", "http://localhost:5173", "https://localhost:5173") // React/Vite dev server
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials();
@@ -138,6 +139,8 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IFarmerService, FarmerService>();
 builder.Services.AddScoped<ICropService, CropService>();
+            builder.Services.AddScoped<IGrantService, GrantService>();
+            builder.Services.AddScoped<IMarketPriceService, MarketPriceService>();
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
@@ -158,6 +161,9 @@ app.UseSwaggerUI(c =>
 
 app.UseCors("AllowAll");
 
+// Add static file serving for uploaded files
+app.UseStaticFiles();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -172,6 +178,7 @@ using (var scope = app.Services.CreateScope())
         var context = services.GetRequiredService<ApplicationDbContext>();
         var userManager = services.GetRequiredService<UserManager<AppUser>>();
         var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+        var grantService = services.GetRequiredService<IGrantService>();
 
         // Ensure database is created
         context.Database.EnsureCreated();
@@ -199,7 +206,7 @@ using (var scope = app.Services.CreateScope())
                 FullName = "System Administrator",
                 Address = "Kathmandu",
                 WardNumber = 1,
-                Municipality = "काठमाडौं महानगरपालिका",
+                Municipality = "भद्रपुर नगरपालिका",
                 UserType = UserType.Admin,
                 CreatedAt = DateTime.UtcNow,
                 IsActive = true
@@ -210,6 +217,48 @@ using (var scope = app.Services.CreateScope())
             {
                 await userManager.AddToRoleAsync(adminUser, "Admin");
             }
+        }
+
+        // Seed test grants if none exist
+        var existingGrants = await context.Grants.ToListAsync();
+        if (!existingGrants.Any())
+        {
+            Console.WriteLine("No grants found in database, creating test grants...");
+            
+            var testGrant1 = new CreateGrantRequest
+            {
+                Title = "डिजिटल कृषि सहायता कार्यक्रम",
+                Description = "डिजिटल कृषि उपकरण र प्रविधि सहायता",
+                Type = GrantType.Money,
+                Amount = 25000,
+                TargetWards = new List<int> { 1, 2, 3 },
+                TargetMunicipalities = new List<string> { "भद्रपुर नगरपालिका" }
+            };
+
+            var testGrant2 = new CreateGrantRequest
+            {
+                Title = "बीउ वितरण कार्यक्रम",
+                Description = "उच्च गुणस्तरीय बीउ वितरण",
+                Type = GrantType.Object,
+                ObjectName = "बीउ प्याकेज",
+                TargetWards = new List<int> { 4, 5, 6 },
+                TargetMunicipalities = new List<string> { "मेचीनगर नगरपालिका" }
+            };
+
+            try
+            {
+                await grantService.CreateGrantAsync(testGrant1, "admin");
+                await grantService.CreateGrantAsync(testGrant2, "admin");
+                Console.WriteLine("Test grants created successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error creating test grants: {ex.Message}");
+            }
+        }
+        else
+        {
+            Console.WriteLine($"Found {existingGrants.Count} existing grants in database");
         }
     }
     catch (Exception ex)

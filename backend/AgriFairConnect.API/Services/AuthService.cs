@@ -1,7 +1,9 @@
+using AgriFairConnect.API.Data;
 using AgriFairConnect.API.Models;
 using AgriFairConnect.API.Services.Interfaces;
 using AgriFairConnect.API.ViewModels.Auth;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -16,17 +18,20 @@ namespace AgriFairConnect.API.Services
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IConfiguration _configuration;
         private readonly IFarmerService _farmerService;
+        private readonly ApplicationDbContext _context;
 
         public AuthService(
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
             IConfiguration configuration,
-            IFarmerService farmerService)
+            IFarmerService farmerService,
+            ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
             _farmerService = farmerService;
+            _context = context;
         }
 
         public async Task<LoginResponse> LoginAsync(LoginRequest request)
@@ -77,7 +82,7 @@ namespace AgriFairConnect.API.Services
                 }
 
                 // Generate JWT token
-                var token = GenerateJwtToken(user);
+                var token = await GenerateJwtToken(user);
                 var expiresAt = DateTime.UtcNow.AddHours(24); // Token expires in 24 hours
 
                 // Get user info
@@ -158,18 +163,58 @@ namespace AgriFairConnect.API.Services
                     };
                 }
 
-                // Create farmer profile
-                var farmerProfile = new FarmerProfile
+                // Assign Farmer role to the user
+                var roleResult = await _userManager.AddToRoleAsync(user, "Farmer");
+                if (!roleResult.Succeeded)
                 {
-                    AppUserId = user.Id,
-                    MonthlyIncome = request.MonthlyIncome,
-                    LandSize = request.LandSize,
-                    LandSizeUnit = "Bigha",
-                    HasReceivedGrantBefore = request.HasReceivedGrantBefore
-                };
+                    var errors = roleResult.Errors.Select(e => e.Description).ToList();
+                    return new FarmerSignupResponse
+                    {
+                        Success = false,
+                        Message = "Failed to assign user role",
+                        Errors = errors
+                    };
+                }
 
-                // TODO: Save farmer profile and crops to database
-                // This would typically be done in a transaction
+                // Create farmer profile and crops in a transaction
+                using var transaction = await _context.Database.BeginTransactionAsync();
+                try
+                {
+                    var farmerProfile = new FarmerProfile
+                    {
+                        AppUserId = user.Id,
+                        MonthlyIncome = request.MonthlyIncome,
+                        LandSize = request.LandSize,
+                        LandSizeUnit = "Bigha",
+                        HasReceivedGrantBefore = request.HasReceivedGrantBefore
+                    };
+
+                    // Save farmer profile to database
+                    _context.FarmerProfiles.Add(farmerProfile);
+                    await _context.SaveChangesAsync();
+
+                    // Create farmer crops if any are selected
+                    if (request.CropIds != null && request.CropIds.Any())
+                    {
+                        var farmerCrops = request.CropIds.Select(cropId => new FarmerCrop
+                        {
+                            FarmerProfileId = farmerProfile.Id,
+                            CropId = cropId
+                        }).ToList();
+
+                        _context.FarmerCrops.AddRange(farmerCrops);
+                        await _context.SaveChangesAsync();
+                    }
+
+                    // Commit transaction
+                    await transaction.CommitAsync();
+                }
+                catch
+                {
+                    // Rollback transaction on error
+                    await transaction.RollbackAsync();
+                    throw;
+                }
 
                 return new FarmerSignupResponse
                 {
@@ -180,6 +225,10 @@ namespace AgriFairConnect.API.Services
             }
             catch (Exception ex)
             {
+                // Log the error for debugging
+                Console.WriteLine($"Farmer signup error: {ex.Message}");
+                Console.WriteLine($"Stack trace: {ex.StackTrace}");
+                
                 return new FarmerSignupResponse
                 {
                     Success = false,
@@ -240,21 +289,36 @@ namespace AgriFairConnect.API.Services
             }
         }
 
-        private string GenerateJwtToken(AppUser user)
+
+
+        private async Task<string> GenerateJwtToken(AppUser user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT key not configured"));
 
+            // Get user roles
+            var userRoles = await _userManager.GetRolesAsync(user);
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.Name, user.UserName ?? string.Empty),
+                new Claim(ClaimTypes.Email, user.Email ?? string.Empty),
+                new Claim("UserType", user.UserType.ToString()),
+                new Claim("FullName", user.FullName)
+            };
+
+            // Add role claims
+            foreach (var role in userRoles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+
+            // Also add UserType as a role claim for backward compatibility
+            claims.Add(new Claim(ClaimTypes.Role, user.UserType.ToString()));
+
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id),
-                    new Claim(ClaimTypes.Name, user.UserName ?? string.Empty),
-                    new Claim(ClaimTypes.Email, user.Email ?? string.Empty),
-                    new Claim("UserType", user.UserType.ToString()),
-                    new Claim("FullName", user.FullName)
-                }),
+                Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.AddHours(24),
                 Issuer = _configuration["Jwt:Issuer"],
                 Audience = _configuration["Jwt:Audience"],
