@@ -127,8 +127,8 @@ const translations = {
     'nav.createGrant': 'Create Grant',
     'nav.manageGrants': 'Manage Grants',
     'nav.aiSelection': 'AI Selection',
+    'nav.fraudDetection': 'Fraud Detection',
     'nav.setMarketPrices': 'Set Market Prices',
-    'nav.analytics': 'Analytics',
     'nav.underDevelopment': 'Under Development...',
     
     // Grants
@@ -340,8 +340,8 @@ const translations = {
     'nav.createGrant': 'अनुदान सिर्जना',
     'nav.manageGrants': 'अनुदान व्यवस्थापन',
     'nav.aiSelection': 'AI छनौट',
+    'nav.fraudDetection': 'धोखाधडी पत्ता लगाउने',
     'nav.setMarketPrices': 'बजार मूल्य सेट',
-    'nav.analytics': 'विश्लेषण',
     'nav.underDevelopment': 'अझै विकास हुँदैछ...',
     
     // Grants

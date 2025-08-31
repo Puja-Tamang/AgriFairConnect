@@ -8,8 +8,8 @@ import {
   Users, 
   PlusCircle, 
   Settings, 
-  BarChart3,
-  Brain
+  Brain,
+  Shield
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
@@ -38,8 +38,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     { path: '/admin/grants/create', icon: PlusCircle, label: t('nav.createGrant') },
     { path: '/admin/grants/manage', icon: Settings, label: t('nav.manageGrants') },
     { path: '/admin/ai-selection', icon: Brain, label: t('nav.aiSelection') },
+    { path: '/admin/fraud-detection', icon: Shield, label: t('nav.fraudDetection') },
     { path: '/admin/market-prices', icon: TrendingUp, label: t('nav.setMarketPrices') },
-    { path: '/admin/analytics', icon: BarChart3, label: t('nav.analytics') },
   ];
 
   const menuItems = user?.type === 'farmer' ? farmerMenuItems : adminMenuItems;

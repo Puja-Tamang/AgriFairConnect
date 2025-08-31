@@ -5,6 +5,7 @@ import { useData } from '../../context/DataContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { ApplicationStatus } from '../../types/api';
 import AIInsightsWidget from './AIInsightsWidget';
+import FraudInsightsWidget from './FraudInsightsWidget';
 
 const AdminDashboard: React.FC = () => {
   const { grants, applications, marketPrices } = useData();
@@ -61,14 +62,22 @@ const AdminDashboard: React.FC = () => {
       change: t('dashboard.updated'),
       link: '/admin/market-prices'
     },
-    {
-      icon: Eye,
-      label: 'AI Selection',
-      value: '🤖',
-      color: 'text-indigo-600 bg-indigo-100',
-      change: 'ML Powered',
-      link: '/admin/ai-selection'
-    },
+            {
+          icon: Eye,
+          label: 'AI Selection',
+          value: '🤖',
+          color: 'text-indigo-600 bg-indigo-100',
+          change: 'ML Powered',
+          link: '/admin/ai-selection'
+        },
+        {
+          icon: Eye,
+          label: 'Fraud Detection',
+          value: '🔍',
+          color: 'text-red-600 bg-red-100',
+          change: 'AI Powered',
+          link: '/admin/fraud-detection'
+        },
   ];
 
   const applicationStats = {
@@ -296,10 +305,11 @@ const AdminDashboard: React.FC = () => {
       )}
         </div>
         
-        {/* AI Insights Widget */}
-        <div className="lg:col-span-1">
-          <AIInsightsWidget />
-        </div>
+                 {/* AI Insights Widgets */}
+         <div className="lg:col-span-1 space-y-6">
+           <AIInsightsWidget />
+           <FraudInsightsWidget />
+         </div>
       </div>
     </div>
   );
