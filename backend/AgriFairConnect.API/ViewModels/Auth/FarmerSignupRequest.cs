@@ -38,18 +38,12 @@ namespace AgriFairConnect.API.ViewModels.Auth
         [StringLength(100, ErrorMessage = "Municipality cannot exceed 100 characters")]
         public string Municipality { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Monthly income is required")]
-        [Range(0, double.MaxValue, ErrorMessage = "Monthly income must be positive")]
-        public decimal MonthlyIncome { get; set; }
+        public decimal MonthlyIncome { get; set; } = 0;
 
-        [Required(ErrorMessage = "Land size is required")]
-        [Range(0, double.MaxValue, ErrorMessage = "Land size must be positive")]
-        public decimal LandSize { get; set; }
+        public decimal LandSize { get; set; } = 0;
 
-        [Required(ErrorMessage = "At least one crop must be selected")]
         public List<int> CropIds { get; set; } = new List<int>();
 
-        [Required(ErrorMessage = "Previous grant information is required")]
-        public bool HasReceivedGrantBefore { get; set; }
+        public bool HasReceivedGrantBefore { get; set; } = false;
     }
 }

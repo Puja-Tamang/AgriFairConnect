@@ -164,61 +164,7 @@ const FraudDetection: React.FC = () => {
     }
   };
 
-  const testWithSampleData = async () => {
-    setLoading(true);
-    setError(null);
-    setDebugInfo('Testing with sample data...');
 
-    try {
-      // Get sample data from API
-      const response = await fetch('http://localhost:8002/sample-data');
-      if (!response.ok) {
-        throw new Error(`Failed to get sample data: ${response.status}`);
-      }
-
-      const sampleData = await response.json();
-      setDebugInfo(`Got ${sampleData.count} sample applications`);
-
-      // Use sample data for fraud detection
-      const detectResponse = await fetch('http://localhost:8002/detect', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          applications: sampleData.sample_applications
-        })
-      });
-
-      if (!detectResponse.ok) {
-        const errorText = await detectResponse.text();
-        throw new Error(`Detection failed: ${detectResponse.status} - ${errorText}`);
-      }
-
-      const result: FraudAnalysisResponse = await detectResponse.json();
-
-      if (result.success) {
-        setFraudResults(result.results);
-        setAnalysisSummary({
-          total_applications: result.total_applications,
-          fraud_detected: result.fraud_detected,
-          risk_distribution: result.risk_distribution,
-          average_anomaly_score: result.average_anomaly_score,
-          message: result.message
-        });
-        setDebugInfo('Sample data analysis completed successfully!');
-      } else {
-        setError('Failed to analyze sample data');
-      }
-
-    } catch (err) {
-      console.error('Sample Data Test Error:', err);
-      setError(`Sample data test failed: ${err instanceof Error ? err.message : 'Unknown error'}`);
-      setDebugInfo(`Error: ${err instanceof Error ? err.message : 'Unknown error'}`);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   // Check API status on component mount
   useEffect(() => {
@@ -299,23 +245,7 @@ const FraudDetection: React.FC = () => {
         </button>
       </div>
 
-      {/* Test with Sample Data Button */}
-      <div className="mb-6">
-        <button
-          onClick={testWithSampleData}
-          disabled={loading || apiStatus !== 'connected'}
-          className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
-        >
-          {loading ? (
-            <div className="flex items-center justify-center">
-              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-              Testing with Sample Data...
-            </div>
-          ) : (
-            '🧪 Test with Sample Data'
-          )}
-        </button>
-      </div>
+
 
       {/* Error Message */}
       {error && (

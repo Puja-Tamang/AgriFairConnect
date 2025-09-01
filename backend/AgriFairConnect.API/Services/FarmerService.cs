@@ -279,8 +279,8 @@ namespace AgriFairConnect.API.Services
                 Address = user.Address,
                 WardNumber = user.WardNumber,
                 Municipality = user.Municipality,
-                MonthlyIncome = profile.MonthlyIncome,
-                LandSize = profile.LandSize,
+                MonthlyIncome = profile.MonthlyIncome ?? 0,
+                LandSize = profile.LandSize ?? 0,
                 LandSizeUnit = profile.LandSizeUnit,
                 HasReceivedGrantBefore = profile.HasReceivedGrantBefore,
                 Crops = profile.FarmerCrops.Select(fc => new CropInfo

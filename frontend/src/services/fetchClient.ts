@@ -84,10 +84,10 @@ class FetchClient {
     PhoneNumber: string;
     WardNumber: number;
     Municipality: string;
-    MonthlyIncome: number;
-    LandSize: number;
-    CropIds: number[];
-    HasReceivedGrantBefore: boolean;
+    MonthlyIncome?: number;
+    LandSize?: number;
+    CropIds?: number[];
+    HasReceivedGrantBefore?: boolean;
   }): Promise<SignupResponse> {
     return this.request<SignupResponse>('/auth/signup', {
       method: 'POST',

@@ -24,7 +24,7 @@ pip install -r requirements.txt
 ```bash
 python data_generator.py
 ```
-This creates a CSV file with 150+ synthetic farmer records for training.
+This creates a CSV file with 150+ farmer records for training.
 
 ### Step 4: Train the ML Model
 ```bash

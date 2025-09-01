@@ -133,10 +133,7 @@ def generate_farmer_dataset(num_farmers=150):
         # Priority score (target variable for ML model)
         # This will be calculated based on the scoring criteria
         priority_score = calculate_priority_score(
-            monthly_income, land_size, previous_grants, crop_yield,
-            family_size, age, farming_experience, credit_score,
-            market_distance_km, has_irrigation, uses_modern_technology,
-            social_category, has_disability
+            monthly_income, land_size, previous_grants, crop_yield
         )
         
         # Application status (for training data)
@@ -179,12 +176,9 @@ def generate_farmer_dataset(num_farmers=150):
     
     return pd.DataFrame(data)
 
-def calculate_priority_score(monthly_income, land_size, previous_grants, crop_yield,
-                           family_size, age, farming_experience, credit_score,
-                           market_distance_km, has_irrigation, uses_modern_technology,
-                           social_category, has_disability):
+def calculate_priority_score(monthly_income, land_size, previous_grants, crop_yield):
     """
-    Calculate priority score based on multiple criteria.
+    Calculate priority score based on 4 key criteria for logistic priority analysis.
     Higher score = higher priority for grant.
     """
     score = 0.0
@@ -221,64 +215,8 @@ def calculate_priority_score(monthly_income, land_size, previous_grants, crop_yi
     else:
         score += 4   # Low yield - needs support
     
-    # Additional factors (20 points max)
-    
-    # Family size (5 points max)
-    if family_size >= 6:
-        score += 5   # Large family - more need
-    elif family_size >= 4:
-        score += 3
-    else:
-        score += 1
-    
-    # Age factor (3 points max)
-    if age > 60:
-        score += 3   # Elderly - more vulnerable
-    elif age < 30:
-        score += 2   # Young - potential for growth
-    else:
-        score += 1
-    
-    # Farming experience (3 points max)
-    if farming_experience < 5:
-        score += 3   # New farmer - needs support
-    elif farming_experience > 20:
-        score += 2   # Experienced farmer
-    else:
-        score += 1
-    
-    # Credit score (3 points max)
-    if credit_score < 500:
-        score += 3   # Poor credit - needs support
-    elif credit_score > 700:
-        score += 1   # Good credit
-    else:
-        score += 2
-    
-    # Market distance (3 points max)
-    if market_distance_km > 15:
-        score += 3   # Remote location - needs support
-    elif market_distance_km > 5:
-        score += 2
-    else:
-        score += 1
-    
-    # Technology adoption (2 points max)
-    if not uses_modern_technology:
-        score += 2   # Needs technology support
-    else:
-        score += 0
-    
-    # Social category (1 point max)
-    if social_category in ["dalit", "janajati", "madhesi"]:
-        score += 1   # Marginalized groups
-    
-    # Disability (1 point max)
-    if has_disability:
-        score += 1   # Special consideration
-    
     # Normalize score to 0-10 scale
-    max_possible_score = 60  # 10+10+10+10+20 = 60
+    max_possible_score = 40  # 10+10+10+10 = 40
     normalized_score = (score / max_possible_score) * 10
     
     return normalized_score

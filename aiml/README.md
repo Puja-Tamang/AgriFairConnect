@@ -13,7 +13,7 @@ This service provides intelligent prioritization of farmers for agricultural gra
 - **Batch Processing**: Process multiple farmers simultaneously
 - **Real-time Predictions**: Fast API endpoints for instant predictions
 - **Model Training**: Automated model training with cross-validation
-- **Data Generation**: Synthetic dataset generation for testing
+- **Data Generation**: Dataset generation for training
 
 ## Scoring Criteria
 
@@ -168,7 +168,7 @@ To integrate with the main AgriFairConnect application:
 1. Update `data_generator.py` for new data fields
 2. Modify `ml_model.py` for new features
 3. Update `fastapi_app.py` for new endpoints
-4. Test with synthetic data
+4. Test with real data
 
 ### Model Improvements
 - Try different algorithms (Random Forest, XGBoost)

@@ -11,20 +11,16 @@ namespace AgriFairConnect.API.Models
         [Required]
         public string AppUserId { get; set; } = string.Empty;
 
-        [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal MonthlyIncome { get; set; }
+        public decimal? MonthlyIncome { get; set; }
 
-        [Required]
         [Column(TypeName = "decimal(10,2)")]
-        public decimal LandSize { get; set; }
+        public decimal? LandSize { get; set; }
 
-        [Required]
         [StringLength(20)]
         public string LandSizeUnit { get; set; } = "Bigha"; // Bigha, Hectare, etc.
 
-        [Required]
-        public bool HasReceivedGrantBefore { get; set; }
+        public bool HasReceivedGrantBefore { get; set; } = false;
 
         // Navigation properties
         [ForeignKey("AppUserId")]

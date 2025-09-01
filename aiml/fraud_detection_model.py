@@ -70,6 +70,8 @@ class FraudDetectionModel:
         legitimate_data['previous_grants'] = np.clip(legitimate_data['previous_grants'], 0, 10)
         
         return pd.DataFrame(legitimate_data)
+        
+
     
     def prepare_features(self, data):
         """Prepare features for the model"""
@@ -107,21 +109,29 @@ class FraudDetectionModel:
         # Convert predictions: -1 (anomaly) -> True (fraud), 1 (normal) -> False (fraud)
         fraud_predictions = (predictions == -1)
         
-        # Calculate accuracy against synthetic labels
-        accuracy = np.mean(fraud_predictions == data['is_fraudulent'])
+        # Calculate accuracy against actual labels (if available)
+        if 'is_fraudulent' in data.columns:
+            accuracy = np.mean(fraud_predictions == data['is_fraudulent'])
+        else:
+            accuracy = None
         
         print(f"✅ Model trained successfully!")
-        print(f"📊 Detection Accuracy: {accuracy:.2%}")
+        if accuracy is not None:
+            print(f"📊 Detection Accuracy: {accuracy:.2%}")
+            print(f"📈 Actual fraud cases: {np.sum(data['is_fraudulent'])}")
         print(f"🎯 Detected {np.sum(fraud_predictions)} potential fraud cases")
-        print(f"📈 Actual fraud cases: {np.sum(data['is_fraudulent'])}")
         
-        return {
+        result = {
             'accuracy': accuracy,
             'detected_fraud': int(np.sum(fraud_predictions)),
-            'actual_fraud': int(np.sum(data['is_fraudulent'])),
             'predictions': fraud_predictions,
             'scores': scores
         }
+        
+        if 'is_fraudulent' in data.columns:
+            result['actual_fraud'] = int(np.sum(data['is_fraudulent']))
+        
+        return result
     
     def predict_fraud(self, data):
         """Predict fraud for new data"""
@@ -232,44 +242,4 @@ class FraudDetectionModel:
             'low_risk_count': np.sum(np.array(risk_levels) == 'Low Risk')
         }
 
-def main():
-    """Main function to train and test the fraud detection model"""
-    print("🚀 Starting Fraud Detection Model Training...")
-    
-    # Initialize model
-    fraud_model = FraudDetectionModel()
-    
-    # Generate synthetic data
-    print("📊 Generating synthetic data...")
-    data = fraud_model.generate_fraud_data(n_samples=100)
-    data.to_csv('fraud_detection_data.csv', index=False)
-    print(f"💾 Data saved to 'fraud_detection_data.csv'")
-    
-    # Train model
-    results = fraud_model.train_model(data)
-    
-    # Generate visualizations
-    print("📈 Generating visualizations...")
-    viz_results = fraud_model.generate_visualizations(data, results['predictions'], results['scores'])
-    
-    # Save model
-    fraud_model.save_model()
-    
-    # Print summary
-    print("\n" + "="*50)
-    print("📋 FRAUD DETECTION MODEL SUMMARY")
-    print("="*50)
-    print(f"Total Applications: {len(data)}")
-    print(f"Actual Fraud Cases: {results['actual_fraud']}")
-    print(f"Detected Fraud Cases: {results['detected_fraud']}")
-    print(f"Detection Accuracy: {results['accuracy']:.2%}")
-    print(f"High Risk Applications: {viz_results['high_risk_count']}")
-    print(f"Medium Risk Applications: {viz_results['medium_risk_count']}")
-    print(f"Low Risk Applications: {viz_results['low_risk_count']}")
-    print(f"Average Anomaly Score: {viz_results['avg_anomaly_score']:.3f}")
-    print("="*50)
-    
-    return fraud_model, data, results
 
-if __name__ == "__main__":
-    fraud_model, data, results = main()

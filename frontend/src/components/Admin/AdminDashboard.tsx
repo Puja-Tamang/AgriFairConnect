@@ -91,10 +91,7 @@ const AdminDashboard: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      {/* Test Message */}
-      <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-        <strong>Admin Dashboard is working!</strong> This message confirms the component is rendering.
-      </div>
+
 
       {/* Welcome Section */}
       <div className="card p-6">

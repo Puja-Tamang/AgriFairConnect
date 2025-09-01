@@ -137,9 +137,9 @@ async def train_model():
             "success": True,
             "message": "Model trained successfully",
             "total_applications": len(data),
-            "actual_fraud": results['actual_fraud'],
+            "actual_fraud": results.get('actual_fraud', 0),
             "detected_fraud": results['detected_fraud'],
-            "accuracy": results['accuracy'],
+            "accuracy": results.get('accuracy', None),
             "risk_distribution": viz_results,
             "timestamp": datetime.now().isoformat()
         }
@@ -268,6 +268,7 @@ async def get_sample_data():
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error generating sample data: {str(e)}")
+
 
 if __name__ == "__main__":
     print("🚀 Starting Fraud Detection API...")
