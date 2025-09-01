@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   FileText, 
   Clock, 
@@ -17,6 +18,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { apiClient } from '../../services/apiClient';
 import { GrantType, ApplicationStatus } from '../../types/api';
+import ImagePreview from '../Common/ImagePreview';
 
 interface FarmerApplication {
   id: number;
@@ -52,14 +54,15 @@ interface FarmerApplication {
 const FarmerApplications: React.FC = () => {
   const { user } = useAuth();
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [applications, setApplications] = useState<FarmerApplication[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedApplication, setSelectedApplication] = useState<FarmerApplication | null>(null);
 
   const handleEditApplication = (application: FarmerApplication) => {
-    // Navigate to edit page or open edit modal
-    // For now, we'll just show a toast message
-    toast.success('Edit functionality will be implemented soon!');
+    console.log('Edit button clicked for application:', application.id);
+    console.log('Application status:', application.status);
+    navigate(`/farmer/applications/edit/${application.id}`);
   };
 
   useEffect(() => {
@@ -364,37 +367,22 @@ const FarmerApplications: React.FC = () => {
                       <h3 className="font-medium text-gray-900 mb-2">Documents</h3>
                       <div className="space-y-2 text-sm">
                         {selectedApplication.citizenImageUrl && (
-                          <a 
-                            href={selectedApplication.citizenImageUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="flex items-center text-blue-600 hover:text-blue-800"
-                          >
-                            <Eye className="w-4 h-4 mr-1" />
-                            View Citizen Image
-                          </a>
+                          <ImagePreview 
+                            url={selectedApplication.citizenImageUrl}
+                            title="Citizen Image"
+                          />
                         )}
                         {selectedApplication.landOwnershipUrl && (
-                          <a 
-                            href={selectedApplication.landOwnershipUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="flex items-center text-blue-600 hover:text-blue-800"
-                          >
-                            <Eye className="w-4 h-4 mr-1" />
-                            View Land Ownership
-                          </a>
+                          <ImagePreview 
+                            url={selectedApplication.landOwnershipUrl}
+                            title="Land Ownership Document"
+                          />
                         )}
                         {selectedApplication.landTaxUrl && (
-                          <a 
-                            href={selectedApplication.landTaxUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="flex items-center text-blue-600 hover:text-blue-800"
-                          >
-                            <Eye className="w-4 h-4 mr-1" />
-                            View Land Tax Receipt
-                          </a>
+                          <ImagePreview 
+                            url={selectedApplication.landTaxUrl}
+                            title="Land Tax Receipt"
+                          />
                         )}
                       </div>
                     </div>

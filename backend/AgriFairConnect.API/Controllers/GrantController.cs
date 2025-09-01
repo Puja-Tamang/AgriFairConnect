@@ -425,6 +425,70 @@ namespace AgriFairConnect.API.Controllers
         }
 
         /// <summary>
+        /// Get a single application owned by the current farmer
+        /// </summary>
+        [HttpGet("farmer/applications/{id}")]
+        [Authorize(Roles = "Farmer")]
+        public async Task<ActionResult<FarmerApplicationResponse>> GetMyApplicationById(int id)
+        {
+            try
+            {
+                var farmerId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(farmerId))
+                {
+                    return Unauthorized(new { message = "User not authenticated" });
+                }
+
+                var application = await _context.Applications
+                    .Include(a => a.Grant)
+                    .FirstOrDefaultAsync(a => a.Id == id && a.FarmerId == farmerId);
+
+                if (application == null)
+                {
+                    return NotFound(new { message = "Application not found" });
+                }
+
+                var response = new FarmerApplicationResponse
+                {
+                    Id = application.Id,
+                    GrantId = application.GrantId,
+                    GrantTitle = application.Grant.Title,
+                    GrantType = application.Grant.Type,
+                    GrantAmount = application.Grant.Amount,
+                    GrantObjectName = application.Grant.ObjectName,
+                    Status = application.Status,
+                    FarmerName = application.FarmerName,
+                    FarmerPhone = application.FarmerPhone,
+                    FarmerEmail = application.FarmerEmail,
+                    FarmerAddress = application.FarmerAddress,
+                    FarmerWard = application.FarmerWard,
+                    FarmerMunicipality = application.FarmerMunicipality,
+                    MonthlyIncome = application.MonthlyIncome,
+                    LandSize = application.LandSize,
+                    LandSizeUnit = application.LandSizeUnit,
+                    HasReceivedGrantBefore = application.HasReceivedGrantBefore,
+                    PreviousGrantDetails = application.PreviousGrantDetails,
+                    CropDetails = application.CropDetails,
+                    ExpectedBenefits = application.ExpectedBenefits,
+                    AdditionalNotes = application.AdditionalNotes,
+                    CitizenImageUrl = application.CitizenImageUrl,
+                    LandOwnershipUrl = application.LandOwnershipUrl,
+                    LandTaxUrl = application.LandTaxUrl,
+                    AiScore = application.AiScore,
+                    AdminRemarks = application.AdminRemarks,
+                    AppliedAt = application.SubmittedAt.ToString("yyyy-MM-dd HH:mm:ss"),
+                    UpdatedAt = application.UpdatedAt.HasValue ? application.UpdatedAt.Value.ToString("yyyy-MM-dd HH:mm:ss") : null
+                };
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while retrieving the application", error = ex.Message });
+            }
+        }
+
+        /// <summary>
         /// Get a single application by ID (Admin only)
         /// </summary>
         [HttpGet("applications/{id}")]
@@ -621,6 +685,103 @@ namespace AgriFairConnect.API.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, new { message = "An error occurred while submitting the application", error = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Update an existing application (Farmer only) - only when status is Pending
+        /// </summary>
+        [HttpPut("application/{id}")]
+        [Authorize(Roles = "Farmer")]
+        public async Task<ActionResult> UpdateGrantApplication(int id, [FromForm] UpdateGrantApplicationRequest request)
+        {
+            try
+            {
+                var farmerId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(farmerId))
+                {
+                    return Unauthorized(new { message = "User not authenticated" });
+                }
+
+                var application = await _context.Applications.FindAsync(id);
+                if (application == null)
+                {
+                    return NotFound(new { message = "Application not found" });
+                }
+
+                // Ownership and status checks
+                if (application.FarmerId != farmerId)
+                {
+                    return Forbid();
+                }
+                if (application.Status != ApplicationStatus.Pending)
+                {
+                    return BadRequest(new { message = "Only applications in Pending status can be edited" });
+                }
+
+                // Update provided fields only
+                if (request.FarmerName != null) application.FarmerName = request.FarmerName;
+                if (request.FarmerPhone != null) application.FarmerPhone = request.FarmerPhone;
+                if (request.FarmerEmail != null) application.FarmerEmail = request.FarmerEmail;
+                if (request.FarmerAddress != null) application.FarmerAddress = request.FarmerAddress;
+                if (request.FarmerWard.HasValue) application.FarmerWard = request.FarmerWard.Value;
+                if (request.FarmerMunicipality != null) application.FarmerMunicipality = request.FarmerMunicipality;
+                if (request.MonthlyIncome.HasValue) application.MonthlyIncome = request.MonthlyIncome.Value;
+                if (request.LandSize.HasValue) application.LandSize = request.LandSize.Value;
+                if (request.LandSizeUnit != null) application.LandSizeUnit = request.LandSizeUnit;
+                if (request.HasReceivedGrantBefore.HasValue) application.HasReceivedGrantBefore = request.HasReceivedGrantBefore.Value;
+                if (request.PreviousGrantDetails != null) application.PreviousGrantDetails = request.PreviousGrantDetails;
+                if (request.CropDetails != null) application.CropDetails = request.CropDetails;
+                if (request.ExpectedBenefits != null) application.ExpectedBenefits = request.ExpectedBenefits;
+                if (request.AdditionalNotes != null) application.AdditionalNotes = request.AdditionalNotes;
+
+                // Handle optional file replacements
+                var uploadsPath = Path.Combine(_environment.ContentRootPath, "wwwroot", "uploads", "applications");
+                Directory.CreateDirectory(uploadsPath);
+
+                if (request.CitizenImage != null)
+                {
+                    var citizenFileName = $"citizen_{farmerId}_{DateTime.UtcNow.Ticks}.jpg";
+                    var citizenPath = Path.Combine(uploadsPath, citizenFileName);
+                    using (var stream = new FileStream(citizenPath, FileMode.Create))
+                    {
+                        await request.CitizenImage.CopyToAsync(stream);
+                    }
+                    application.CitizenImageUrl = $"/uploads/applications/{citizenFileName}";
+                }
+
+                if (request.LandOwnership != null)
+                {
+                    var landFileName = $"land_{farmerId}_{DateTime.UtcNow.Ticks}{Path.GetExtension(request.LandOwnership.FileName)}";
+                    var landPath = Path.Combine(uploadsPath, landFileName);
+                    using (var stream = new FileStream(landPath, FileMode.Create))
+                    {
+                        await request.LandOwnership.CopyToAsync(stream);
+                    }
+                    application.LandOwnershipUrl = $"/uploads/applications/{landFileName}";
+                }
+
+                if (request.LandTax != null)
+                {
+                    var taxFileName = $"tax_{farmerId}_{DateTime.UtcNow.Ticks}{Path.GetExtension(request.LandTax.FileName)}";
+                    var taxPath = Path.Combine(uploadsPath, taxFileName);
+                    using (var stream = new FileStream(taxPath, FileMode.Create))
+                    {
+                        await request.LandTax.CopyToAsync(stream);
+                    }
+                    application.LandTaxUrl = $"/uploads/applications/{taxFileName}";
+                }
+
+                application.UpdatedAt = DateTime.UtcNow;
+                application.UpdatedBy = User.FindFirst(ClaimTypes.Name)?.Value ?? application.UpdatedBy;
+
+                await _context.SaveChangesAsync();
+
+                return Ok(new { message = "Application updated successfully" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while updating the application", error = ex.Message });
             }
         }
 

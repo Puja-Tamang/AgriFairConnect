@@ -353,6 +353,22 @@ class ApiClient {
     return response.data;
   }
 
+  async updateFarmerApplication(id: number, formData: FormData): Promise<boolean> {
+    const response = await this.axiosInstance.put(`/grant/application/${id}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  }
+
+  async getFarmerApplicationById(id: number): Promise<FarmerApplicationResponse> {
+    return this.request<FarmerApplicationResponse>({
+      method: 'GET',
+      url: `/grant/farmer/applications/${id}`,
+    });
+  }
+
   async getFarmerApplications(): Promise<FarmerApplicationResponse[]> {
     return this.request<FarmerApplicationResponse[]>({
       method: 'GET',

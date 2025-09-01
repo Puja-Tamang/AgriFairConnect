@@ -1,15 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Users, FileText, DollarSign, TrendingUp, Eye, CheckCircle, XCircle, Clock } from 'lucide-react';
+import { Users, FileText, DollarSign, TrendingUp, Eye, CheckCircle, XCircle, Clock, RefreshCw } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { useLanguage } from '../../context/LanguageContext';
-import { ApplicationStatus } from '../../types/api';
+import { useAuth } from '../../context/AuthContext';
+import { ApplicationStatus, FarmerApplicationResponse } from '../../types/api';
+import { apiClient } from '../../services/apiClient';
 import AIInsightsWidget from './AIInsightsWidget';
 import FraudInsightsWidget from './FraudInsightsWidget';
 
 const AdminDashboard: React.FC = () => {
-  const { grants, applications, marketPrices } = useData();
+  const { grants, marketPrices } = useData();
   const { t } = useLanguage();
+  const { user } = useAuth();
+  const [applications, setApplications] = useState<FarmerApplicationResponse[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch applications data
+  const fetchApplications = async () => {
+    if (user?.type === 'admin') {
+      try {
+        setLoading(true);
+        const applicationsData = await apiClient.getAllApplications();
+        setApplications(applicationsData);
+        console.log('Fetched applications:', applicationsData.length);
+      } catch (error: any) {
+        console.error('Error fetching applications:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
+  // Fetch applications data when component mounts
+  useEffect(() => {
+    fetchApplications();
+  }, [user]);
+
+  // Refresh applications every 30 seconds for real-time updates
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (user?.type === 'admin') {
+        fetchApplications();
+      }
+    }, 30000); // 30 seconds
+
+    return () => clearInterval(interval);
+  }, [user]);
 
   // Helper function to get status string from enum
   const getStatusString = (status: ApplicationStatus): string => {
@@ -26,9 +63,6 @@ const AdminDashboard: React.FC = () => {
         return 'pending';
     }
   };
-
-  // Test message to ensure component is rendering
-  console.log('AdminDashboard rendering with:', { grants: grants.length, applications: applications.length, marketPrices: marketPrices.length });
 
   const stats = [
     {
@@ -80,12 +114,20 @@ const AdminDashboard: React.FC = () => {
         },
   ];
 
+  // Calculate application statistics with debugging
   const applicationStats = {
     pending: applications.filter(app => app.status === ApplicationStatus.Pending).length,
     processing: applications.filter(app => app.status === ApplicationStatus.Processing).length,
     approved: applications.filter(app => app.status === ApplicationStatus.Approved).length,
     rejected: applications.filter(app => app.status === ApplicationStatus.Rejected).length,
   };
+
+  // Debug log for application stats
+  console.log('Application Stats:', {
+    total: applications.length,
+    stats: applicationStats,
+    applications: applications.map(app => ({ id: app.id, status: app.status, statusName: getStatusString(app.status) }))
+  });
 
   const recentApplications = applications.slice(0, 5);
 
@@ -131,45 +173,74 @@ const AdminDashboard: React.FC = () => {
       </div>
 
       {/* Application Status Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="card p-4">
-          <div className="flex items-center">
-            <Clock className="h-8 w-8 text-yellow-500" />
-            <div className="ml-3">
-              <p className="text-2xl font-bold text-yellow-600">{applicationStats.pending}</p>
-              <p className="text-sm text-gray-600">{t('status.pending')}</p>
-            </div>
-          </div>
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-semibold text-gray-900">Application Status Overview</h2>
+          <button
+            onClick={fetchApplications}
+            disabled={loading}
+            className="flex items-center px-3 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 transition-colors"
+          >
+            <RefreshCw className={`w-4 h-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
+            Refresh
+          </button>
         </div>
-        
-        <div className="card p-4">
-          <div className="flex items-center">
-            <Eye className="h-8 w-8 text-blue-500" />
-            <div className="ml-3">
-              <p className="text-2xl font-bold text-blue-600">{applicationStats.processing}</p>
-              <p className="text-sm text-gray-600">{t('status.processing')}</p>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <Link to="/admin/applications?status=pending" className="card p-6 hover:shadow-lg transition-shadow cursor-pointer">
+            <div className="flex items-center">
+              <div className="p-3 bg-yellow-100 rounded-full">
+                <Clock className="h-8 w-8 text-yellow-600" />
+              </div>
+              <div className="ml-4">
+                <p className="text-3xl font-bold text-yellow-600">
+                  {loading ? '...' : applicationStats.pending}
+                </p>
+                <p className="text-sm text-gray-600 font-medium">Pending</p>
+              </div>
             </div>
-          </div>
-        </div>
-        
-        <div className="card p-4">
-          <div className="flex items-center">
-            <CheckCircle className="h-8 w-8 text-green-500" />
-            <div className="ml-3">
-              <p className="text-2xl font-bold text-green-600">{applicationStats.approved}</p>
-              <p className="text-sm text-gray-600">{t('status.approved')}</p>
+          </Link>
+          
+          <Link to="/admin/applications?status=processing" className="card p-6 hover:shadow-lg transition-shadow cursor-pointer">
+            <div className="flex items-center">
+              <div className="p-3 bg-blue-100 rounded-full">
+                <Eye className="h-8 w-8 text-blue-600" />
+              </div>
+              <div className="ml-4">
+                <p className="text-3xl font-bold text-blue-600">
+                  {loading ? '...' : applicationStats.processing}
+                </p>
+                <p className="text-sm text-gray-600 font-medium">Processing</p>
+              </div>
             </div>
-          </div>
-        </div>
-        
-        <div className="card p-4">
-          <div className="flex items-center">
-            <XCircle className="h-8 w-8 text-red-500" />
-            <div className="ml-3">
-              <p className="text-2xl font-bold text-red-600">{applicationStats.rejected}</p>
-              <p className="text-sm text-gray-600">{t('status.rejected')}</p>
+          </Link>
+          
+          <Link to="/admin/applications?status=approved" className="card p-6 hover:shadow-lg transition-shadow cursor-pointer">
+            <div className="flex items-center">
+              <div className="p-3 bg-green-100 rounded-full">
+                <CheckCircle className="h-8 w-8 text-green-600" />
+              </div>
+              <div className="ml-4">
+                <p className="text-3xl font-bold text-green-600">
+                  {loading ? '...' : applicationStats.approved}
+                </p>
+                <p className="text-sm text-gray-600 font-medium">Approved</p>
+              </div>
             </div>
-          </div>
+          </Link>
+          
+          <Link to="/admin/applications?status=rejected" className="card p-6 hover:shadow-lg transition-shadow cursor-pointer">
+            <div className="flex items-center">
+              <div className="p-3 bg-red-100 rounded-full">
+                <XCircle className="h-8 w-8 text-red-600" />
+              </div>
+              <div className="ml-4">
+                <p className="text-3xl font-bold text-red-600">
+                  {loading ? '...' : applicationStats.rejected}
+                </p>
+                <p className="text-sm text-gray-600 font-medium">Rejected</p>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
 

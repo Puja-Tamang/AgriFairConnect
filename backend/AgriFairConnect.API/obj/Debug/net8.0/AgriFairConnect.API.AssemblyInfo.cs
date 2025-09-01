@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AgriFairConnect.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a4ed0017a5e528257cfba8627a754df430104d8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8658498e8eca1391a2fb9240103d08ed07e05d06")]
 [assembly: System.Reflection.AssemblyProductAttribute("AgriFairConnect.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AgriFairConnect.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

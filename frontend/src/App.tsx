@@ -15,6 +15,7 @@ import GrantManagement from './components/Admin/GrantManagement';
 import MarketPriceManagement from './components/Admin/MarketPriceManagement';
 import MarketPrices from './components/Farmer/MarketPrices';
 import GrantApplication from './components/Farmer/GrantApplication';
+import EditGrantApplication from './components/Farmer/EditGrantApplication';
 import FarmerApplications from './components/Farmer/FarmerApplications';
 import AdminApplications from './components/Admin/AdminApplications';
 import AISelection from './components/Admin/AISelection';
@@ -86,6 +87,11 @@ const AppRoutes: React.FC = () => {
       <Route path="/farmer/grants/apply/:grantId" element={
         <ProtectedRoute userType="farmer">
           <GrantApplication />
+        </ProtectedRoute>
+      } />
+      <Route path="/farmer/applications/edit/:id" element={
+        <ProtectedRoute userType="farmer">
+          <EditGrantApplication />
         </ProtectedRoute>
       } />
       

@@ -1,5 +1,3 @@
-global using System.Net.Http.Json;
-global using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,8 +11,7 @@ namespace AgriFairConnect.Tests
 {
     public abstract class TestBase : IDisposable
     {
-        protected TestHost Factory { get; }skip
-        
+        protected TestHost Factory { get; }
         protected HttpClient Client { get; }
         protected ApplicationDbContext DbContext { get; }
         protected UserManager<AppUser> UserManager { get; }
