@@ -94,6 +94,8 @@ export interface Grant {
   type: GrantType;
   amount?: number;
   objectName?: string;
+  grantPhoto?: string;
+  deadlineAt?: string;
   createdBy: string;
   createdAt: string;
   updatedAt?: string;
@@ -108,6 +110,8 @@ export interface CreateGrantRequest {
   type: GrantType;
   amount?: number;
   objectName?: string;
+  grantPhoto?: string;
+  deadlineAt?: string;
   targetWards: number[];
   targetMunicipalities: string[];
 }
@@ -120,6 +124,8 @@ export interface GrantManagementResponse {
   type: GrantType;
   amount?: number;
   objectName?: string;
+  grantPhoto?: string;
+  deadlineAt?: string;
   createdBy: string;
   createdAt: string;
   updatedAt?: string;
@@ -210,6 +216,7 @@ export interface MarketPriceResponse {
   price: number;
   unit: string;
   location: string;
+  cropPhoto?: string;
   updatedBy: string;
   updatedAt: string;
   isActive: boolean;
@@ -220,12 +227,14 @@ export interface CreateMarketPriceRequest {
   price: number;
   unit: string;
   location: string;
+  cropPhoto?: string;
 }
 
 export interface UpdateMarketPriceRequest {
   price: number;
   unit: string;
   location: string;
+  cropPhoto?: string;
   isActive: boolean;
 }
 
@@ -246,4 +255,5 @@ export interface BulkMarketPriceItem {
   price: number;
   unit: string;
   location: string;
+  cropPhoto?: string;
 }

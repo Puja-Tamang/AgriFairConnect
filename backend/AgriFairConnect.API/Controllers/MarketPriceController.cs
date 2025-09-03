@@ -125,7 +125,48 @@ namespace AgriFairConnect.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An error occurred while retrieving market prices by location", error = ex.Message });
+                return StatusCode(500, new { message = "An error occurred while retrieving market prices", error = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Upload crop photo for market price (Admin only)
+        /// </summary>
+        [HttpPost("upload-photo")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<string>> UploadCropPhoto(IFormFile file)
+        {
+            try
+            {
+                if (file == null || file.Length == 0)
+                    return BadRequest(new { message = "No file uploaded" });
+
+                if (file.Length > 5 * 1024 * 1024) // 5MB limit
+                    return BadRequest(new { message = "File size too large. Maximum size is 5MB" });
+
+                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                var fileExtension = Path.GetExtension(file.FileName).ToLowerInvariant();
+                if (!allowedExtensions.Contains(fileExtension))
+                    return BadRequest(new { message = "Invalid file type. Only JPG, PNG, and GIF are allowed" });
+
+                var fileName = $"crop_photo_{Guid.NewGuid()}{fileExtension}";
+                var uploadPath = Path.Combine("wwwroot", "uploads", "crops");
+                var filePath = Path.Combine(uploadPath, fileName);
+
+                // Ensure directory exists
+                Directory.CreateDirectory(uploadPath);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                var photoUrl = $"/uploads/crops/{fileName}";
+                return Ok(photoUrl);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while uploading the photo", error = ex.Message });
             }
         }
 

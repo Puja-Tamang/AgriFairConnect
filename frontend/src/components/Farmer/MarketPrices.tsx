@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Search, 
-  Filter, 
+ 
   MapPin, 
   Package, 
   DollarSign, 
@@ -13,30 +13,16 @@ import {
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import { apiClient } from '../../services/apiClient';
-import { MarketPriceResponse, MarketPriceFilterRequest } from '../../types/api';
+import { MarketPriceResponse } from '../../types/api';
 
 const MarketPrices: React.FC = () => {
   const [marketPrices, setMarketPrices] = useState<MarketPriceResponse[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [showFilterModal, setShowFilterModal] = useState(false);
-  const [selectedCrop, setSelectedCrop] = useState<string>('');
-  const [selectedLocation, setSelectedLocation] = useState<string>('');
-  const [cropNames, setCropNames] = useState<string[]>([]);
-  const [locations, setLocations] = useState<string[]>([]);
 
-  const [filterForm, setFilterForm] = useState<MarketPriceFilterRequest>({
-    cropName: '',
-    location: '',
-    isActive: true,
-    fromDate: '',
-    toDate: ''
-  });
 
   useEffect(() => {
     loadActiveMarketPrices();
-    loadCropNames();
-    loadLocations();
   }, []);
 
   const loadActiveMarketPrices = async () => {
@@ -51,36 +37,9 @@ const MarketPrices: React.FC = () => {
     }
   };
 
-  const loadCropNames = async () => {
-    try {
-      const data = await apiClient.getDistinctCropNames();
-      setCropNames(data);
-    } catch (error: any) {
-      console.error('Failed to load crop names:', error);
-    }
-  };
 
-  const loadLocations = async () => {
-    try {
-      const data = await apiClient.getDistinctLocations();
-      setLocations(data);
-    } catch (error: any) {
-      console.error('Failed to load locations:', error);
-    }
-  };
 
-  const handleFilter = async () => {
-    try {
-      setLoading(true);
-      const data = await apiClient.getFilteredMarketPrices(filterForm);
-      setMarketPrices(data);
-      setShowFilterModal(false);
-    } catch (error: any) {
-      toast.error(error.message || 'Failed to filter market prices');
-    } finally {
-      setLoading(false);
-    }
-  };
+
 
   const getLatestPriceByCrop = async (cropName: string, location: string) => {
     try {
@@ -163,13 +122,7 @@ const MarketPrices: React.FC = () => {
                   />
                 </div>
               </div>
-              <button
-                onClick={() => setShowFilterModal(true)}
-                className="btn-secondary"
-              >
-                <Filter className="w-4 h-4 mr-2" />
-                Filter
-              </button>
+
             </div>
           </div>
         </div>
@@ -189,28 +142,42 @@ const MarketPrices: React.FC = () => {
                   </span>
                 </div>
                 
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
+                <div className="flex gap-4">
+                  {/* Left side - Price and details */}
+                  <div className="flex-1 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <DollarSign className="w-5 h-5 text-green-500 mr-2" />
+                        <span className="text-2xl font-bold text-gray-900">
+                          ₹{price.price.toLocaleString()}
+                        </span>
+                      </div>
+                      <span className="text-sm text-gray-500">per {price.unit}</span>
+                    </div>
+                    
                     <div className="flex items-center">
-                      <DollarSign className="w-5 h-5 text-green-500 mr-2" />
-                      <span className="text-2xl font-bold text-gray-900">
-                        ₹{price.price.toLocaleString()}
+                      <MapPin className="w-4 h-4 text-blue-500 mr-2" />
+                      <span className="text-sm text-gray-600">{price.location}</span>
+                    </div>
+                    
+                    <div className="flex items-center">
+                      <Calendar className="w-4 h-4 text-gray-400 mr-2" />
+                      <span className="text-sm text-gray-500">
+                        Updated: {new Date(price.updatedAt).toLocaleDateString()}
                       </span>
                     </div>
-                    <span className="text-sm text-gray-500">per {price.unit}</span>
                   </div>
                   
-                  <div className="flex items-center">
-                    <MapPin className="w-4 h-4 text-blue-500 mr-2" />
-                    <span className="text-sm text-gray-600">{price.location}</span>
-                  </div>
-                  
-                  <div className="flex items-center">
-                    <Calendar className="w-4 h-4 text-gray-400 mr-2" />
-                    <span className="text-sm text-gray-500">
-                      Updated: {new Date(price.updatedAt).toLocaleDateString()}
-                    </span>
-                  </div>
+                  {/* Right side - Crop photo */}
+                  {price.cropPhoto && (
+                    <div className="flex-shrink-0">
+                      <img 
+                        src={price.cropPhoto} 
+                        alt={`${price.cropName} photo`}
+                        className="w-20 h-20 md:w-24 md:h-24 object-cover rounded-lg border border-gray-200"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -237,11 +204,24 @@ const MarketPrices: React.FC = () => {
                       <span className="font-medium text-gray-900">{price.cropName}</span>
                       <TrendingUp className="w-4 h-4 text-green-500" />
                     </div>
-                    <div className="text-2xl font-bold text-green-600">
-                      ₹{price.price.toLocaleString()}
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      {price.location} • {price.unit}
+                    <div className="flex gap-3">
+                      <div className="flex-1">
+                        <div className="text-2xl font-bold text-green-600">
+                          ₹{price.price.toLocaleString()}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {price.location} • {price.unit}
+                        </div>
+                      </div>
+                      {price.cropPhoto && (
+                        <div className="flex-shrink-0">
+                          <img 
+                            src={price.cropPhoto} 
+                            alt={`${price.cropName} photo`}
+                            className="w-16 h-16 object-cover rounded-lg border border-gray-200"
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -265,76 +245,7 @@ const MarketPrices: React.FC = () => {
         </div>
       </div>
 
-      {/* Filter Modal */}
-      {showFilterModal && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-            <div className="mt-3">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Filter Market Prices</h3>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Crop Name</label>
-                  <select
-                    value={filterForm.cropName || ''}
-                    onChange={(e) => setFilterForm(prev => ({ ...prev, cropName: e.target.value || undefined }))}
-                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  >
-                    <option value="">All Crops</option>
-                    {cropNames.map(name => (
-                      <option key={name} value={name}>{name}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Location</label>
-                  <select
-                    value={filterForm.location || ''}
-                    onChange={(e) => setFilterForm(prev => ({ ...prev, location: e.target.value || undefined }))}
-                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  >
-                    <option value="">All Locations</option>
-                    {locations.map(location => (
-                      <option key={location} value={location}>{location}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">From Date</label>
-                  <input
-                    type="date"
-                    value={filterForm.fromDate || ''}
-                    onChange={(e) => setFilterForm(prev => ({ ...prev, fromDate: e.target.value || undefined }))}
-                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">To Date</label>
-                  <input
-                    type="date"
-                    value={filterForm.toDate || ''}
-                    onChange={(e) => setFilterForm(prev => ({ ...prev, toDate: e.target.value || undefined }))}
-                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  />
-                </div>
-              </div>
-              <div className="flex justify-end space-x-3 mt-6">
-                <button
-                  onClick={() => setShowFilterModal(false)}
-                  className="btn-secondary"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleFilter}
-                  className="btn-primary"
-                >
-                  Apply Filter
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+
     </div>
   );
 };

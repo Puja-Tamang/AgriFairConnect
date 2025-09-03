@@ -25,6 +25,10 @@ namespace AgriFairConnect.API.Models
         [StringLength(200)]
         public string? ObjectName { get; set; }
 
+        public string? GrantPhoto { get; set; }
+
+        public DateTime? DeadlineAt { get; set; }
+
         [Required]
         public string CreatedBy { get; set; } = string.Empty;
 

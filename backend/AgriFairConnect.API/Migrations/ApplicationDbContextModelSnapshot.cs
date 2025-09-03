@@ -309,7 +309,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6108),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3440),
                             Description = "Staple food crop",
                             IsActive = true,
                             Name = "Rice",
@@ -318,7 +318,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6112),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3448),
                             Description = "Maize crop",
                             IsActive = true,
                             Name = "Corn",
@@ -327,7 +327,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6113),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3450),
                             Description = "Wheat crop",
                             IsActive = true,
                             Name = "Wheat",
@@ -336,7 +336,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6114),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3451),
                             Description = "Barley crop",
                             IsActive = true,
                             Name = "Barley",
@@ -345,7 +345,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6115),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3453),
                             Description = "Potato crop",
                             IsActive = true,
                             Name = "Potato",
@@ -354,7 +354,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6116),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3454),
                             Description = "Onion crop",
                             IsActive = true,
                             Name = "Onion",
@@ -363,7 +363,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6117),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3455),
                             Description = "Garlic crop",
                             IsActive = true,
                             Name = "Garlic",
@@ -372,7 +372,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6118),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3457),
                             Description = "Cabbage crop",
                             IsActive = true,
                             Name = "Cabbage",
@@ -381,7 +381,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6119),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3458),
                             Description = "Cauliflower crop",
                             IsActive = true,
                             Name = "Cauliflower",
@@ -390,7 +390,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6120),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3459),
                             Description = "Tomato crop",
                             IsActive = true,
                             Name = "Tomato",
@@ -399,7 +399,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 11,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6120),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3461),
                             Description = "Chili crop",
                             IsActive = true,
                             Name = "Chili",
@@ -408,7 +408,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 12,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6121),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3462),
                             Description = "Eggplant crop",
                             IsActive = true,
                             Name = "Eggplant",
@@ -417,7 +417,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 13,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6122),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3464),
                             Description = "Bitter gourd crop",
                             IsActive = true,
                             Name = "Bitter Gourd",
@@ -426,7 +426,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 14,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6123),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3465),
                             Description = "Bottle gourd crop",
                             IsActive = true,
                             Name = "Bottle Gourd",
@@ -435,7 +435,7 @@ namespace AgriFairConnect.API.Migrations
                         new
                         {
                             Id = 15,
-                            CreatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6124),
+                            CreatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3466),
                             Description = "Okra crop",
                             IsActive = true,
                             Name = "Okra",
@@ -522,7 +522,7 @@ namespace AgriFairConnect.API.Migrations
                     b.Property<bool>("HasReceivedGrantBefore")
                         .HasColumnType("boolean");
 
-                    b.Property<decimal>("LandSize")
+                    b.Property<decimal?>("LandSize")
                         .HasColumnType("decimal(10,2)");
 
                     b.Property<string>("LandSizeUnit")
@@ -530,7 +530,7 @@ namespace AgriFairConnect.API.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)");
 
-                    b.Property<decimal>("MonthlyIncome")
+                    b.Property<decimal?>("MonthlyIncome")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -626,6 +626,10 @@ namespace AgriFairConnect.API.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
+                    b.Property<string>("CropPhoto")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
@@ -662,7 +666,7 @@ namespace AgriFairConnect.API.Migrations
                             Location = "काठमाडौं",
                             Price = 2500m,
                             Unit = "प्रति मुरी",
-                            UpdatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6298),
+                            UpdatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3726),
                             UpdatedBy = "system"
                         },
                         new
@@ -673,7 +677,7 @@ namespace AgriFairConnect.API.Migrations
                             Location = "काठमाडौं",
                             Price = 2200m,
                             Unit = "प्रति मुरी",
-                            UpdatedAt = new DateTime(2025, 8, 30, 11, 52, 23, 847, DateTimeKind.Utc).AddTicks(6300),
+                            UpdatedAt = new DateTime(2025, 9, 3, 6, 47, 2, 324, DateTimeKind.Utc).AddTicks(3770),
                             UpdatedBy = "system"
                         });
                 });

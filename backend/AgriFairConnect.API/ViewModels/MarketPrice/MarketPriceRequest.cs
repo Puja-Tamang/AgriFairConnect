@@ -19,6 +19,8 @@ namespace AgriFairConnect.API.ViewModels.MarketPrice
         [Required]
         [StringLength(100)]
         public string Location { get; set; } = string.Empty;
+
+        public string? CropPhoto { get; set; }
     }
 
     public class UpdateMarketPriceRequest
@@ -35,6 +37,8 @@ namespace AgriFairConnect.API.ViewModels.MarketPrice
         [StringLength(100)]
         public string Location { get; set; } = string.Empty;
 
+        public string? CropPhoto { get; set; }
+
         public bool IsActive { get; set; } = true;
     }
 
@@ -45,6 +49,7 @@ namespace AgriFairConnect.API.ViewModels.MarketPrice
         public decimal Price { get; set; }
         public string Unit { get; set; } = string.Empty;
         public string Location { get; set; } = string.Empty;
+        public string? CropPhoto { get; set; }
         public string UpdatedBy { get; set; } = string.Empty;
         public DateTime UpdatedAt { get; set; }
         public bool IsActive { get; set; }
@@ -79,5 +84,7 @@ namespace AgriFairConnect.API.ViewModels.MarketPrice
 
         [Required]
         public string Location { get; set; } = string.Empty;
+
+        public string? CropPhoto { get; set; }
     }
 }

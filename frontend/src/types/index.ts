@@ -6,12 +6,19 @@ export interface User {
   type: 'farmer' | 'admin';
   ward?: number;
   municipality?: string;
+  // Add optional farmer profile fields
+  monthlyIncome?: number;
+  landSize?: number;
+  landSizeUnit?: string;
+  crops?: string[];
+  previousGrant?: boolean;
 }
 
 export interface Farmer extends User {
   address: string;
   monthlyIncome: number;
   landSize: number;
+  landSizeUnit?: string;
   crops: string[];
   previousGrant: boolean;
   documents?: {

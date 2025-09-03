@@ -29,7 +29,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     { path: '/farmer/grants', icon: FileText, label: t('nav.grants') },
     { path: '/farmer/applications', icon: User, label: t('nav.applications') },
     { path: '/farmer/market', icon: TrendingUp, label: t('nav.market') },
-    { path: '/farmer/profile', icon: Settings, label: t('nav.profile') },
   ];
 
   const adminMenuItems = [

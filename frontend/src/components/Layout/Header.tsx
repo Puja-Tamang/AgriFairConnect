@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, User, LogOut, Bell } from 'lucide-react';
+import { Menu, X, User, LogOut } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import LanguageToggle from './LanguageToggle';
@@ -32,11 +32,6 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, isMenuOpen }) => {
 
           <div className="flex items-center space-x-4">
             <LanguageToggle className="text-white hover:bg-green-600" showText={true} />
-            
-            <button className="p-2 rounded-full hover:bg-green-600 transition-colors">
-              <Bell className="h-5 w-5" />
-            </button>
-            
             <div className="relative">
               <button
                 onClick={() => setShowProfile(!showProfile)}

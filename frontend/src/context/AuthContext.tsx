@@ -45,38 +45,43 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const token = localStorage.getItem('authToken');
     const savedUser = localStorage.getItem('user');
     
-    if (token && savedUser) {
+    // If no token or user data, ensure clean state
+    if (!token || !savedUser) {
+      console.log('No authentication data found, ensuring clean state');
+      clearAuthData();
+      setIsCheckingAuth(false);
+      setHasCheckedAuth(true);
+      return;
+    }
+    
+    try {
+      const userData = JSON.parse(savedUser);
+      // Validate that the user data has required fields
+      if (!userData || !userData.id || !userData.type) {
+        console.log('Invalid user data found, clearing authentication');
+        clearAuthData();
+        setIsCheckingAuth(false);
+        setHasCheckedAuth(true);
+        return;
+      }
+      
+      // Validate token with backend
       try {
-        const userData = JSON.parse(savedUser);
-        // Validate that the user data has required fields
-        if (userData && userData.id && userData.type) {
-          // Validate token with backend
-          try {
-            const isValid = await apiClient.validateToken(token);
-            if (isValid) {
-              setUser(userData);
-            } else {
-              console.log('Token is invalid, clearing authentication');
-              clearAuthData();
-            }
-          } catch (error) {
-            console.log('Token validation failed, but not clearing auth data to prevent loop');
-            // Don't clear auth data on network errors to prevent infinite loop
-            // Only clear if it's a specific authentication error
-            if (error instanceof Error && error.message.includes('401')) {
-              clearAuthData();
-            }
-          }
+        const isValid = await apiClient.validateToken(token);
+        if (isValid) {
+          console.log('Token is valid, setting user:', userData);
+          setUser(userData);
         } else {
-          console.log('Invalid user data found, clearing authentication');
+          console.log('Token is invalid, clearing authentication');
           clearAuthData();
         }
       } catch (error) {
-        console.error('Error parsing saved user data:', error);
+        console.log('Token validation failed, clearing auth data to prevent issues');
+        // Clear auth data on any error to ensure clean state
         clearAuthData();
       }
-    } else {
-      // Clear any invalid data
+    } catch (error) {
+      console.error('Error parsing saved user data:', error);
       clearAuthData();
     }
     
@@ -124,6 +129,25 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           ward: response.user.wardNumber || 1,
           municipality: response.user.municipality || 'भद्रपुर नगरपालिका'
         };
+
+        // If user is a farmer, fetch their profile data
+        if (userData.type === 'farmer') {
+          try {
+            const farmerProfile = await apiClient.getFarmerProfile();
+            if (farmerProfile) {
+              // Update user data with farmer profile information
+              userData.monthlyIncome = farmerProfile.monthlyIncome;
+              userData.landSize = farmerProfile.landSize;
+              userData.landSizeUnit = farmerProfile.landSizeUnit;
+              userData.crops = farmerProfile.crops.map(crop => crop.name);
+              userData.previousGrant = farmerProfile.hasReceivedGrantBefore;
+            }
+          } catch (error) {
+            console.error('Failed to fetch farmer profile:', error);
+            // Continue with basic user data if profile fetch fails
+          }
+        }
+
         setUser(userData);
         
         // Save token and user data to localStorage

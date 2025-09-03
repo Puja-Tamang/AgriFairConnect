@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
+import { toast, Toaster } from 'react-hot-toast';
 import { apiClient } from '../../services/apiClient';
 import { ApplicationStatus, GrantType, FarmerApplicationResponse } from '../../types/api';
 import ImagePreview from '../Common/ImagePreview';
@@ -198,6 +198,43 @@ const EditGrantApplication: React.FC = () => {
           </div>
         </form>
       </div>
+      
+      {/* Toaster for notifications */}
+      <Toaster 
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            borderRadius: '8px',
+            fontSize: '14px',
+            fontWeight: '500',
+            padding: '12px 16px',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+          },
+          success: {
+            style: {
+              background: '#10b981',
+              color: '#ffffff',
+              border: '1px solid #059669',
+            },
+            iconTheme: {
+              primary: '#ffffff',
+              secondary: '#10b981',
+            },
+          },
+          error: {
+            style: {
+              background: '#ef4444',
+              color: '#ffffff',
+              border: '1px solid #dc2626',
+            },
+            iconTheme: {
+              primary: '#ffffff',
+              secondary: '#ef4444',
+            },
+          },
+        }}
+      />
     </div>
   );
 };

@@ -38,4 +38,8 @@
   .status-rejected {
     @apply bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium;
   }
+  
+  .status-already-applied {
+    @apply bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium;
+  }
 }

@@ -1,9 +1,0 @@
-D:\AGRICONNECT\AgriFairConnect\backend\AgriFairConnect.Tests\bin\Debug\net9.0\.msCoverageSourceRootsMapping_AgriFairConnect.Tests
-D:\AGRICONNECT\AgriFairConnect\backend\AgriFairConnect.Tests\bin\Debug\net9.0\CoverletSourceRootsMapping_AgriFairConnect.Tests
-D:\AGRICONNECT\AgriFairConnect\backend\AgriFairConnect.Tests\obj\Debug\net9.0\AgriFairConnect.Tests.csproj.AssemblyReference.cache
-D:\AGRICONNECT\AgriFairConnect\backend\AgriFairConnect.Tests\obj\Debug\net9.0\MvcTestingAppManifest.json
-D:\AGRICONNECT\AgriFairConnect\backend\AgriFairConnect.Tests\obj\Debug\net9.0\AgriFairConnect.Tests.GeneratedMSBuildEditorConfig.editorconfig
-D:\AGRICONNECT\AgriFairConnect\backend\AgriFairConnect.Tests\obj\Debug\net9.0\AgriFairConnect.Tests.AssemblyInfoInputs.cache
-D:\AGRICONNECT\AgriFairConnect\backend\AgriFairConnect.Tests\obj\Debug\net9.0\AgriFairConnect.Tests.AssemblyInfo.cs
-D:\AGRICONNECT\AgriFairConnect\backend\AgriFairConnect.Tests\obj\Debug\net9.0\AgriFairConnect.Tests.csproj.CoreCompileInputs.cache
-D:\AGRICONNECT\AgriFairConnect\backend\AgriFairConnect.Tests\obj\Debug\net9.0\AgriFairConnect.Tests.sourcelink.json

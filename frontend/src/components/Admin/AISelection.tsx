@@ -172,13 +172,16 @@ const AISelection: React.FC = () => {
     setError(null);
 
     try {
-      if (applications.length === 0) {
-        setError('No applications found for this grant. Please ensure there are submitted applications.');
+      // Filter applications by selected grant ID
+      const grantApplications = applications.filter(app => app.grantId === parseInt(selectedGrant));
+      
+      if (grantApplications.length === 0) {
+        setError(`No applications found for grant ID: ${selectedGrant}. Total applications available: ${applications.length}`);
         return;
       }
 
       // Convert applications to farmer data format
-      const farmerData = applications.map(app => ({
+      const farmerData = grantApplications.map(app => ({
         farmer_id: app.farmerName || `FARMER_${app.id}`,
         full_name: app.farmerName || 'Unknown Farmer',
         phone: app.farmerPhone || '9800000000',

@@ -147,6 +147,9 @@ async def predict_farmer_priority(request: PredictionRequest):
         # Convert Pydantic model to dict
         farmer_dict = request.farmer_data.dict()
         
+        # Debug: Print the farmer data to see what's being sent
+        print(f"Debug: Farmer data keys: {list(farmer_dict.keys())}")
+        
         # Make prediction
         prediction = model.predict_priority(farmer_dict)
         

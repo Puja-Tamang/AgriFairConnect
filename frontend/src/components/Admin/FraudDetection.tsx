@@ -96,16 +96,19 @@ const FraudDetection: React.FC = () => {
         return;
       }
 
-      if (applications.length === 0) {
+      // Filter applications by selected grant ID
+      const grantApplications = applications.filter(app => app.grantId === parseInt(selectedGrant));
+      
+      if (grantApplications.length === 0) {
         setError('No applications found for this grant. Please ensure there are submitted applications.');
-        setDebugInfo(`Applications count: ${applications.length}`);
+        setDebugInfo(`Applications count: ${grantApplications.length} for grant ID: ${selectedGrant}`);
         return;
       }
 
-      setDebugInfo(`Found ${applications.length} applications to analyze`);
+      setDebugInfo(`Found ${grantApplications.length} applications for grant ID: ${selectedGrant} (Total applications: ${applications.length})`);
 
       // Prepare application data for fraud detection
-      const applicationsData = applications.map(app => ({
+      const applicationsData = grantApplications.map(app => ({
         farmer_id: app.farmerName || `FARMER_${app.id}`,
         farmer_name: app.farmerName || 'Unknown Farmer',
         monthly_income: app.monthlyIncome || 15000,

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Sprout, Users, User, Lock, UserPlus } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import LanguageToggle from '../Layout/LanguageToggle';
 import { apiClient } from '../../services/apiClient';
 
@@ -20,12 +20,28 @@ const Login: React.FC = () => {
     e.preventDefault();
     
     if (!username.trim()) {
-      toast.error(t('login.usernameRequired'));
+      toast.error(t('login.usernameRequired'), {
+        duration: 3000,
+        position: 'top-right',
+        style: {
+          background: '#ef4444',
+          color: '#ffffff',
+          border: '1px solid #dc2626',
+        },
+      });
       return;
     }
 
     if (!password.trim()) {
-      toast.error(t('login.passwordRequired'));
+      toast.error(t('login.passwordRequired'), {
+        duration: 3000,
+        position: 'top-right',
+        style: {
+          background: '#ef4444',
+          color: '#ffffff',
+          border: '1px solid #dc2626',
+        },
+      });
       return;
     }
 
@@ -50,13 +66,68 @@ const Login: React.FC = () => {
         } else {
           navigate('/admin/dashboard');
         }
-        toast.success(t('login.loginSuccess'));
+        toast.success(t('login.loginSuccess'), {
+          duration: 3000,
+          position: 'top-right',
+          style: {
+            background: '#10b981',
+            color: '#ffffff',
+            border: '1px solid #059669',
+          },
+        });
       } else {
-        toast.error(response.message || t('login.loginFailed'));
+        // Handle specific error messages from backend
+        let errorMessage = response.message || t('login.loginFailed');
+        
+        // Map backend error messages to user-friendly messages
+        if (response.message === 'Invalid username or password') {
+          errorMessage = 'Username or password is incorrect. Please try again.';
+        } else if (response.message === 'Invalid user type for this account') {
+          errorMessage = `This account is not registered as a ${userType}. Please select the correct user type.`;
+        } else if (response.errors && response.errors.length > 0) {
+          // Use the first error from the errors array
+          errorMessage = response.errors[0];
+        }
+        
+        toast.error(errorMessage, {
+          duration: 3000,
+          position: 'top-right',
+          style: {
+            background: '#ef4444',
+            color: '#ffffff',
+            border: '1px solid #dc2626',
+          },
+        });
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Login error:', error);
-      toast.error(t('login.loginFailed'));
+      
+      // Handle network or server errors
+      let errorMessage = t('login.loginFailed');
+      
+      if (error.message) {
+        if (error.message.includes('Network error') || error.message.includes('ECONNREFUSED')) {
+          errorMessage = 'Unable to connect to server. Please check your internet connection and try again.';
+        } else if (error.message.includes('timeout')) {
+          errorMessage = 'Request timed out. Please try again.';
+        } else if (error.message.includes('401') || error.message.includes('Unauthorized')) {
+          errorMessage = 'Username or password is incorrect. Please try again.';
+        } else if (error.message.includes('500') || error.message.includes('Internal Server Error')) {
+          errorMessage = 'Server error occurred. Please try again later.';
+        } else {
+          errorMessage = error.message;
+        }
+      }
+      
+      toast.error(errorMessage, {
+        duration: 3000,
+        position: 'top-right',
+        style: {
+          background: '#ef4444',
+          color: '#ffffff',
+          border: '1px solid #dc2626',
+        },
+      });
     } finally {
       setIsLoading(false);
     }
@@ -64,7 +135,15 @@ const Login: React.FC = () => {
 
   const handleSignup = async () => {
     if (userType !== 'farmer') {
-      toast.error(t('login.onlyFarmersSignup'));
+      toast.error(t('login.onlyFarmersSignup'), {
+        duration: 3000,
+        position: 'top-right',
+        style: {
+          background: '#ef4444',
+          color: '#ffffff',
+          border: '1px solid #dc2626',
+        },
+      });
       return;
     }
 
@@ -190,6 +269,43 @@ const Login: React.FC = () => {
           </p>
         </div>
       </div>
+      
+      {/* Toaster for notifications */}
+      <Toaster 
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            borderRadius: '8px',
+            fontSize: '14px',
+            fontWeight: '500',
+            padding: '12px 16px',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+          },
+          success: {
+            style: {
+              background: '#10b981',
+              color: '#ffffff',
+              border: '1px solid #059669',
+            },
+            iconTheme: {
+              primary: '#ffffff',
+              secondary: '#10b981',
+            },
+          },
+          error: {
+            style: {
+              background: '#ef4444',
+              color: '#ffffff',
+              border: '1px solid #dc2626',
+            },
+            iconTheme: {
+              primary: '#ffffff',
+              secondary: '#ef4444',
+            },
+          },
+        }}
+      />
     </div>
   );
 };

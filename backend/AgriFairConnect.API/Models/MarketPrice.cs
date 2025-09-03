@@ -24,6 +24,9 @@ namespace AgriFairConnect.API.Models
         [StringLength(100)]
         public string Location { get; set; } = string.Empty;
 
+        [StringLength(500)]
+        public string? CropPhoto { get; set; }
+
         [Required]
         public string UpdatedBy { get; set; } = string.Empty;
 

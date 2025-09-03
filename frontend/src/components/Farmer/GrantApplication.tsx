@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { 
   ArrowLeft, 
   FileText, 
@@ -15,9 +15,10 @@ import {
   Mail,
   Home
 } from 'lucide-react';
-import { toast } from 'react-hot-toast';
+import { toast, Toaster } from 'react-hot-toast';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
+import { useData } from '../../context/DataContext';
 import { apiClient } from '../../services/apiClient';
 import { Grant, GrantType } from '../../types/api';
 
@@ -50,6 +51,7 @@ const GrantApplication: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { t } = useLanguage();
+  const { applications, fetchApplications } = useData();
 
   // Debug: Log user object
   console.log('User object:', user);
@@ -57,6 +59,8 @@ const GrantApplication: React.FC = () => {
   const [grant, setGrant] = useState<Grant | null>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [hasAlreadyApplied, setHasAlreadyApplied] = useState(false);
+  const [existingApplication, setExistingApplication] = useState<any>(null);
   const [formData, setFormData] = useState<GrantApplicationForm>({
     grantId: parseInt(grantId || '0'),
     farmerId: user?.id || '',
@@ -94,6 +98,38 @@ const GrantApplication: React.FC = () => {
 
     fetchGrant();
   }, [grantId, navigate]);
+
+  // Check if farmer has already applied for this grant
+  useEffect(() => {
+    const checkExistingApplication = async () => {
+      if (!grantId || !user) return;
+      
+      try {
+        await fetchApplications();
+      } catch (error) {
+        console.error('Failed to fetch applications:', error);
+      }
+    };
+
+    checkExistingApplication();
+  }, [grantId, user, fetchApplications]);
+
+  // Check for existing application when applications are loaded
+  useEffect(() => {
+    if (!applications || !user || !grantId) return;
+    
+    const existingApp = applications.find(app => 
+      app.grantId === parseInt(grantId) && 
+      app.farmerName === user.name
+    );
+    
+    if (existingApp) {
+      setHasAlreadyApplied(true);
+      setExistingApplication(existingApp);
+      toast.error('You have already applied for this grant!');
+      navigate('/farmer/applications');
+    }
+  }, [applications, user, grantId, navigate]);
 
   // Update form data when user object is loaded
   useEffect(() => {
@@ -133,13 +169,20 @@ const GrantApplication: React.FC = () => {
     
     if (!grant) return;
 
+    // Check if farmer has already applied
+    if (hasAlreadyApplied) {
+      toast.error('You have already applied for this grant!');
+      navigate('/farmer/applications');
+      return;
+    }
+
     // Validate required fields
     if (!formData.farmerName || !formData.farmerPhone || !formData.farmerAddress) {
       toast.error('Please fill in all required fields');
       return;
     }
 
-    if (!formData.documents.citizenImage || !formData.documents.landOwnership || !formData.documents.landTax) {
+    if (!formData.documents.citizenImage || !formData.documents.landTax) {
       toast.error('Please upload all required documents');
       return;
     }
@@ -216,24 +259,40 @@ const GrantApplication: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center py-6">
-            <button
-              onClick={() => navigate('/farmer/grants')}
-              className="mr-4 p-2 rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">Apply for Grant</h1>
-              <p className="text-gray-600 mt-1">{grant.title}</p>
-            </div>
-          </div>
+      <div className="bg-white shadow-sm">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+          <button onClick={() => navigate('/farmer/grants')} className="text-green-600 hover:text-green-700 flex items-center">
+            <ArrowLeft className="w-5 h-5 mr-2" />
+            Back to Grants
+          </button>
+          <h1 className="text-lg font-semibold text-gray-900">Apply for Grant</h1>
         </div>
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Grant Photo (top) */}
+        {grant?.grantPhoto && (
+          <div className="mb-6">
+            <div className="w-full bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center">
+              <img
+                src={grant.grantPhoto}
+                alt={`${grant.title} photo`}
+                className="w-full h-40 md:h-56 object-contain"
+              />
+            </div>
+            <div className="mt-2 text-right">
+              <a
+                href={grant.grantPhoto}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm text-blue-600 hover:text-blue-700"
+              >
+                Open full image
+              </a>
+            </div>
+          </div>
+        )}
+
         {/* Grant Details Card */}
         <div className="bg-white rounded-lg shadow mb-8">
           <div className="p-6">
@@ -278,6 +337,24 @@ const GrantApplication: React.FC = () => {
         <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow">
           <div className="p-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-6">Application Form</h2>
+            
+            {/* Already Applied Warning */}
+            {hasAlreadyApplied && existingApplication && (
+              <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <div className="flex items-center">
+                  <AlertCircle className="w-5 h-5 text-yellow-600 mr-2" />
+                  <div>
+                    <h3 className="text-sm font-medium text-yellow-800">Already Applied</h3>
+                    <p className="text-sm text-yellow-700 mt-1">
+                      You have already applied for this grant on {new Date(existingApplication.appliedAt).toLocaleDateString()}. 
+                      <Link to="/farmer/applications" className="text-yellow-800 underline ml-1">
+                        View your application
+                      </Link>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
             
             {/* Personal Information */}
             <div className="mb-8">
@@ -533,13 +610,18 @@ const GrantApplication: React.FC = () => {
               </button>
               <button
                 type="submit"
-                disabled={submitting}
+                disabled={submitting || hasAlreadyApplied}
                 className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
               >
                 {submitting ? (
                   <>
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                     Submitting...
+                  </>
+                ) : hasAlreadyApplied ? (
+                  <>
+                    <CheckCircle className="w-4 h-4 mr-2" />
+                    Already Applied
                   </>
                 ) : (
                   <>
@@ -552,6 +634,43 @@ const GrantApplication: React.FC = () => {
           </div>
         </form>
       </div>
+      
+      {/* Toaster for notifications */}
+      <Toaster 
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            borderRadius: '8px',
+            fontSize: '14px',
+            fontWeight: '500',
+            padding: '12px 16px',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+          },
+          success: {
+            style: {
+              background: '#10b981',
+              color: '#ffffff',
+              border: '1px solid #059669',
+            },
+            iconTheme: {
+              primary: '#ffffff',
+              secondary: '#10b981',
+            },
+          },
+          error: {
+            style: {
+              background: '#ef4444',
+              color: '#ffffff',
+              border: '1px solid #dc2626',
+            },
+            iconTheme: {
+              primary: '#ffffff',
+              secondary: '#ef4444',
+            },
+          },
+        }}
+      />
     </div>
   );
 };

@@ -23,6 +23,7 @@ namespace AgriFairConnect.API.Services
                 Price = request.Price,
                 Unit = request.Unit,
                 Location = request.Location,
+                CropPhoto = request.CropPhoto,
                 UpdatedBy = updatedBy,
                 UpdatedAt = DateTime.UtcNow,
                 IsActive = true
@@ -38,6 +39,7 @@ namespace AgriFairConnect.API.Services
                 Price = marketPrice.Price,
                 Unit = marketPrice.Unit,
                 Location = marketPrice.Location,
+                CropPhoto = marketPrice.CropPhoto,
                 UpdatedBy = marketPrice.UpdatedBy,
                 UpdatedAt = marketPrice.UpdatedAt,
                 IsActive = marketPrice.IsActive
@@ -56,6 +58,7 @@ namespace AgriFairConnect.API.Services
                 Price = marketPrice.Price,
                 Unit = marketPrice.Unit,
                 Location = marketPrice.Location,
+                CropPhoto = marketPrice.CropPhoto,
                 UpdatedBy = marketPrice.UpdatedBy,
                 UpdatedAt = marketPrice.UpdatedAt,
                 IsActive = marketPrice.IsActive
@@ -75,6 +78,7 @@ namespace AgriFairConnect.API.Services
                 Price = mp.Price,
                 Unit = mp.Unit,
                 Location = mp.Location,
+                CropPhoto = mp.CropPhoto,
                 UpdatedBy = mp.UpdatedBy,
                 UpdatedAt = mp.UpdatedAt,
                 IsActive = mp.IsActive
@@ -95,6 +99,7 @@ namespace AgriFairConnect.API.Services
                 Price = mp.Price,
                 Unit = mp.Unit,
                 Location = mp.Location,
+                CropPhoto = mp.CropPhoto,
                 UpdatedBy = mp.UpdatedBy,
                 UpdatedAt = mp.UpdatedAt,
                 IsActive = mp.IsActive
@@ -115,6 +120,7 @@ namespace AgriFairConnect.API.Services
                 Price = mp.Price,
                 Unit = mp.Unit,
                 Location = mp.Location,
+                CropPhoto = mp.CropPhoto,
                 UpdatedBy = mp.UpdatedBy,
                 UpdatedAt = mp.UpdatedAt,
                 IsActive = mp.IsActive
@@ -135,6 +141,7 @@ namespace AgriFairConnect.API.Services
                 Price = mp.Price,
                 Unit = mp.Unit,
                 Location = mp.Location,
+                CropPhoto = mp.CropPhoto,
                 UpdatedBy = mp.UpdatedBy,
                 UpdatedAt = mp.UpdatedAt,
                 IsActive = mp.IsActive
@@ -181,6 +188,7 @@ namespace AgriFairConnect.API.Services
                 Price = mp.Price,
                 Unit = mp.Unit,
                 Location = mp.Location,
+                CropPhoto = mp.CropPhoto,
                 UpdatedBy = mp.UpdatedBy,
                 UpdatedAt = mp.UpdatedAt,
                 IsActive = mp.IsActive
@@ -196,6 +204,7 @@ namespace AgriFairConnect.API.Services
             marketPrice.Price = request.Price;
             marketPrice.Unit = request.Unit;
             marketPrice.Location = request.Location;
+            marketPrice.CropPhoto = request.CropPhoto;
             marketPrice.IsActive = request.IsActive;
             marketPrice.UpdatedBy = updatedBy;
             marketPrice.UpdatedAt = DateTime.UtcNow;
@@ -209,6 +218,7 @@ namespace AgriFairConnect.API.Services
                 Price = marketPrice.Price,
                 Unit = marketPrice.Unit,
                 Location = marketPrice.Location,
+                CropPhoto = marketPrice.CropPhoto,
                 UpdatedBy = marketPrice.UpdatedBy,
                 UpdatedAt = marketPrice.UpdatedAt,
                 IsActive = marketPrice.IsActive
@@ -259,6 +269,7 @@ namespace AgriFairConnect.API.Services
                     Price = priceItem.Price,
                     Unit = priceItem.Unit,
                     Location = priceItem.Location,
+                    CropPhoto = priceItem.CropPhoto, // Add this line
                     UpdatedBy = updatedBy,
                     UpdatedAt = DateTime.UtcNow,
                     IsActive = true

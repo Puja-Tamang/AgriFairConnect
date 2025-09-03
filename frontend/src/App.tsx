@@ -20,10 +20,6 @@ import FarmerApplications from './components/Farmer/FarmerApplications';
 import AdminApplications from './components/Admin/AdminApplications';
 import AISelection from './components/Admin/AISelection';
 import FraudDetection from './components/Admin/FraudDetection';
-import BackendTest from './components/Test/BackendTest';
-import DashboardTest from './components/Test/DashboardTest';
-import UserDebug from './components/Test/UserDebug';
-import ClearAuth from './components/Test/ClearAuth';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode, userType?: 'farmer' | 'admin' }> = ({ 
   children, 
@@ -54,10 +50,6 @@ const AppRoutes: React.FC = () => {
       } />
       
       <Route path="/farmer/register" element={<FarmerRegistration />} />
-      <Route path="/test/backend" element={<BackendTest />} />
-      <Route path="/test/dashboard" element={<DashboardTest />} />
-      <Route path="/test/user" element={<UserDebug />} />
-      <Route path="/test/clear-auth" element={<ClearAuth />} />
 
       {/* Protected Farmer Routes */}
       <Route path="/farmer/dashboard" element={

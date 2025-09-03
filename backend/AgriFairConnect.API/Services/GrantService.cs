@@ -42,6 +42,8 @@ namespace AgriFairConnect.API.Services
                 Type = request.Type,
                 Amount = request.Amount,
                 ObjectName = request.ObjectName,
+                GrantPhoto = request.GrantPhoto,
+                DeadlineAt = request.DeadlineAt,
                 CreatedBy = createdBy,
                 CreatedAt = DateTime.UtcNow,
                 IsActive = true
@@ -88,6 +90,8 @@ namespace AgriFairConnect.API.Services
                 Type = grant.Type,
                 Amount = grant.Amount,
                 ObjectName = grant.ObjectName,
+                GrantPhoto = grant.GrantPhoto,
+                DeadlineAt = grant.DeadlineAt,
                 CreatedBy = grant.CreatedBy,
                 CreatedAt = grant.CreatedAt,
                 UpdatedAt = grant.UpdatedAt,
@@ -118,6 +122,8 @@ namespace AgriFairConnect.API.Services
                 Type = g.Type,
                 Amount = g.Amount,
                 ObjectName = g.ObjectName,
+                GrantPhoto = g.GrantPhoto,
+                DeadlineAt = g.DeadlineAt,
                 CreatedBy = g.CreatedBy,
                 CreatedAt = g.CreatedAt,
                 UpdatedAt = g.UpdatedAt,
@@ -141,6 +147,9 @@ namespace AgriFairConnect.API.Services
                 .OrderByDescending(g => g.CreatedAt)
                 .ToListAsync();
 
+            // Exclude expired grants
+            grants = grants.Where(g => !g.DeadlineAt.HasValue || g.DeadlineAt.Value > DateTime.UtcNow).ToList();
+
             return grants.Select(g => new GrantResponse
             {
                 Id = g.Id,
@@ -149,6 +158,8 @@ namespace AgriFairConnect.API.Services
                 Type = g.Type,
                 Amount = g.Amount,
                 ObjectName = g.ObjectName,
+                GrantPhoto = g.GrantPhoto,
+                DeadlineAt = g.DeadlineAt,
                 CreatedBy = g.CreatedBy,
                 CreatedAt = g.CreatedAt,
                 UpdatedAt = g.UpdatedAt,
@@ -172,6 +183,9 @@ namespace AgriFairConnect.API.Services
                 .OrderByDescending(g => g.CreatedAt)
                 .ToListAsync();
 
+            // Exclude expired grants
+            grants = grants.Where(g => !g.DeadlineAt.HasValue || g.DeadlineAt.Value > DateTime.UtcNow).ToList();
+
             return grants.Select(g => new GrantResponse
             {
                 Id = g.Id,
@@ -180,6 +194,8 @@ namespace AgriFairConnect.API.Services
                 Type = g.Type,
                 Amount = g.Amount,
                 ObjectName = g.ObjectName,
+                GrantPhoto = g.GrantPhoto,
+                DeadlineAt = g.DeadlineAt,
                 CreatedBy = g.CreatedBy,
                 CreatedAt = g.CreatedAt,
                 UpdatedAt = g.UpdatedAt,
@@ -225,6 +241,8 @@ namespace AgriFairConnect.API.Services
             grant.Type = request.Type;
             grant.Amount = request.Amount;
             grant.ObjectName = request.ObjectName;
+            grant.GrantPhoto = request.GrantPhoto;
+            grant.DeadlineAt = request.DeadlineAt;
             grant.UpdatedAt = DateTime.UtcNow;
 
             // Remove existing target areas
@@ -304,6 +322,8 @@ namespace AgriFairConnect.API.Services
                 Type = grant.Type,
                 Amount = grant.Amount,
                 ObjectName = grant.ObjectName,
+                GrantPhoto = grant.GrantPhoto,
+                DeadlineAt = grant.DeadlineAt,
                 CreatedBy = grant.CreatedBy,
                 CreatedAt = grant.CreatedAt,
                 UpdatedAt = grant.UpdatedAt,
@@ -353,6 +373,8 @@ namespace AgriFairConnect.API.Services
                     Type = grant.Type,
                     Amount = grant.Amount,
                     ObjectName = grant.ObjectName,
+                    GrantPhoto = grant.GrantPhoto,
+                    DeadlineAt = grant.DeadlineAt,
                     CreatedBy = grant.CreatedBy,
                     CreatedAt = grant.CreatedAt,
                     UpdatedAt = grant.UpdatedAt,

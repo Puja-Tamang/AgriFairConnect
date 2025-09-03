@@ -1,12 +1,12 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useRef, ReactNode } from 'react';
-import { MarketPrice } from '../types';
-import { Grant, Crop, FarmerApplicationResponse } from '../types/api';
+import { Grant, Crop, FarmerApplicationResponse, MarketPriceResponse } from '../types/api';
 import { apiClient } from '../services/apiClient';
+import { useAuth } from './AuthContext';
 
 interface DataContextType {
   grants: Grant[];
   applications: FarmerApplicationResponse[];
-  marketPrices: MarketPrice[];
+  marketPrices: MarketPriceResponse[];
   crops: Crop[];
   isLoading: boolean;
   error: string | null;
@@ -15,10 +15,11 @@ interface DataContextType {
   deleteGrant: (id: number) => void;
   addApplication: (application: FarmerApplicationResponse) => void;
   updateApplication: (id: number, updates: Partial<FarmerApplicationResponse>) => void;
-  updateMarketPrice: (price: MarketPrice) => void;
+  updateMarketPrice: (price: MarketPriceResponse) => void;
   fetchCrops: () => Promise<void>;
   fetchGrants: () => Promise<void>;
   fetchApplications: () => Promise<void>;
+  fetchFarmerApplications: () => Promise<void>;
   refreshData: () => Promise<void>;
 }
 
@@ -72,24 +73,28 @@ const mockGrants: Grant[] = [
   },
 ];
 
-const mockMarketPrices: MarketPrice[] = [
+const mockMarketPrices: MarketPriceResponse[] = [
   {
-    id: '1',
+    id: 1,
     cropName: 'धान',
     price: 2500,
     unit: 'प्रति मुरी',
     location: 'काठमाडौं',
-    updatedAt: new Date(),
+    cropPhoto: undefined,
     updatedBy: 'admin1',
+    updatedAt: new Date().toISOString(),
+    isActive: true,
   },
   {
-    id: '2',
+    id: 2,
     cropName: 'मकै',
     price: 2200,
     unit: 'प्रति मुरी',
     location: 'काठमाडौं',
-    updatedAt: new Date(),
+    cropPhoto: undefined,
     updatedBy: 'admin1',
+    updatedAt: new Date().toISOString(),
+    isActive: true,
   },
 ];
 
@@ -98,9 +103,10 @@ interface DataProviderProps {
 }
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
+  const { user } = useAuth();
   const [grants, setGrants] = useState<Grant[]>(mockGrants);
   const [applications, setApplications] = useState<FarmerApplicationResponse[]>([]);
-  const [marketPrices, setMarketPrices] = useState<MarketPrice[]>(mockMarketPrices);
+  const [marketPrices, setMarketPrices] = useState<MarketPriceResponse[]>(mockMarketPrices);
   const [crops, setCrops] = useState<Crop[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -130,8 +136,9 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     ));
   };
 
-  const updateMarketPrice = (price: MarketPrice) => {
+  const updateMarketPrice = (price: MarketPriceResponse) => {
     setMarketPrices(prev => {
+      if (!prev) return [price];
       const existing = prev.find(p => p.id === price.id);
       if (existing) {
         return prev.map(p => p.id === price.id ? price : p);
@@ -171,6 +178,12 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   }, []);
 
   const fetchApplications = useCallback(async () => {
+    // Only fetch applications for admin users
+    if (!user || user.type !== 'admin') {
+      console.log('Skipping applications fetch - user is not admin');
+      return;
+    }
+
     setIsLoading(true);
     setError(null);
     try {
@@ -182,13 +195,33 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [user]);
+
+  const fetchFarmerApplications = useCallback(async () => {
+    // Only fetch applications for farmer users
+    if (!user || user.type !== 'farmer') {
+      console.log('Skipping farmer applications fetch - user is not farmer');
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+    try {
+      const applicationsData = await apiClient.getFarmerApplications();
+      setApplications(applicationsData);
+    } catch (error: any) {
+      setError(error.message || 'Failed to fetch farmer applications');
+      console.error('Error fetching farmer applications:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [user]);
 
   const refreshData = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     try {
-      await Promise.all([
+      const promises = [
         apiClient.getAllCrops().then(setCrops).catch(error => {
           setError(error.message || 'Failed to fetch crops');
           console.error('Error fetching crops:', error);
@@ -196,27 +229,49 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         apiClient.getActiveGrants().then(setGrants).catch(error => {
           setError(error.message || 'Failed to fetch grants');
           console.error('Error fetching grants:', error);
-        }),
-        apiClient.getAllApplications().then(setApplications).catch(error => {
-          setError(error.message || 'Failed to fetch applications');
-          console.error('Error fetching applications:', error);
         })
-      ]);
+      ];
+
+      // Only fetch applications for admin users
+      if (user && user.type === 'admin') {
+        promises.push(
+          apiClient.getAllApplications().then(setApplications).catch(error => {
+            setError(error.message || 'Failed to fetch applications');
+            console.error('Error fetching applications:', error);
+          })
+        );
+      }
+
+      // Fetch farmer applications for farmer users
+      if (user && user.type === 'farmer') {
+        promises.push(
+          apiClient.getFarmerApplications().then(setApplications).catch(error => {
+            setError(error.message || 'Failed to fetch farmer applications');
+            console.error('Error fetching farmer applications:', error);
+          })
+        );
+      }
+
+      await Promise.all(promises);
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [user]);
 
   // Load data on component mount - only run once
   useEffect(() => {
-    if (!hasLoadedDataRef.current) {
+    if (!hasLoadedDataRef.current && user) {
       const loadInitialData = async () => {
         hasLoadedDataRef.current = true;
-        await Promise.all([fetchCrops(), fetchGrants(), fetchApplications()]);
+        if (user.type === 'farmer') {
+          await Promise.all([fetchCrops(), fetchGrants(), fetchFarmerApplications()]);
+        } else {
+          await Promise.all([fetchCrops(), fetchGrants(), fetchApplications()]);
+        }
       };
       loadInitialData();
     }
-  }, []); // Empty dependency array to run only once
+  }, [user, fetchCrops, fetchGrants, fetchApplications, fetchFarmerApplications]); // Run when user changes
 
   return (
     <DataContext.Provider 
@@ -236,6 +291,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         fetchCrops,
         fetchGrants,
         fetchApplications,
+        fetchFarmerApplications,
         refreshData,
       }}
     >

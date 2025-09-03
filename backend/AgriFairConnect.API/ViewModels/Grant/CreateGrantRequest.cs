@@ -22,6 +22,10 @@ namespace AgriFairConnect.API.ViewModels.Grant
         [StringLength(200)]
         public string? ObjectName { get; set; }
 
+        public string? GrantPhoto { get; set; }
+
+        public DateTime? DeadlineAt { get; set; }
+
         [Required]
         public List<int> TargetWards { get; set; } = new List<int>();
 

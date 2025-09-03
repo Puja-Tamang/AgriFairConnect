@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Users, FileText, DollarSign, TrendingUp, Eye, CheckCircle, XCircle, Clock, RefreshCw } from 'lucide-react';
+import { Users, FileText, DollarSign, TrendingUp, Eye, CheckCircle, XCircle, Clock, RefreshCw, MapPin, Bell } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { useAuth } from '../../context/AuthContext';
@@ -8,6 +8,7 @@ import { ApplicationStatus, FarmerApplicationResponse } from '../../types/api';
 import { apiClient } from '../../services/apiClient';
 import AIInsightsWidget from './AIInsightsWidget';
 import FraudInsightsWidget from './FraudInsightsWidget';
+import toast from 'react-hot-toast';
 
 const AdminDashboard: React.FC = () => {
   const { grants, marketPrices } = useData();
@@ -15,54 +16,77 @@ const AdminDashboard: React.FC = () => {
   const { user } = useAuth();
   const [applications, setApplications] = useState<FarmerApplicationResponse[]>([]);
   const [loading, setLoading] = useState(true);
+  const seenAppIdsRef = useRef<Set<number>>(new Set());
+  const [pendingCount, setPendingCount] = useState<number>(0);
 
-  // Fetch applications data
   const fetchApplications = async () => {
-    if (user?.type === 'admin') {
-      try {
-        setLoading(true);
-        const applicationsData = await apiClient.getAllApplications();
-        setApplications(applicationsData);
-        console.log('Fetched applications:', applicationsData.length);
-      } catch (error: any) {
-        console.error('Error fetching applications:', error);
-      } finally {
-        setLoading(false);
+    if (user?.type !== 'admin') return;
+    try {
+      setLoading(true);
+      const data = await apiClient.getAllApplications();
+
+      // Toast for new applications (not seen before)
+      const seen = seenAppIdsRef.current;
+      const newlyArrived = data.filter(a => !seen.has(a.id));
+      if (seen.size !== 0 && newlyArrived.length > 0) {
+        newlyArrived.forEach(a => {
+          const grantName = a.grantTitle || 'a grant';
+          toast.success(`New application for ${grantName}`, { duration: 3000, position: 'top-right' });
+        });
       }
+      // Update seen set
+      data.forEach(a => seen.add(a.id));
+
+      // Store list and pending count for badge
+      setApplications(data);
+      setPendingCount(data.filter(a => a.status === ApplicationStatus.Pending).length);
+    } catch (e) {
+      console.error('Error fetching applications:', e);
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Fetch applications data when component mounts
   useEffect(() => {
     fetchApplications();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
-  // Refresh applications every 30 seconds for real-time updates
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (user?.type === 'admin') {
-        fetchApplications();
-      }
-    }, 30000); // 30 seconds
+    const id = setInterval(() => fetchApplications(), 30000);
+    return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    return () => clearInterval(interval);
-  }, [user]);
-
-  // Helper function to get status string from enum
   const getStatusString = (status: ApplicationStatus): string => {
     switch (status) {
-      case ApplicationStatus.Pending:
-        return 'pending';
-      case ApplicationStatus.Processing:
-        return 'processing';
-      case ApplicationStatus.Approved:
-        return 'approved';
-      case ApplicationStatus.Rejected:
-        return 'rejected';
-      default:
-        return 'pending';
+      case ApplicationStatus.Pending: return 'pending';
+      case ApplicationStatus.Processing: return 'processing';
+      case ApplicationStatus.Approved: return 'approved';
+      case ApplicationStatus.Rejected: return 'rejected';
+      default: return 'pending';
     }
   };
+
+  // Simple notification header row with bell and badge
+  const NotificationHeader = () => (
+    <div className="mb-6 flex items-center justify-between">
+      <div className="flex items-center">
+        <div className="relative mr-2">
+          <Bell className="h-5 w-5 text-green-600" />
+          {pendingCount > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">
+              {pendingCount}
+            </span>
+          )}
+        </div>
+        <span className="text-sm text-gray-700">
+          {pendingCount > 0 ? `${pendingCount} pending application${pendingCount > 1 ? 's' : ''}` : 'No pending applications'}
+        </span>
+      </div>
+      <Link to="/admin/applications" className="text-green-600 hover:text-green-700 text-sm font-medium">View all →</Link>
+    </div>
+  );
 
   const stats = [
     {
@@ -141,6 +165,63 @@ const AdminDashboard: React.FC = () => {
         <p className="text-gray-600 mt-2">{t('app.subtitle')}</p>
       </div>
 
+      {/* Application Status Overview (moved up) */}
+      <NotificationHeader />
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <Link to="/admin/applications?status=pending" className="card p-6 hover:shadow-lg transition-shadow cursor-pointer">
+          <div className="flex items-center">
+            <div className="p-3 bg-yellow-100 rounded-full">
+              <Clock className="h-8 w-8 text-yellow-600" />
+            </div>
+            <div className="ml-4">
+              <p className="text-3xl font-bold text-yellow-600">
+                {loading ? '...' : applicationStats.pending}
+              </p>
+              <p className="text-sm text-gray-600 font-medium">Pending</p>
+            </div>
+          </div>
+        </Link>
+        <Link to="/admin/applications?status=processing" className="card p-6 hover:shadow-lg transition-shadow cursor-pointer">
+          <div className="flex items-center">
+            <div className="p-3 bg-blue-100 rounded-full">
+              <Eye className="h-8 w-8 text-blue-600" />
+            </div>
+            <div className="ml-4">
+              <p className="text-3xl font-bold text-blue-600">
+                {loading ? '...' : applicationStats.processing}
+              </p>
+              <p className="text-sm text-gray-600 font-medium">Processing</p>
+            </div>
+          </div>
+        </Link>
+        <Link to="/admin/applications?status=approved" className="card p-6 hover:shadow-lg transition-shadow cursor-pointer">
+          <div className="flex items-center">
+            <div className="p-3 bg-green-100 rounded-full">
+              <CheckCircle className="h-8 w-8 text-green-600" />
+            </div>
+            <div className="ml-4">
+              <p className="text-3xl font-bold text-green-600">
+                {loading ? '...' : applicationStats.approved}
+              </p>
+              <p className="text-sm text-gray-600 font-medium">Approved</p>
+            </div>
+          </div>
+        </Link>
+        <Link to="/admin/applications?status=rejected" className="card p-6 hover:shadow-lg transition-shadow cursor-pointer">
+          <div className="flex items-center">
+            <div className="p-3 bg-red-100 rounded-full">
+              <XCircle className="h-8 w-8 text-red-600" />
+            </div>
+            <div className="ml-4">
+              <p className="text-3xl font-bold text-red-600">
+                {loading ? '...' : applicationStats.rejected}
+              </p>
+              <p className="text-sm text-gray-600 font-medium">Rejected</p>
+            </div>
+          </div>
+        </Link>
+      </div>
+
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => {
@@ -170,78 +251,6 @@ const AdminDashboard: React.FC = () => {
             </div>
           );
         })}
-      </div>
-
-      {/* Application Status Overview */}
-      <div className="mb-6">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-semibold text-gray-900">Application Status Overview</h2>
-          <button
-            onClick={fetchApplications}
-            disabled={loading}
-            className="flex items-center px-3 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 transition-colors"
-          >
-            <RefreshCw className={`w-4 h-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
-            Refresh
-          </button>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Link to="/admin/applications?status=pending" className="card p-6 hover:shadow-lg transition-shadow cursor-pointer">
-            <div className="flex items-center">
-              <div className="p-3 bg-yellow-100 rounded-full">
-                <Clock className="h-8 w-8 text-yellow-600" />
-              </div>
-              <div className="ml-4">
-                <p className="text-3xl font-bold text-yellow-600">
-                  {loading ? '...' : applicationStats.pending}
-                </p>
-                <p className="text-sm text-gray-600 font-medium">Pending</p>
-              </div>
-            </div>
-          </Link>
-          
-          <Link to="/admin/applications?status=processing" className="card p-6 hover:shadow-lg transition-shadow cursor-pointer">
-            <div className="flex items-center">
-              <div className="p-3 bg-blue-100 rounded-full">
-                <Eye className="h-8 w-8 text-blue-600" />
-              </div>
-              <div className="ml-4">
-                <p className="text-3xl font-bold text-blue-600">
-                  {loading ? '...' : applicationStats.processing}
-                </p>
-                <p className="text-sm text-gray-600 font-medium">Processing</p>
-              </div>
-            </div>
-          </Link>
-          
-          <Link to="/admin/applications?status=approved" className="card p-6 hover:shadow-lg transition-shadow cursor-pointer">
-            <div className="flex items-center">
-              <div className="p-3 bg-green-100 rounded-full">
-                <CheckCircle className="h-8 w-8 text-green-600" />
-              </div>
-              <div className="ml-4">
-                <p className="text-3xl font-bold text-green-600">
-                  {loading ? '...' : applicationStats.approved}
-                </p>
-                <p className="text-sm text-gray-600 font-medium">Approved</p>
-              </div>
-            </div>
-          </Link>
-          
-          <Link to="/admin/applications?status=rejected" className="card p-6 hover:shadow-lg transition-shadow cursor-pointer">
-            <div className="flex items-center">
-              <div className="p-3 bg-red-100 rounded-full">
-                <XCircle className="h-8 w-8 text-red-600" />
-              </div>
-              <div className="ml-4">
-                <p className="text-3xl font-bold text-red-600">
-                  {loading ? '...' : applicationStats.rejected}
-                </p>
-                <p className="text-sm text-gray-600 font-medium">Rejected</p>
-              </div>
-            </div>
-          </Link>
-        </div>
       </div>
 
       {/* Quick Actions */}
@@ -379,6 +388,99 @@ const AdminDashboard: React.FC = () => {
            <FraudInsightsWidget />
          </div>
       </div>
+
+      {/* Market Prices Section */}
+      {marketPrices.length > 0 && (
+        <div className="card p-6 mb-8">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xl font-semibold text-gray-900">Recent Market Prices</h2>
+            <Link
+              to="/admin/market-prices"
+              className="text-green-600 hover:text-green-700 font-medium text-sm"
+            >
+              Manage All Prices →
+            </Link>
+          </div>
+          
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Crop Photo
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Crop
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Price
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Unit
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Location
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Status
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Updated
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {marketPrices.slice(0, 5).map((price) => (
+                  <tr key={price.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {price.cropPhoto ? (
+                        <img
+                          src={price.cropPhoto}
+                          alt={`${price.cropName} photo`}
+                          className="w-16 h-16 object-cover rounded-lg border border-gray-200"
+                        />
+                      ) : (
+                        <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
+                          <span className="text-gray-400 text-xs">No Photo</span>
+                        </div>
+                      )}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="font-medium text-gray-900">{price.cropName}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-lg font-semibold text-green-600">
+                        ₹{price.price.toLocaleString()}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-gray-600">
+                      {price.unit}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex items-center text-gray-600">
+                        <MapPin className="h-4 w-4 mr-1" />
+                        {price.location}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                        price.isActive 
+                          ? 'bg-green-100 text-green-800' 
+                          : 'bg-red-100 text-red-800'
+                      }`}>
+                        {price.isActive ? 'Active' : 'Inactive'}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                      {new Date(price.updatedAt).toLocaleDateString()}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -20,6 +20,8 @@ const CreateGrant: React.FC = () => {
     type: GrantType.Money,
     amount: '',
     objectName: '',
+    grantPhoto: '',
+    deadlineAt: '',
     targetWards: [] as number[],
     targetMunicipalities: [] as string[],
   });
@@ -78,6 +80,10 @@ const CreateGrant: React.FC = () => {
     }
 
     setImage(file);
+    setFormData(prev => ({
+      ...prev,
+      grantPhoto: URL.createObjectURL(file)
+    }));
     const reader = new FileReader();
     reader.onload = (e) => {
       setImagePreview(e.target?.result as string);
@@ -104,7 +110,12 @@ const CreateGrant: React.FC = () => {
       return;
     }
 
-    if (formData.type === GrantType.Money && (!formData.amount || parseFloat(formData.amount) <= 0)) {
+    if (!formData.deadlineAt) {
+      toast.error('Deadline is required');
+      return;
+    }
+
+    if (formData.type === GrantType.Money && (!formData.amount || Number(formData.amount) <= 0)) {
       toast.error(t('admin.validAmount'));
       return;
     }
@@ -125,17 +136,26 @@ const CreateGrant: React.FC = () => {
     }
 
     try {
-      const grantData = {
+      let uploadedPhotoUrl = formData.grantPhoto;
+      if (image) {
+        // Upload the file to backend and get public URL
+        uploadedPhotoUrl = await apiClient.uploadGrantPhoto(image);
+      }
+
+      const payload = {
         title: formData.title,
         description: formData.description,
         type: formData.type,
-        amount: formData.type === GrantType.Money ? parseFloat(formData.amount) : undefined,
+        amount: formData.type === GrantType.Money ? Number(formData.amount) : undefined,
         objectName: formData.type === GrantType.Object ? formData.objectName : undefined,
+        grantPhoto: uploadedPhotoUrl || undefined,
+        deadlineAt: formData.deadlineAt ? new Date(formData.deadlineAt).toISOString() : undefined,
         targetWards: formData.targetWards,
         targetMunicipalities: formData.targetMunicipalities,
       };
 
-      await apiClient.createGrant(grantData);
+      const created = await apiClient.createGrant(payload as any);
+      addGrant(created as unknown as Grant);
       toast.success(t('admin.grantCreated'));
       navigate('/admin/grants/manage');
     } catch (error: any) {
@@ -252,6 +272,21 @@ const CreateGrant: React.FC = () => {
                 />
               </div>
             )}
+
+            {/* Deadline */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Deadline Date *
+              </label>
+              <input
+                type="date"
+                name="deadlineAt"
+                value={formData.deadlineAt}
+                onChange={handleInputChange}
+                className="input-field"
+                required
+              />
+            </div>
           </div>
         </div>
 
@@ -303,9 +338,9 @@ const CreateGrant: React.FC = () => {
           </div>
         </div>
 
-        {/* Image Upload */}
+        {/* Grant Photo Upload */}
         <div className="card p-6">
-         <h2 className="text-xl font-semibold text-gray-900 mb-4">{t('admin.grantImage')}</h2>
+         <h2 className="text-xl font-semibold text-gray-900 mb-4">Grant Photo</h2>
           
           {imagePreview ? (
             <div className="relative inline-block">

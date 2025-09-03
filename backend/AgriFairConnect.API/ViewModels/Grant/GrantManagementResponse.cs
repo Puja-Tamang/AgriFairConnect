@@ -10,6 +10,8 @@ namespace AgriFairConnect.API.ViewModels.Grant
         public GrantType Type { get; set; }
         public decimal? Amount { get; set; }
         public string? ObjectName { get; set; }
+        public string? GrantPhoto { get; set; }
+        public DateTime? DeadlineAt { get; set; }
         public string CreatedBy { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }

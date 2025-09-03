@@ -6,8 +6,6 @@ from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 from sklearn.feature_selection import SelectKBest, f_classif
 import joblib
-import matplotlib.pyplot as plt
-import seaborn as sns
 from typing import Dict, List, Tuple, Any
 import warnings
 warnings.filterwarnings('ignore')
@@ -38,7 +36,7 @@ class FarmerPrioritizationModel:
         df_processed = df_processed.fillna(df_processed.mode().iloc[0])
         
         # Encode categorical variables
-        categorical_columns = ['crop_yield', 'education_level', 'social_category']
+        categorical_columns = ['crop_yield', 'education_level']
         
         for col in categorical_columns:
             if col in df_processed.columns:
@@ -53,7 +51,12 @@ class FarmerPrioritizationModel:
                 df_processed[col] = df_processed[col].astype(int)
         
         # Create binary target variable (approved = 1, pending = 0)
-        df_processed['target'] = (df_processed[self.target_column] == 'approved').astype(int)
+        # Handle case where application_status might not exist (for real data)
+        if self.target_column in df_processed.columns:
+            df_processed['target'] = (df_processed[self.target_column] == 'approved').astype(int)
+        else:
+            # For real application data, assume pending status (0)
+            df_processed['target'] = 0
         
         return df_processed
     
@@ -66,7 +69,7 @@ class FarmerPrioritizationModel:
             'monthly_income', 'land_size_bigha', 'previous_grants', 'crop_yield',
             'family_size', 'age', 'farming_experience_years', 'credit_score',
             'market_distance_km', 'has_irrigation', 'uses_modern_technology',
-            'social_category', 'has_disability'
+            'has_disability'
         ]
         
         # Filter columns that exist in the dataset
@@ -159,6 +162,10 @@ class FarmerPrioritizationModel:
         # Preprocess the data
         df_processed = self.preprocess_data(df_farmer)
         
+        # Check if feature columns are available
+        if not hasattr(self, 'feature_columns') or not self.feature_columns:
+            raise ValueError("Model feature columns not available. Please retrain the model.")
+        
         # Select features
         X = df_processed[self.feature_columns]
         
@@ -216,10 +223,7 @@ class FarmerPrioritizationModel:
         else:
             score += 0.2  # Multiple previous grants
         
-        # Social factors (5% weight)
-        social_category = farmer_data.get('social_category', 'general')
-        if social_category in ['dalit', 'janajati', 'madhesi']:
-            score += 0.5  # Marginalized groups
+        # Removed social category factor per requirement
         
         # Normalize to 0-10 scale
         return min(score, 10.0)
@@ -249,41 +253,7 @@ class FarmerPrioritizationModel:
             print("Model files not found. Please train the model first.")
             return False
     
-    def plot_feature_importance(self, results: Dict[str, Any]):
-        """Plot feature importance."""
-        feature_importance = results['feature_importance']
-        
-        plt.figure(figsize=(10, 6))
-        features = list(feature_importance.keys())
-        importance = list(feature_importance.values())
-        
-        # Sort by absolute importance
-        sorted_idx = np.argsort(np.abs(importance))
-        features = [features[i] for i in sorted_idx]
-        importance = [importance[i] for i in sorted_idx]
-        
-        plt.barh(range(len(features)), importance)
-        plt.yticks(range(len(features)), features)
-        plt.xlabel('Feature Importance (Coefficient)')
-        plt.title('Feature Importance for Farmer Prioritization')
-        plt.tight_layout()
-        plt.savefig('feature_importance.png', dpi=300, bbox_inches='tight')
-        plt.show()
-    
-    def plot_confusion_matrix(self, results: Dict[str, Any]):
-        """Plot confusion matrix."""
-        cm = results['confusion_matrix']
-        
-        plt.figure(figsize=(8, 6))
-        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
-                   xticklabels=['Pending', 'Approved'],
-                   yticklabels=['Pending', 'Approved'])
-        plt.title('Confusion Matrix')
-        plt.ylabel('Actual')
-        plt.xlabel('Predicted')
-        plt.tight_layout()
-        plt.savefig('confusion_matrix.png', dpi=300, bbox_inches='tight')
-        plt.show()
+
 
 def train_and_evaluate_model():
     """Train and evaluate the farmer prioritization model."""
@@ -301,10 +271,6 @@ def train_and_evaluate_model():
     
     # Save the model
     model.save_model()
-    
-    # Plot results
-    model.plot_feature_importance(results)
-    model.plot_confusion_matrix(results)
     
     # Print detailed results
     print("\n" + "="*50)

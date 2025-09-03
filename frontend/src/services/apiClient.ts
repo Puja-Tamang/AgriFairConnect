@@ -216,6 +216,43 @@ class ApiClient {
     });
   }
 
+  async uploadCropPhoto(file: File): Promise<string> {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('type', 'crop-photo');
+
+    return this.request<string>({
+      method: 'POST',
+      url: '/marketprice/upload-photo',
+      data: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  }
+
+  async uploadGrantPhoto(file: File): Promise<string> {
+    const form = new FormData();
+    form.append('file', file);
+    const response = await this.request<{ url: string }>({
+      method: 'POST',
+      url: '/grant/upload-photo',
+      data: form,
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    const url = response.url;
+    // If backend returned an absolute URL, use it
+    if (/^https?:\/\//i.test(url)) {
+      return url;
+    }
+    // If backend returned '/uploads/...' keep it as-is so Vite proxy serves it via http://localhost:3000/uploads
+    if (url.startsWith('/uploads/')) {
+      return url;
+    }
+    // Fallback: return as-is
+    return url;
+  }
+
   async deleteDocument(documentId: number): Promise<boolean> {
     return this.request<boolean>({
       method: 'DELETE',
