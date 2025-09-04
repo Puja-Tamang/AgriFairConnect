@@ -253,7 +253,7 @@ export const useAIService = () => {
     print("TypeScript types generated in 'ai_service_types.ts'")
 
 if __name__ == "__main__":
-    print("🚀 AgriFairConnect AI Service Frontend Integration Examples")
+    print("AgriFairConnect AI Service Frontend Integration Examples")
     print("="*60)
     
     # Generate TypeScript types

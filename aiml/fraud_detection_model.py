@@ -87,7 +87,7 @@ class FraudDetectionModel:
     
     def train_model(self, data):
         """Train the Isolation Forest model"""
-        print("🔄 Training Fraud Detection Model...")
+        print(" Training Fraud Detection Model...")
         
         # Prepare features
         X_scaled, X_original = self.prepare_features(data)
@@ -115,11 +115,11 @@ class FraudDetectionModel:
         else:
             accuracy = None
         
-        print(f"✅ Model trained successfully!")
+        print(f" Model trained successfully!")
         if accuracy is not None:
-            print(f"📊 Detection Accuracy: {accuracy:.2%}")
-            print(f"📈 Actual fraud cases: {np.sum(data['is_fraudulent'])}")
-        print(f"🎯 Detected {np.sum(fraud_predictions)} potential fraud cases")
+            print(f" Detection Accuracy: {accuracy:.2%}")
+            print(f" Actual fraud cases: {np.sum(data['is_fraudulent'])}")
+        print(f" Detected {np.sum(fraud_predictions)} potential fraud cases")
         
         result = {
             'accuracy': accuracy,
@@ -174,7 +174,7 @@ class FraudDetectionModel:
             'feature_names': self.feature_names
         }
         joblib.dump(model_data, filepath)
-        print(f"💾 Model saved to {filepath}")
+        print(f" Model saved to {filepath}")
     
     def load_model(self, filepath='fraud_detection_model.pkl'):
         """Load a trained model"""
@@ -182,7 +182,7 @@ class FraudDetectionModel:
         self.model = model_data['model']
         self.scaler = model_data['scaler']
         self.feature_names = model_data['feature_names']
-        print(f"📂 Model loaded from {filepath}")
+        print(f" Model loaded from {filepath}")
     
     def generate_visualizations(self, data, predictions, scores):
         """Generate fraud detection visualizations"""
@@ -232,7 +232,7 @@ class FraudDetectionModel:
         plt.savefig('fraud_detection_analysis.png', dpi=300, bbox_inches='tight')
         plt.close()
         
-        print("📊 Visualizations saved as 'fraud_detection_analysis.png'")
+        print(" Visualizations saved as 'fraud_detection_analysis.png'")
         
         return {
             'risk_distribution': risk_counts.to_dict(),

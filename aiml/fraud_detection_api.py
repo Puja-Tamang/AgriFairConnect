@@ -69,11 +69,11 @@ async def startup_event():
         # Try to load existing model
         if os.path.exists('fraud_detection_model.pkl'):
             fraud_model.load_model()
-            print("✅ Fraud detection model loaded successfully")
+            print(" Fraud detection model loaded successfully")
         else:
-            print("⚠️ No existing model found. Please train the model first.")
+            print(" No existing model found. Please train the model first.")
     except Exception as e:
-        print(f"❌ Error loading model: {e}")
+        print(f" Error loading model: {e}")
 
 @app.get("/", response_model=Dict[str, str])
 async def root():
@@ -114,7 +114,7 @@ async def get_model_status():
 async def train_model():
     """Train the fraud detection model with synthetic data"""
     try:
-        print("🔄 Training fraud detection model...")
+        print("Training fraud detection model...")
         
         # Generate synthetic data
         data = fraud_model.generate_fraud_data(n_samples=100)
@@ -271,8 +271,8 @@ async def get_sample_data():
 
 
 if __name__ == "__main__":
-    print("🚀 Starting Fraud Detection API...")
-    print("📊 Available endpoints:")
+    print(" Starting Fraud Detection API...")
+    print(" Available endpoints:")
     print("   - GET  / : API information")
     print("   - GET  /health : Health check")
     print("   - GET  /status : Model status")
