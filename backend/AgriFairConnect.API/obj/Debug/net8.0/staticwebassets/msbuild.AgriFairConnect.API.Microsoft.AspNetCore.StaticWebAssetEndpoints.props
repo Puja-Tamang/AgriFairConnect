@@ -1,0 +1,628 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375493275.abff5sa03e.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375493275.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"abff5sa03e"},{"Name":"integrity","Value":"sha256-RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/citizen_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375493275.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"391838"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375493275.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375493275.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"391838"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421182549.8rmfdwnkhi.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421182549.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"8rmfdwnkhi"},{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/citizen_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421182549.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421182549.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421182549.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331688980.599721yzbl.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331688980.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"599721yzbl"},{"Name":"integrity","Value":"sha256-Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331688980.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"336203"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331688980.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331688980.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"336203"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010910749.c3f1mcxb7w.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010910749.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"c3f1mcxb7w"},{"Name":"integrity","Value":"sha256-qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010910749.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"56277"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010910749.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010910749.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"56277"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316090113.8rmfdwnkhi.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316090113.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"8rmfdwnkhi"},{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316090113.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316090113.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316090113.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457101967.4elcb9js60.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457101967.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"4elcb9js60"},{"Name":"integrity","Value":"sha256-TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457101967.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"99646"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457101967.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457101967.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"99646"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273154862.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273154862.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-BOF4OBP1ZroNA1yiR94upQPP2SIK/9XAtCw/depVsvc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"420804"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022BOF4OBP1ZroNA1yiR94upQPP2SIK/9XAtCw/depVsvc=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273154862.smhzdopy6s.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273154862.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"smhzdopy6s"},{"Name":"integrity","Value":"sha256-BOF4OBP1ZroNA1yiR94upQPP2SIK/9XAtCw/depVsvc="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273154862.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"420804"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022BOF4OBP1ZroNA1yiR94upQPP2SIK/9XAtCw/depVsvc=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202389229.2gzklxczmw.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202389229.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"2gzklxczmw"},{"Name":"integrity","Value":"sha256-csmFjcaCTBQPt5ajHleDvJMY7zMEc7uu8fv0fitug3o="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202389229.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6731404"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022csmFjcaCTBQPt5ajHleDvJMY7zMEc7uu8fv0fitug3o=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202389229.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202389229.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-csmFjcaCTBQPt5ajHleDvJMY7zMEc7uu8fv0fitug3o="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"6731404"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022csmFjcaCTBQPt5ajHleDvJMY7zMEc7uu8fv0fitug3o=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271794433.abff5sa03e.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271794433.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"abff5sa03e"},{"Name":"integrity","Value":"sha256-RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271794433.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"391838"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271794433.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271794433.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"391838"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855805303.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855805303.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-YJf7NJ7MaiX3MaCmvUZqzI6RiGI3f\u002BRlXPcpORAxqnk="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"533034"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022YJf7NJ7MaiX3MaCmvUZqzI6RiGI3f\u002BRlXPcpORAxqnk=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855805303.sltjo1xug2.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855805303.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"sltjo1xug2"},{"Name":"integrity","Value":"sha256-YJf7NJ7MaiX3MaCmvUZqzI6RiGI3f\u002BRlXPcpORAxqnk="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855805303.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"533034"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022YJf7NJ7MaiX3MaCmvUZqzI6RiGI3f\u002BRlXPcpORAxqnk=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678624348.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678624348.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-PkbWOYLfwzjnFrAacGCLeW92nz3pCWd0YfqeH0wuZp0="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"7273170"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022PkbWOYLfwzjnFrAacGCLeW92nz3pCWd0YfqeH0wuZp0=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678624348.qubblh1mez.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678624348.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"qubblh1mez"},{"Name":"integrity","Value":"sha256-PkbWOYLfwzjnFrAacGCLeW92nz3pCWd0YfqeH0wuZp0="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678624348.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"7273170"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022PkbWOYLfwzjnFrAacGCLeW92nz3pCWd0YfqeH0wuZp0=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757271857978.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757271857978.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-t6ah4NZFgZ\u002BRKtGci\u002BRJXQk0erFIw6dyqstg5U/2TvU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"309314"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022t6ah4NZFgZ\u002BRKtGci\u002BRJXQk0erFIw6dyqstg5U/2TvU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757271857978.ll8rdmvr4n.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757271857978.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ll8rdmvr4n"},{"Name":"integrity","Value":"sha256-t6ah4NZFgZ\u002BRKtGci\u002BRJXQk0erFIw6dyqstg5U/2TvU="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/citizen_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757271857978.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"309314"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022t6ah4NZFgZ\u002BRKtGci\u002BRJXQk0erFIw6dyqstg5U/2TvU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375540140.599721yzbl.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375540140.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"599721yzbl"},{"Name":"integrity","Value":"sha256-Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/land_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375540140.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"336203"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375540140.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375540140.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"336203"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421205949.8rmfdwnkhi.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421205949.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"8rmfdwnkhi"},{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/land_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421205949.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421205949.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421205949.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331750997.599721yzbl.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331750997.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"599721yzbl"},{"Name":"integrity","Value":"sha256-Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331750997.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"336203"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331750997.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331750997.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"336203"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010967928.c3f1mcxb7w.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010967928.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"c3f1mcxb7w"},{"Name":"integrity","Value":"sha256-qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010967928.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"56277"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010967928.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010967928.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"56277"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316152080.8rmfdwnkhi.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316152080.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"8rmfdwnkhi"},{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316152080.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316152080.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316152080.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457141188.4elcb9js60.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457141188.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"4elcb9js60"},{"Name":"integrity","Value":"sha256-TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457141188.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"99646"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457141188.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457141188.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"99646"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273187167.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273187167.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-YJf7NJ7MaiX3MaCmvUZqzI6RiGI3f\u002BRlXPcpORAxqnk="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"533034"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022YJf7NJ7MaiX3MaCmvUZqzI6RiGI3f\u002BRlXPcpORAxqnk=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273187167.sltjo1xug2.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273187167.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"sltjo1xug2"},{"Name":"integrity","Value":"sha256-YJf7NJ7MaiX3MaCmvUZqzI6RiGI3f\u002BRlXPcpORAxqnk="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273187167.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"533034"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022YJf7NJ7MaiX3MaCmvUZqzI6RiGI3f\u002BRlXPcpORAxqnk=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202627414.2gzklxczmw.JPG">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202627414.JPG'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"2gzklxczmw"},{"Name":"integrity","Value":"sha256-csmFjcaCTBQPt5ajHleDvJMY7zMEc7uu8fv0fitug3o="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202627414.JPG"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6731404"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022csmFjcaCTBQPt5ajHleDvJMY7zMEc7uu8fv0fitug3o=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202627414.JPG">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202627414.JPG'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-csmFjcaCTBQPt5ajHleDvJMY7zMEc7uu8fv0fitug3o="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"6731404"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022csmFjcaCTBQPt5ajHleDvJMY7zMEc7uu8fv0fitug3o=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271873019.abff5sa03e.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271873019.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"abff5sa03e"},{"Name":"integrity","Value":"sha256-RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/land_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271873019.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"391838"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271873019.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271873019.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"391838"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855892593.599721yzbl.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855892593.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"599721yzbl"},{"Name":"integrity","Value":"sha256-Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/land_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855892593.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"336203"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855892593.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855892593.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"336203"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678779539.0cgfxcejrt.JPG">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678779539.JPG'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"0cgfxcejrt"},{"Name":"integrity","Value":"sha256-kO7WEzF4a/WVXu9dENHhs9HE4d3GZWf7wHI9teLnRgc="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/land_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678779539.JPG"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"7151752"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022kO7WEzF4a/WVXu9dENHhs9HE4d3GZWf7wHI9teLnRgc=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678779539.JPG">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678779539.JPG'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-kO7WEzF4a/WVXu9dENHhs9HE4d3GZWf7wHI9teLnRgc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"7151752"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022kO7WEzF4a/WVXu9dENHhs9HE4d3GZWf7wHI9teLnRgc=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757271889455.JPG">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757271889455.JPG'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-PkbWOYLfwzjnFrAacGCLeW92nz3pCWd0YfqeH0wuZp0="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"7273170"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022PkbWOYLfwzjnFrAacGCLeW92nz3pCWd0YfqeH0wuZp0=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/land_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757271889455.qubblh1mez.JPG">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\land_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757271889455.JPG'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"qubblh1mez"},{"Name":"integrity","Value":"sha256-PkbWOYLfwzjnFrAacGCLeW92nz3pCWd0YfqeH0wuZp0="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/land_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757271889455.JPG"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"7273170"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022PkbWOYLfwzjnFrAacGCLeW92nz3pCWd0YfqeH0wuZp0=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375552045.599721yzbl.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375552045.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"599721yzbl"},{"Name":"integrity","Value":"sha256-Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/tax_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375552045.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"336203"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375552045.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_02ce829f-47b0-41c9-9040-704761c4e26b_638921723375552045.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"336203"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421211145.8rmfdwnkhi.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421211145.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"8rmfdwnkhi"},{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/tax_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421211145.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421211145.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_02ce829f-47b0-41c9-9040-704761c4e26b_638924848421211145.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331767946.599721yzbl.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331767946.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"599721yzbl"},{"Name":"integrity","Value":"sha256-Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331767946.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"336203"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331767946.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_494075ff-03a5-445f-9fbb-b3a256faa069_638921500331767946.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"336203"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Zw8rJdTOyHPTY6OjL4w6ctoTpBSdm52\u002B8zXNNeRTPNY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010981020.c3f1mcxb7w.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010981020.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"c3f1mcxb7w"},{"Name":"integrity","Value":"sha256-qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010981020.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"56277"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010981020.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_494075ff-03a5-445f-9fbb-b3a256faa069_638924756010981020.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"56277"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316185316.8rmfdwnkhi.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316185316.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"8rmfdwnkhi"},{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316185316.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316185316.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_494075ff-03a5-445f-9fbb-b3a256faa069_638924846316185316.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457193710.4elcb9js60.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457193710.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"4elcb9js60"},{"Name":"integrity","Value":"sha256-TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457193710.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"99646"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457193710.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925745457193710.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"99646"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273261978.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273261978.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-YJf7NJ7MaiX3MaCmvUZqzI6RiGI3f\u002BRlXPcpORAxqnk="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"533034"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022YJf7NJ7MaiX3MaCmvUZqzI6RiGI3f\u002BRlXPcpORAxqnk=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273261978.sltjo1xug2.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273261978.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"sltjo1xug2"},{"Name":"integrity","Value":"sha256-YJf7NJ7MaiX3MaCmvUZqzI6RiGI3f\u002BRlXPcpORAxqnk="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925751273261978.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"533034"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022YJf7NJ7MaiX3MaCmvUZqzI6RiGI3f\u002BRlXPcpORAxqnk=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202817657.2gzklxczmw.JPG">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202817657.JPG'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"2gzklxczmw"},{"Name":"integrity","Value":"sha256-csmFjcaCTBQPt5ajHleDvJMY7zMEc7uu8fv0fitug3o="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202817657.JPG"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6731404"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022csmFjcaCTBQPt5ajHleDvJMY7zMEc7uu8fv0fitug3o=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202817657.JPG">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_494075ff-03a5-445f-9fbb-b3a256faa069_638925752202817657.JPG'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-csmFjcaCTBQPt5ajHleDvJMY7zMEc7uu8fv0fitug3o="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"6731404"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022csmFjcaCTBQPt5ajHleDvJMY7zMEc7uu8fv0fitug3o=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271889431.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271889431.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-0L\u002BtLQ4eR\u002BPVNHUDf32VRi5EPl9UwK14q9SW3uYExhE="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"304953"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00220L\u002BtLQ4eR\u002BPVNHUDf32VRi5EPl9UwK14q9SW3uYExhE=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271889431.wwtz6ewstf.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271889431.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"wwtz6ewstf"},{"Name":"integrity","Value":"sha256-0L\u002BtLQ4eR\u002BPVNHUDf32VRi5EPl9UwK14q9SW3uYExhE="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638922384271889431.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"304953"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00220L\u002BtLQ4eR\u002BPVNHUDf32VRi5EPl9UwK14q9SW3uYExhE=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855913917.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855913917.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-0L\u002BtLQ4eR\u002BPVNHUDf32VRi5EPl9UwK14q9SW3uYExhE="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"304953"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00220L\u002BtLQ4eR\u002BPVNHUDf32VRi5EPl9UwK14q9SW3uYExhE=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855913917.wwtz6ewstf.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855913917.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"wwtz6ewstf"},{"Name":"integrity","Value":"sha256-0L\u002BtLQ4eR\u002BPVNHUDf32VRi5EPl9UwK14q9SW3uYExhE="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638923090855913917.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"304953"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00220L\u002BtLQ4eR\u002BPVNHUDf32VRi5EPl9UwK14q9SW3uYExhE=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678941719.hfl62p8sqi.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678941719.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"hfl62p8sqi"},{"Name":"integrity","Value":"sha256-A4jE\u002Bc9KP1OMH4PvCHfQ9PYRuueI148nCNC59b49ISk="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678941719.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"350841"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022A4jE\u002Bc9KP1OMH4PvCHfQ9PYRuueI148nCNC59b49ISk=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678941719.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638924877678941719.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-A4jE\u002Bc9KP1OMH4PvCHfQ9PYRuueI148nCNC59b49ISk="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"350841"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022A4jE\u002Bc9KP1OMH4PvCHfQ9PYRuueI148nCNC59b49ISk=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757272125251.abff5sa03e.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757272125251.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"abff5sa03e"},{"Name":"integrity","Value":"sha256-RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/applications/tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757272125251.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"391838"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/applications/tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757272125251.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\applications\tax_636a7784-5b78-4363-ae78-a6ad05459ba6_638925757272125251.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"391838"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022RrDWcaQTrOFCbVHbsNPwad4hCuA8PB1rYVjBVmD8wMU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_06c6061e-4d46-4d44-b913-1f737615fe12.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_06c6061e-4d46-4d44-b913-1f737615fe12.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"100761"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_06c6061e-4d46-4d44-b913-1f737615fe12.wehp7vcyj9.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_06c6061e-4d46-4d44-b913-1f737615fe12.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"wehp7vcyj9"},{"Name":"integrity","Value":"sha256-mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/crops/crop_photo_06c6061e-4d46-4d44-b913-1f737615fe12.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"100761"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_197cb702-8c6c-4c24-a06d-0eaf28b2119e.gsvs7fkrdl.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_197cb702-8c6c-4c24-a06d-0eaf28b2119e.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"gsvs7fkrdl"},{"Name":"integrity","Value":"sha256-8JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/crops/crop_photo_197cb702-8c6c-4c24-a06d-0eaf28b2119e.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1224000"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00228JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_197cb702-8c6c-4c24-a06d-0eaf28b2119e.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_197cb702-8c6c-4c24-a06d-0eaf28b2119e.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-8JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1224000"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00228JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_1da3cc64-c555-4fb8-a10d-950830fba137.gsvs7fkrdl.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_1da3cc64-c555-4fb8-a10d-950830fba137.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"gsvs7fkrdl"},{"Name":"integrity","Value":"sha256-8JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/crops/crop_photo_1da3cc64-c555-4fb8-a10d-950830fba137.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1224000"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00228JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_1da3cc64-c555-4fb8-a10d-950830fba137.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_1da3cc64-c555-4fb8-a10d-950830fba137.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-8JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1224000"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00228JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_44c0b107-e78a-4b5a-93c9-0ec6c10f4dbe.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_44c0b107-e78a-4b5a-93c9-0ec6c10f4dbe.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"100761"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_44c0b107-e78a-4b5a-93c9-0ec6c10f4dbe.wehp7vcyj9.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_44c0b107-e78a-4b5a-93c9-0ec6c10f4dbe.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"wehp7vcyj9"},{"Name":"integrity","Value":"sha256-mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/crops/crop_photo_44c0b107-e78a-4b5a-93c9-0ec6c10f4dbe.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"100761"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_7b0077db-df89-43f4-94e3-144b10cc5ac1.c3f1mcxb7w.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_7b0077db-df89-43f4-94e3-144b10cc5ac1.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"c3f1mcxb7w"},{"Name":"integrity","Value":"sha256-qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/crops/crop_photo_7b0077db-df89-43f4-94e3-144b10cc5ac1.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"56277"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_7b0077db-df89-43f4-94e3-144b10cc5ac1.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_7b0077db-df89-43f4-94e3-144b10cc5ac1.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"56277"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022qFjJU00YNogqhpmzOwEuhcy1VqHJM93lFQDQI\u002BfdHEU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_80595145-9fb3-49ab-a06b-dfaa8c2ed3fb.gsvs7fkrdl.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_80595145-9fb3-49ab-a06b-dfaa8c2ed3fb.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"gsvs7fkrdl"},{"Name":"integrity","Value":"sha256-8JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/crops/crop_photo_80595145-9fb3-49ab-a06b-dfaa8c2ed3fb.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1224000"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00228JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_80595145-9fb3-49ab-a06b-dfaa8c2ed3fb.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_80595145-9fb3-49ab-a06b-dfaa8c2ed3fb.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-8JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1224000"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00228JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_8ad0fe74-d5ee-4adf-828e-b13c67d02368.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_8ad0fe74-d5ee-4adf-828e-b13c67d02368.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"100761"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_8ad0fe74-d5ee-4adf-828e-b13c67d02368.wehp7vcyj9.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_8ad0fe74-d5ee-4adf-828e-b13c67d02368.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"wehp7vcyj9"},{"Name":"integrity","Value":"sha256-mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/crops/crop_photo_8ad0fe74-d5ee-4adf-828e-b13c67d02368.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"100761"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_aef89275-cbd8-4f8c-b375-fa86b4baf741.gsvs7fkrdl.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_aef89275-cbd8-4f8c-b375-fa86b4baf741.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"gsvs7fkrdl"},{"Name":"integrity","Value":"sha256-8JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/crops/crop_photo_aef89275-cbd8-4f8c-b375-fa86b4baf741.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1224000"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00228JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_aef89275-cbd8-4f8c-b375-fa86b4baf741.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_aef89275-cbd8-4f8c-b375-fa86b4baf741.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-8JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1224000"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00228JI2wrJkNdw6y/sa1c9nTv7slZwAZ7p8lY0\u002BJlfZxyo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_b8512a30-43ae-4b18-8e77-d7bb1224823f.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_b8512a30-43ae-4b18-8e77-d7bb1224823f.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"100761"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_b8512a30-43ae-4b18-8e77-d7bb1224823f.wehp7vcyj9.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_b8512a30-43ae-4b18-8e77-d7bb1224823f.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"wehp7vcyj9"},{"Name":"integrity","Value":"sha256-mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/crops/crop_photo_b8512a30-43ae-4b18-8e77-d7bb1224823f.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"100761"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_e1a5630a-66d8-4228-a3e3-f25da6fe4ca7.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_e1a5630a-66d8-4228-a3e3-f25da6fe4ca7.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"100761"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/crops/crop_photo_e1a5630a-66d8-4228-a3e3-f25da6fe4ca7.wehp7vcyj9.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\crops\crop_photo_e1a5630a-66d8-4228-a3e3-f25da6fe4ca7.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"wehp7vcyj9"},{"Name":"integrity","Value":"sha256-mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/crops/crop_photo_e1a5630a-66d8-4228-a3e3-f25da6fe4ca7.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"100761"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022mFiAprlhMRDt4opbJUZGu7VTJkM9umxN1NZ5IF/\u002B53A=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/grants/grant_20250903073813198.8rmfdwnkhi.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\grants\grant_20250903073813198.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"8rmfdwnkhi"},{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/grants/grant_20250903073813198.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/grants/grant_20250903073813198.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\grants\grant_20250903073813198.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/grants/grant_20250903075353290.8rmfdwnkhi.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\grants\grant_20250903075353290.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"8rmfdwnkhi"},{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/grants/grant_20250903075353290.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/grants/grant_20250903075353290.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\grants\grant_20250903075353290.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-9D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"47470"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229D3N7z2ma5pDznaDtKO/irLFVBdoUcuhzO415SxsMLo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/grants/grant_20250904092038597.4elcb9js60.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\grants\grant_20250904092038597.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"4elcb9js60"},{"Name":"integrity","Value":"sha256-TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/grants/grant_20250904092038597.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"99646"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/grants/grant_20250904092038597.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\grants\grant_20250904092038597.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"99646"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/grants/grant_20250904092717949.4elcb9js60.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\grants\grant_20250904092717949.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"4elcb9js60"},{"Name":"integrity","Value":"sha256-TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/grants/grant_20250904092717949.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"99646"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/grants/grant_20250904092717949.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\grants\grant_20250904092717949.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"99646"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022TNYFdN5a29o1fy8x5WjL9/3Qeft1zOnS/k4jVx4p00E=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/grants/grant_20250904092918091.3tim5glxib.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\grants\grant_20250904092918091.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"3tim5glxib"},{"Name":"integrity","Value":"sha256-t/16T7jOj6g5r0qDSj6BEVm283RXwqMNDmvxXpt5JgU="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/grants/grant_20250904092918091.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"77210"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022t/16T7jOj6g5r0qDSj6BEVm283RXwqMNDmvxXpt5JgU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/grants/grant_20250904092918091.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\grants\grant_20250904092918091.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-t/16T7jOj6g5r0qDSj6BEVm283RXwqMNDmvxXpt5JgU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"77210"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022t/16T7jOj6g5r0qDSj6BEVm283RXwqMNDmvxXpt5JgU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/grants/grant_20250904093630243.00dkzk5suu.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\grants\grant_20250904093630243.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"00dkzk5suu"},{"Name":"integrity","Value":"sha256-0KGE6SRKQTh5Vn8FkCzCOVlseRzoSqNXeHwL0iZsppk="},{"Name":"label","Value":"_content/AgriFairConnect.API/uploads/grants/grant_20250904093630243.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"31229"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00220KGE6SRKQTh5Vn8FkCzCOVlseRzoSqNXeHwL0iZsppk=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/AgriFairConnect.API/uploads/grants/grant_20250904093630243.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\grants\grant_20250904093630243.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-0KGE6SRKQTh5Vn8FkCzCOVlseRzoSqNXeHwL0iZsppk="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"31229"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00220KGE6SRKQTh5Vn8FkCzCOVlseRzoSqNXeHwL0iZsppk=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 23:45:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+  </ItemGroup>
+</Project>
